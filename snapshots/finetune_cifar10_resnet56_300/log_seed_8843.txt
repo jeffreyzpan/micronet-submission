@@ -1,0 +1,1691 @@
+save path : ./snapshots/finetune_cifar10_resnet56_300
+{'abits': None, 'arch': 'resnet56', 'batch_size': 128, 'data_path': '../../datasets/CIFAR10/cifar', 'dataset': 'cifar10', 'decay': 0.0001, 'epochs': 300, 'evaluate': False, 'gammas': [0.1, 0.1, 0.1], 'learning_rate': 0.1, 'manualSeed': 8843, 'momentum': 0.9, 'ngpu': 4, 'pretrained': 'pretrained/cifar10_resnet56_164/model_best.pth.tar', 'print_freq': 200, 'resume': None, 'save_path': './snapshots/finetune_cifar10_resnet56_300', 'schedule': [120, 180, 240], 'start_epoch': 0, 'use_cuda': True, 'workers': 16}
+Random Seed: 8843
+python version : 3.7.3 (default, Mar 27 2019, 22:11:17)  [GCC 7.3.0]
+torch  version : 1.1.0
+cudnn  version : 7501
+=> creating model 'resnet56'
+=> network :
+ CifarResNet(
+  (conv_1_3x3): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (stage_1): Sequential(
+    (0): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (4): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (5): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (6): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (7): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (8): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (stage_2): Sequential(
+    (0): ResNetBasicblock(
+      (conv_a): QuantConv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): DownsampleA(
+        (avg): AvgPool2d(kernel_size=1, stride=2, padding=0)
+      )
+    )
+    (1): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (4): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (5): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (6): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (7): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (8): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (stage_3): Sequential(
+    (0): ResNetBasicblock(
+      (conv_a): QuantConv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): DownsampleA(
+        (avg): AvgPool2d(kernel_size=1, stride=2, padding=0)
+      )
+    )
+    (1): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (2): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (4): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (5): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (6): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (7): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (8): ResNetBasicblock(
+      (conv_a): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_a): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_b): QuantConv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False, method=TTQ)
+      (bn_b): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (classifier): QuantLinear(in_features=64, out_features=10, bias=True, method=KMeans, nbits=4)
+)
+=> do not use any checkpoint for resnet56 model
+=> loading pretrained model 'pretrained/cifar10_resnet56_164/model_best.pth.tar'
+=> loaded pretrained model 'pretrained/cifar10_resnet56_164/model_best.pth.tar'
+
+==>>[2019-08-30 03:59:34] [Epoch=000/300] [Need: 00:00:00] [learning_rate=0.1000] [Best : Accuracy=0.00, Error=100.00]
+  Epoch: [000][000/391]   Time 18.780 (18.780)   Data 0.483 (0.483)   Loss 5.5175 (5.5175)   Prec@1 15.625 (15.625)   Prec@5 56.250 (56.250)   [2019-08-30 03:59:53]
+  Epoch: [000][200/391]   Time 0.268 (0.420)   Data 0.000 (0.003)   Loss 2.2975 (2.7933)   Prec@1 10.938 (10.265)   Prec@5 53.906 (50.509)   [2019-08-30 04:00:59]
+  **Test** Prec@1 10.670 Prec@5 50.770 Error@1 89.330
+
+==>>[2019-08-30 04:02:18] [Epoch=001/300] [Need: 13:30:25] [learning_rate=0.1000] [Best : Accuracy=10.67, Error=89.33]
+  Epoch: [001][000/391]   Time 2.345 (2.345)   Data 1.894 (1.894)   Loss 2.2807 (2.2807)   Prec@1 16.406 (16.406)   Prec@5 53.906 (53.906)   [2019-08-30 04:02:21]
+  Epoch: [001][200/391]   Time 0.510 (0.341)   Data 0.000 (0.010)   Loss 2.2918 (2.2990)   Prec@1 10.938 (10.747)   Prec@5 46.875 (51.597)   [2019-08-30 04:03:27]
+  **Test** Prec@1 10.680 Prec@5 52.020 Error@1 89.320
+
+==>>[2019-08-30 04:05:09] [Epoch=002/300] [Need: 13:48:04] [learning_rate=0.1000] [Best : Accuracy=10.68, Error=89.32]
+  Epoch: [002][000/391]   Time 1.878 (1.878)   Data 1.236 (1.236)   Loss 2.3176 (2.3176)   Prec@1 7.812 (7.812)   Prec@5 44.531 (44.531)   [2019-08-30 04:05:10]
+  Epoch: [002][200/391]   Time 0.266 (0.422)   Data 0.000 (0.007)   Loss 2.3198 (2.2962)   Prec@1 10.156 (11.299)   Prec@5 50.781 (52.414)   [2019-08-30 04:06:33]
+  **Test** Prec@1 11.020 Prec@5 52.860 Error@1 88.980
+
+==>>[2019-08-30 04:08:13] [Epoch=003/300] [Need: 14:14:22] [learning_rate=0.1000] [Best : Accuracy=11.02, Error=88.98]
+  Epoch: [003][000/391]   Time 1.942 (1.942)   Data 1.435 (1.435)   Loss 2.2926 (2.2926)   Prec@1 4.688 (4.688)   Prec@5 54.688 (54.688)   [2019-08-30 04:08:15]
+  Epoch: [003][200/391]   Time 0.305 (0.431)   Data 0.000 (0.008)   Loss 2.2858 (2.2925)   Prec@1 13.281 (11.451)   Prec@5 54.688 (53.564)   [2019-08-30 04:09:40]
+  **Test** Prec@1 11.930 Prec@5 54.400 Error@1 88.070
+
+==>>[2019-08-30 04:11:15] [Epoch=004/300] [Need: 14:23:08] [learning_rate=0.1000] [Best : Accuracy=11.93, Error=88.07]
+  Epoch: [004][000/391]   Time 2.013 (2.013)   Data 1.487 (1.487)   Loss 2.3000 (2.3000)   Prec@1 14.062 (14.062)   Prec@5 57.031 (57.031)   [2019-08-30 04:11:17]
+  Epoch: [004][200/391]   Time 0.333 (0.417)   Data 0.000 (0.008)   Loss 2.2596 (2.2799)   Prec@1 14.844 (12.931)   Prec@5 61.719 (57.160)   [2019-08-30 04:12:39]
+  **Test** Prec@1 10.000 Prec@5 50.000 Error@1 90.000
+
+==>>[2019-08-30 04:14:19] [Epoch=005/300] [Need: 14:27:43] [learning_rate=0.1000] [Best : Accuracy=11.93, Error=88.07]
+  Epoch: [005][000/391]   Time 2.913 (2.913)   Data 2.492 (2.492)   Loss 2.3272 (2.3272)   Prec@1 7.031 (7.031)   Prec@5 48.438 (48.438)   [2019-08-30 04:14:22]
+  Epoch: [005][200/391]   Time 0.324 (0.405)   Data 0.000 (0.013)   Loss 2.0369 (2.1320)   Prec@1 23.438 (18.233)   Prec@5 78.906 (69.714)   [2019-08-30 04:15:40]
+  **Test** Prec@1 24.570 Prec@5 79.120 Error@1 75.430
+
+==>>[2019-08-30 04:17:20] [Epoch=006/300] [Need: 14:29:11] [learning_rate=0.1000] [Best : Accuracy=24.57, Error=75.43]
+  Epoch: [006][000/391]   Time 2.055 (2.055)   Data 1.633 (1.633)   Loss 1.9284 (1.9284)   Prec@1 21.094 (21.094)   Prec@5 80.469 (80.469)   [2019-08-30 04:17:22]
+  Epoch: [006][200/391]   Time 0.481 (0.426)   Data 0.000 (0.009)   Loss 1.8661 (1.9794)   Prec@1 25.781 (24.176)   Prec@5 84.375 (79.342)   [2019-08-30 04:18:45]
+  **Test** Prec@1 29.220 Prec@5 84.570 Error@1 70.780
+
+==>>[2019-08-30 04:20:22] [Epoch=007/300] [Need: 14:30:02] [learning_rate=0.1000] [Best : Accuracy=29.22, Error=70.78]
+  Epoch: [007][000/391]   Time 1.830 (1.830)   Data 1.441 (1.441)   Loss 1.9691 (1.9691)   Prec@1 31.250 (31.250)   Prec@5 79.688 (79.688)   [2019-08-30 04:20:24]
+  Epoch: [007][200/391]   Time 0.506 (0.422)   Data 0.000 (0.007)   Loss 1.7081 (1.8573)   Prec@1 39.062 (30.815)   Prec@5 85.938 (83.726)   [2019-08-30 04:21:47]
+  **Test** Prec@1 33.570 Prec@5 87.050 Error@1 66.430
+
+==>>[2019-08-30 04:23:26] [Epoch=008/300] [Need: 14:29:54] [learning_rate=0.1000] [Best : Accuracy=33.57, Error=66.43]
+  Epoch: [008][000/391]   Time 1.852 (1.852)   Data 1.446 (1.446)   Loss 1.7503 (1.7503)   Prec@1 34.375 (34.375)   Prec@5 89.844 (89.844)   [2019-08-30 04:23:27]
+  Epoch: [008][200/391]   Time 0.370 (0.414)   Data 0.000 (0.008)   Loss 1.7179 (1.6815)   Prec@1 32.812 (37.655)   Prec@5 88.281 (87.963)   [2019-08-30 04:24:49]
+  **Test** Prec@1 29.900 Prec@5 85.070 Error@1 70.100
+
+==>>[2019-08-30 04:26:28] [Epoch=009/300] [Need: 14:29:05] [learning_rate=0.1000] [Best : Accuracy=33.57, Error=66.43]
+  Epoch: [009][000/391]   Time 2.486 (2.486)   Data 1.970 (1.970)   Loss 1.4625 (1.4625)   Prec@1 51.562 (51.562)   Prec@5 91.406 (91.406)   [2019-08-30 04:26:31]
+  Epoch: [009][200/391]   Time 0.533 (0.405)   Data 0.000 (0.010)   Loss 1.3984 (1.5056)   Prec@1 46.875 (44.947)   Prec@5 90.625 (91.266)   [2019-08-30 04:27:50]
+  **Test** Prec@1 40.490 Prec@5 89.780 Error@1 59.510
+
+==>>[2019-08-30 04:29:28] [Epoch=010/300] [Need: 14:26:09] [learning_rate=0.1000] [Best : Accuracy=40.49, Error=59.51]
+  Epoch: [010][000/391]   Time 3.803 (3.803)   Data 3.214 (3.214)   Loss 1.3606 (1.3606)   Prec@1 48.438 (48.438)   Prec@5 94.531 (94.531)   [2019-08-30 04:29:32]
+  Epoch: [010][200/391]   Time 0.600 (0.430)   Data 0.010 (0.017)   Loss 1.4387 (1.3475)   Prec@1 46.094 (51.423)   Prec@5 92.969 (93.715)   [2019-08-30 04:30:55]
+  **Test** Prec@1 50.810 Prec@5 94.040 Error@1 49.190
+
+==>>[2019-08-30 04:32:34] [Epoch=011/300] [Need: 14:26:01] [learning_rate=0.1000] [Best : Accuracy=50.81, Error=49.19]
+  Epoch: [011][000/391]   Time 2.075 (2.075)   Data 1.584 (1.584)   Loss 1.1981 (1.1981)   Prec@1 56.250 (56.250)   Prec@5 94.531 (94.531)   [2019-08-30 04:32:36]
+  Epoch: [011][200/391]   Time 0.459 (0.435)   Data 0.000 (0.008)   Loss 1.2034 (1.2141)   Prec@1 56.250 (56.514)   Prec@5 97.656 (94.807)   [2019-08-30 04:34:01]
+  **Test** Prec@1 42.630 Prec@5 90.190 Error@1 57.370
+
+==>>[2019-08-30 04:35:39] [Epoch=012/300] [Need: 14:25:28] [learning_rate=0.1000] [Best : Accuracy=50.81, Error=49.19]
+  Epoch: [012][000/391]   Time 3.947 (3.947)   Data 3.343 (3.343)   Loss 1.1885 (1.1885)   Prec@1 53.125 (53.125)   Prec@5 95.312 (95.312)   [2019-08-30 04:35:43]
+  Epoch: [012][200/391]   Time 0.457 (0.417)   Data 0.000 (0.017)   Loss 1.0994 (1.1154)   Prec@1 60.938 (60.141)   Prec@5 97.656 (95.837)   [2019-08-30 04:37:03]
+  **Test** Prec@1 37.900 Prec@5 84.100 Error@1 62.100
+
+==>>[2019-08-30 04:38:45] [Epoch=013/300] [Need: 14:24:25] [learning_rate=0.1000] [Best : Accuracy=50.81, Error=49.19]
+  Epoch: [013][000/391]   Time 3.177 (3.177)   Data 2.541 (2.541)   Loss 1.0554 (1.0554)   Prec@1 60.156 (60.156)   Prec@5 96.875 (96.875)   [2019-08-30 04:38:49]
+  Epoch: [013][200/391]   Time 0.380 (0.419)   Data 0.000 (0.013)   Loss 0.9176 (1.0333)   Prec@1 71.094 (63.682)   Prec@5 98.438 (96.467)   [2019-08-30 04:40:10]
+  **Test** Prec@1 58.310 Prec@5 94.660 Error@1 41.690
+
+==>>[2019-08-30 04:41:48] [Epoch=014/300] [Need: 14:22:21] [learning_rate=0.1000] [Best : Accuracy=58.31, Error=41.69]
+  Epoch: [014][000/391]   Time 1.928 (1.928)   Data 1.425 (1.425)   Loss 0.9180 (0.9180)   Prec@1 67.188 (67.188)   Prec@5 99.219 (99.219)   [2019-08-30 04:41:50]
+  Epoch: [014][200/391]   Time 0.507 (0.419)   Data 0.000 (0.008)   Loss 0.9170 (0.9426)   Prec@1 64.844 (66.779)   Prec@5 96.875 (96.980)   [2019-08-30 04:43:12]
+  **Test** Prec@1 54.260 Prec@5 96.200 Error@1 45.740
+
+==>>[2019-08-30 04:44:49] [Epoch=015/300] [Need: 14:19:11] [learning_rate=0.1000] [Best : Accuracy=58.31, Error=41.69]
+  Epoch: [015][000/391]   Time 3.080 (3.080)   Data 2.523 (2.523)   Loss 0.9027 (0.9027)   Prec@1 68.750 (68.750)   Prec@5 96.875 (96.875)   [2019-08-30 04:44:52]
+  Epoch: [015][200/391]   Time 0.371 (0.439)   Data 0.000 (0.013)   Loss 0.9379 (0.8837)   Prec@1 67.969 (69.240)   Prec@5 98.438 (97.322)   [2019-08-30 04:46:17]
+  **Test** Prec@1 64.180 Prec@5 96.020 Error@1 35.820
+
+==>>[2019-08-30 04:47:59] [Epoch=016/300] [Need: 14:18:56] [learning_rate=0.1000] [Best : Accuracy=64.18, Error=35.82]
+  Epoch: [016][000/391]   Time 2.624 (2.624)   Data 2.141 (2.141)   Loss 0.8996 (0.8996)   Prec@1 65.625 (65.625)   Prec@5 95.312 (95.312)   [2019-08-30 04:48:02]
+  Epoch: [016][200/391]   Time 0.424 (0.411)   Data 0.000 (0.011)   Loss 0.7302 (0.8109)   Prec@1 71.875 (71.486)   Prec@5 97.656 (97.796)   [2019-08-30 04:49:22]
+  **Test** Prec@1 64.560 Prec@5 96.710 Error@1 35.440
+
+==>>[2019-08-30 04:51:05] [Epoch=017/300] [Need: 14:17:02] [learning_rate=0.1000] [Best : Accuracy=64.56, Error=35.44]
+  Epoch: [017][000/391]   Time 3.443 (3.443)   Data 2.924 (2.924)   Loss 0.7098 (0.7098)   Prec@1 77.344 (77.344)   Prec@5 98.438 (98.438)   [2019-08-30 04:51:09]
+  Epoch: [017][200/391]   Time 0.436 (0.419)   Data 0.000 (0.015)   Loss 0.7023 (0.7565)   Prec@1 74.219 (74.021)   Prec@5 99.219 (98.092)   [2019-08-30 04:52:29]
+  **Test** Prec@1 59.380 Prec@5 94.240 Error@1 40.620
+
+==>>[2019-08-30 04:54:08] [Epoch=018/300] [Need: 14:14:30] [learning_rate=0.1000] [Best : Accuracy=64.56, Error=35.44]
+  Epoch: [018][000/391]   Time 3.244 (3.244)   Data 2.697 (2.697)   Loss 0.8304 (0.8304)   Prec@1 74.219 (74.219)   Prec@5 97.656 (97.656)   [2019-08-30 04:54:12]
+  Epoch: [018][200/391]   Time 0.421 (0.431)   Data 0.000 (0.014)   Loss 0.8609 (0.7197)   Prec@1 75.781 (74.872)   Prec@5 97.656 (98.220)   [2019-08-30 04:55:35]
+  **Test** Prec@1 72.970 Prec@5 98.150 Error@1 27.030
+
+==>>[2019-08-30 04:57:13] [Epoch=019/300] [Need: 14:12:04] [learning_rate=0.1000] [Best : Accuracy=72.97, Error=27.03]
+  Epoch: [019][000/391]   Time 2.709 (2.709)   Data 2.116 (2.116)   Loss 0.7007 (0.7007)   Prec@1 77.344 (77.344)   Prec@5 97.656 (97.656)   [2019-08-30 04:57:16]
+  Epoch: [019][200/391]   Time 0.399 (0.423)   Data 0.000 (0.011)   Loss 0.7033 (0.6893)   Prec@1 76.562 (75.801)   Prec@5 98.438 (98.449)   [2019-08-30 04:58:38]
+  **Test** Prec@1 68.380 Prec@5 95.560 Error@1 31.620
+
+==>>[2019-08-30 05:00:18] [Epoch=020/300] [Need: 14:09:59] [learning_rate=0.1000] [Best : Accuracy=72.97, Error=27.03]
+  Epoch: [020][000/391]   Time 2.022 (2.022)   Data 1.666 (1.666)   Loss 0.6185 (0.6185)   Prec@1 75.781 (75.781)   Prec@5 99.219 (99.219)   [2019-08-30 05:00:20]
+  Epoch: [020][200/391]   Time 0.467 (0.418)   Data 0.000 (0.009)   Loss 0.6175 (0.6695)   Prec@1 78.906 (76.660)   Prec@5 100.000 (98.515)   [2019-08-30 05:01:42]
+  **Test** Prec@1 67.690 Prec@5 96.570 Error@1 32.310
+
+==>>[2019-08-30 05:03:23] [Epoch=021/300] [Need: 14:07:34] [learning_rate=0.1000] [Best : Accuracy=72.97, Error=27.03]
+  Epoch: [021][000/391]   Time 1.914 (1.914)   Data 1.386 (1.386)   Loss 0.8300 (0.8300)   Prec@1 69.531 (69.531)   Prec@5 97.656 (97.656)   [2019-08-30 05:03:25]
+  Epoch: [021][200/391]   Time 0.324 (0.417)   Data 0.000 (0.007)   Loss 0.7391 (0.6395)   Prec@1 77.344 (77.993)   Prec@5 99.219 (98.651)   [2019-08-30 05:04:47]
+  **Test** Prec@1 69.230 Prec@5 97.210 Error@1 30.770
+
+==>>[2019-08-30 05:06:28] [Epoch=022/300] [Need: 14:05:00] [learning_rate=0.1000] [Best : Accuracy=72.97, Error=27.03]
+  Epoch: [022][000/391]   Time 2.295 (2.295)   Data 1.727 (1.727)   Loss 0.5720 (0.5720)   Prec@1 79.688 (79.688)   Prec@5 98.438 (98.438)   [2019-08-30 05:06:30]
+  Epoch: [022][200/391]   Time 0.330 (0.414)   Data 0.000 (0.009)   Loss 0.6083 (0.6189)   Prec@1 81.250 (78.626)   Prec@5 99.219 (98.659)   [2019-08-30 05:07:51]
+  **Test** Prec@1 58.790 Prec@5 95.830 Error@1 41.210
+
+==>>[2019-08-30 05:09:29] [Epoch=023/300] [Need: 14:01:41] [learning_rate=0.1000] [Best : Accuracy=72.97, Error=27.03]
+  Epoch: [023][000/391]   Time 3.054 (3.054)   Data 2.459 (2.459)   Loss 0.6568 (0.6568)   Prec@1 75.781 (75.781)   Prec@5 98.438 (98.438)   [2019-08-30 05:09:33]
+  Epoch: [023][200/391]   Time 0.545 (0.412)   Data 0.002 (0.013)   Loss 0.4647 (0.5962)   Prec@1 82.812 (79.462)   Prec@5 99.219 (98.904)   [2019-08-30 05:10:52]
+  **Test** Prec@1 73.500 Prec@5 97.930 Error@1 26.500
+
+==>>[2019-08-30 05:12:33] [Epoch=024/300] [Need: 13:59:08] [learning_rate=0.1000] [Best : Accuracy=73.50, Error=26.50]
+  Epoch: [024][000/391]   Time 1.707 (1.707)   Data 1.337 (1.337)   Loss 0.6881 (0.6881)   Prec@1 80.469 (80.469)   Prec@5 96.875 (96.875)   [2019-08-30 05:12:35]
+  Epoch: [024][200/391]   Time 0.369 (0.417)   Data 0.000 (0.007)   Loss 0.6553 (0.5783)   Prec@1 77.344 (80.103)   Prec@5 96.094 (98.807)   [2019-08-30 05:13:57]
+  **Test** Prec@1 75.870 Prec@5 97.260 Error@1 24.130
+
+==>>[2019-08-30 05:15:39] [Epoch=025/300] [Need: 13:56:37] [learning_rate=0.1000] [Best : Accuracy=75.87, Error=24.13]
+  Epoch: [025][000/391]   Time 2.162 (2.162)   Data 1.814 (1.814)   Loss 0.6919 (0.6919)   Prec@1 73.438 (73.438)   Prec@5 97.656 (97.656)   [2019-08-30 05:15:42]
+  Epoch: [025][200/391]   Time 0.306 (0.426)   Data 0.000 (0.009)   Loss 0.6946 (0.5599)   Prec@1 76.562 (80.259)   Prec@5 98.438 (99.075)   [2019-08-30 05:17:05]
+  **Test** Prec@1 69.430 Prec@5 96.200 Error@1 30.570
+
+==>>[2019-08-30 05:18:41] [Epoch=026/300] [Need: 13:53:28] [learning_rate=0.1000] [Best : Accuracy=75.87, Error=24.13]
+  Epoch: [026][000/391]   Time 2.951 (2.951)   Data 2.340 (2.340)   Loss 0.6471 (0.6471)   Prec@1 75.000 (75.000)   Prec@5 99.219 (99.219)   [2019-08-30 05:18:44]
+  Epoch: [026][200/391]   Time 0.363 (0.425)   Data 0.000 (0.012)   Loss 0.4448 (0.5508)   Prec@1 82.812 (80.931)   Prec@5 100.000 (98.912)   [2019-08-30 05:20:07]
+  **Test** Prec@1 74.420 Prec@5 97.950 Error@1 25.580
+
+==>>[2019-08-30 05:21:44] [Epoch=027/300] [Need: 13:50:26] [learning_rate=0.1000] [Best : Accuracy=75.87, Error=24.13]
+  Epoch: [027][000/391]   Time 2.133 (2.133)   Data 1.602 (1.602)   Loss 0.4907 (0.4907)   Prec@1 85.156 (85.156)   Prec@5 99.219 (99.219)   [2019-08-30 05:21:46]
+  Epoch: [027][200/391]   Time 0.418 (0.403)   Data 0.000 (0.008)   Loss 0.6028 (0.5329)   Prec@1 79.688 (81.569)   Prec@5 97.656 (99.106)   [2019-08-30 05:23:05]
+  **Test** Prec@1 66.210 Prec@5 96.350 Error@1 33.790
+
+==>>[2019-08-30 05:24:49] [Epoch=028/300] [Need: 13:47:44] [learning_rate=0.1000] [Best : Accuracy=75.87, Error=24.13]
+  Epoch: [028][000/391]   Time 2.714 (2.714)   Data 2.128 (2.128)   Loss 0.4220 (0.4220)   Prec@1 84.375 (84.375)   Prec@5 100.000 (100.000)   [2019-08-30 05:24:51]
+  Epoch: [028][200/391]   Time 0.480 (0.410)   Data 0.000 (0.011)   Loss 0.7541 (0.5236)   Prec@1 74.219 (81.860)   Prec@5 99.219 (99.153)   [2019-08-30 05:26:11]
+  **Test** Prec@1 73.480 Prec@5 97.720 Error@1 26.520
+
+==>>[2019-08-30 05:27:52] [Epoch=029/300] [Need: 13:44:43] [learning_rate=0.1000] [Best : Accuracy=75.87, Error=24.13]
+  Epoch: [029][000/391]   Time 3.441 (3.441)   Data 2.826 (2.826)   Loss 0.4366 (0.4366)   Prec@1 84.375 (84.375)   Prec@5 100.000 (100.000)   [2019-08-30 05:27:55]
+  Epoch: [029][200/391]   Time 0.411 (0.448)   Data 0.000 (0.014)   Loss 0.5368 (0.5147)   Prec@1 80.469 (81.946)   Prec@5 100.000 (99.075)   [2019-08-30 05:29:22]
+  **Test** Prec@1 64.420 Prec@5 96.360 Error@1 35.580
+
+==>>[2019-08-30 05:30:58] [Epoch=030/300] [Need: 13:42:18] [learning_rate=0.1000] [Best : Accuracy=75.87, Error=24.13]
+  Epoch: [030][000/391]   Time 3.727 (3.727)   Data 3.202 (3.202)   Loss 0.5187 (0.5187)   Prec@1 82.031 (82.031)   Prec@5 100.000 (100.000)   [2019-08-30 05:31:02]
+  Epoch: [030][200/391]   Time 0.298 (0.430)   Data 0.000 (0.016)   Loss 0.4113 (0.5089)   Prec@1 85.938 (82.163)   Prec@5 97.656 (99.125)   [2019-08-30 05:32:24]
+  **Test** Prec@1 81.300 Prec@5 98.970 Error@1 18.700
+
+==>>[2019-08-30 05:34:05] [Epoch=031/300] [Need: 13:39:55] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [031][000/391]   Time 2.947 (2.947)   Data 2.424 (2.424)   Loss 0.5460 (0.5460)   Prec@1 81.250 (81.250)   Prec@5 96.875 (96.875)   [2019-08-30 05:34:08]
+  Epoch: [031][200/391]   Time 0.568 (0.407)   Data 0.000 (0.013)   Loss 0.5275 (0.4841)   Prec@1 82.031 (83.209)   Prec@5 99.219 (99.242)   [2019-08-30 05:35:27]
+  **Test** Prec@1 76.410 Prec@5 98.560 Error@1 23.590
+
+==>>[2019-08-30 05:37:08] [Epoch=032/300] [Need: 13:36:51] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [032][000/391]   Time 4.310 (4.310)   Data 3.522 (3.522)   Loss 0.4073 (0.4073)   Prec@1 85.938 (85.938)   Prec@5 100.000 (100.000)   [2019-08-30 05:37:13]
+  Epoch: [032][200/391]   Time 0.412 (0.427)   Data 0.000 (0.018)   Loss 0.4089 (0.4898)   Prec@1 85.938 (83.085)   Prec@5 100.000 (99.242)   [2019-08-30 05:38:34]
+  **Test** Prec@1 69.980 Prec@5 97.930 Error@1 30.020
+
+==>>[2019-08-30 05:40:11] [Epoch=033/300] [Need: 13:33:53] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [033][000/391]   Time 2.474 (2.474)   Data 1.901 (1.901)   Loss 0.5883 (0.5883)   Prec@1 82.031 (82.031)   Prec@5 100.000 (100.000)   [2019-08-30 05:40:13]
+  Epoch: [033][200/391]   Time 0.353 (0.438)   Data 0.000 (0.010)   Loss 0.5032 (0.4770)   Prec@1 84.375 (83.535)   Prec@5 98.438 (99.215)   [2019-08-30 05:41:39]
+  **Test** Prec@1 76.920 Prec@5 98.250 Error@1 23.080
+
+==>>[2019-08-30 05:43:16] [Epoch=034/300] [Need: 13:30:58] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [034][000/391]   Time 2.716 (2.716)   Data 2.182 (2.182)   Loss 0.6243 (0.6243)   Prec@1 76.562 (76.562)   Prec@5 99.219 (99.219)   [2019-08-30 05:43:19]
+  Epoch: [034][200/391]   Time 0.495 (0.430)   Data 0.000 (0.011)   Loss 0.4487 (0.4711)   Prec@1 84.375 (83.726)   Prec@5 98.438 (99.227)   [2019-08-30 05:44:42]
+  **Test** Prec@1 75.690 Prec@5 98.320 Error@1 24.310
+
+==>>[2019-08-30 05:46:26] [Epoch=035/300] [Need: 13:28:55] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [035][000/391]   Time 2.673 (2.673)   Data 2.181 (2.181)   Loss 0.4841 (0.4841)   Prec@1 88.281 (88.281)   Prec@5 99.219 (99.219)   [2019-08-30 05:46:29]
+  Epoch: [035][200/391]   Time 0.593 (0.408)   Data 0.000 (0.011)   Loss 0.4117 (0.4557)   Prec@1 82.812 (84.025)   Prec@5 100.000 (99.363)   [2019-08-30 05:47:48]
+  **Test** Prec@1 75.810 Prec@5 97.610 Error@1 24.190
+
+==>>[2019-08-30 05:49:28] [Epoch=036/300] [Need: 13:25:45] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [036][000/391]   Time 3.296 (3.296)   Data 2.807 (2.807)   Loss 0.4626 (0.4626)   Prec@1 81.250 (81.250)   Prec@5 100.000 (100.000)   [2019-08-30 05:49:32]
+  Epoch: [036][200/391]   Time 0.421 (0.425)   Data 0.000 (0.014)   Loss 0.3856 (0.4491)   Prec@1 85.156 (84.398)   Prec@5 100.000 (99.304)   [2019-08-30 05:50:54]
+  **Test** Prec@1 75.840 Prec@5 97.990 Error@1 24.160
+
+==>>[2019-08-30 05:52:33] [Epoch=037/300] [Need: 13:22:53] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [037][000/391]   Time 2.655 (2.655)   Data 2.218 (2.218)   Loss 0.5004 (0.5004)   Prec@1 80.469 (80.469)   Prec@5 99.219 (99.219)   [2019-08-30 05:52:36]
+  Epoch: [037][200/391]   Time 0.424 (0.430)   Data 0.000 (0.012)   Loss 0.4194 (0.4422)   Prec@1 85.938 (84.639)   Prec@5 100.000 (99.328)   [2019-08-30 05:54:00]
+  **Test** Prec@1 76.120 Prec@5 98.290 Error@1 23.880
+
+==>>[2019-08-30 05:55:39] [Epoch=038/300] [Need: 13:20:06] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [038][000/391]   Time 1.896 (1.896)   Data 1.392 (1.392)   Loss 0.4613 (0.4613)   Prec@1 84.375 (84.375)   Prec@5 100.000 (100.000)   [2019-08-30 05:55:41]
+  Epoch: [038][200/391]   Time 0.384 (0.417)   Data 0.000 (0.008)   Loss 0.3915 (0.4361)   Prec@1 88.281 (84.966)   Prec@5 100.000 (99.390)   [2019-08-30 05:57:03]
+  **Test** Prec@1 77.560 Prec@5 98.390 Error@1 22.440
+
+==>>[2019-08-30 05:58:44] [Epoch=039/300] [Need: 13:17:21] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [039][000/391]   Time 1.784 (1.784)   Data 1.428 (1.428)   Loss 0.4062 (0.4062)   Prec@1 85.938 (85.938)   Prec@5 98.438 (98.438)   [2019-08-30 05:58:46]
+  Epoch: [039][200/391]   Time 0.418 (0.407)   Data 0.000 (0.007)   Loss 0.4476 (0.4347)   Prec@1 84.375 (84.993)   Prec@5 99.219 (99.351)   [2019-08-30 06:00:06]
+  **Test** Prec@1 78.830 Prec@5 99.000 Error@1 21.170
+
+==>>[2019-08-30 06:01:46] [Epoch=040/300] [Need: 13:14:04] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [040][000/391]   Time 3.783 (3.783)   Data 3.000 (3.000)   Loss 0.2824 (0.2824)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2019-08-30 06:01:50]
+  Epoch: [040][200/391]   Time 0.339 (0.429)   Data 0.000 (0.015)   Loss 0.3438 (0.4237)   Prec@1 89.062 (85.537)   Prec@5 100.000 (99.265)   [2019-08-30 06:03:12]
+  **Test** Prec@1 72.770 Prec@5 98.200 Error@1 27.230
+
+==>>[2019-08-30 06:04:48] [Epoch=041/300] [Need: 13:10:57] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [041][000/391]   Time 3.069 (3.069)   Data 2.498 (2.498)   Loss 0.3900 (0.3900)   Prec@1 85.156 (85.156)   Prec@5 98.438 (98.438)   [2019-08-30 06:04:51]
+  Epoch: [041][200/391]   Time 0.340 (0.421)   Data 0.000 (0.013)   Loss 0.4595 (0.4216)   Prec@1 84.375 (85.296)   Prec@5 100.000 (99.429)   [2019-08-30 06:06:13]
+  **Test** Prec@1 77.650 Prec@5 98.750 Error@1 22.350
+
+==>>[2019-08-30 06:07:53] [Epoch=042/300] [Need: 13:08:09] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [042][000/391]   Time 2.176 (2.176)   Data 1.731 (1.731)   Loss 0.3069 (0.3069)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 06:07:56]
+  Epoch: [042][200/391]   Time 0.397 (0.426)   Data 0.000 (0.009)   Loss 0.5029 (0.4179)   Prec@1 82.031 (85.603)   Prec@5 100.000 (99.421)   [2019-08-30 06:09:19]
+  **Test** Prec@1 72.030 Prec@5 97.650 Error@1 27.970
+
+==>>[2019-08-30 06:11:00] [Epoch=043/300] [Need: 13:05:16] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [043][000/391]   Time 3.518 (3.518)   Data 3.036 (3.036)   Loss 0.6815 (0.6815)   Prec@1 77.344 (77.344)   Prec@5 98.438 (98.438)   [2019-08-30 06:11:03]
+  Epoch: [043][200/391]   Time 0.362 (0.420)   Data 0.000 (0.016)   Loss 0.3632 (0.4085)   Prec@1 89.062 (85.801)   Prec@5 99.219 (99.394)   [2019-08-30 06:12:24]
+  **Test** Prec@1 80.010 Prec@5 98.390 Error@1 19.990
+
+==>>[2019-08-30 06:14:03] [Epoch=044/300] [Need: 13:02:14] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [044][000/391]   Time 3.001 (3.001)   Data 2.317 (2.317)   Loss 0.3951 (0.3951)   Prec@1 86.719 (86.719)   Prec@5 99.219 (99.219)   [2019-08-30 06:14:06]
+  Epoch: [044][200/391]   Time 0.382 (0.430)   Data 0.000 (0.012)   Loss 0.4218 (0.4021)   Prec@1 85.156 (86.198)   Prec@5 99.219 (99.487)   [2019-08-30 06:15:30]
+  **Test** Prec@1 78.410 Prec@5 98.630 Error@1 21.590
+
+==>>[2019-08-30 06:17:07] [Epoch=045/300] [Need: 12:59:14] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [045][000/391]   Time 3.136 (3.136)   Data 2.621 (2.621)   Loss 0.2817 (0.2817)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 06:17:11]
+  Epoch: [045][200/391]   Time 0.442 (0.416)   Data 0.003 (0.013)   Loss 0.4488 (0.4001)   Prec@1 83.594 (86.058)   Prec@5 100.000 (99.436)   [2019-08-30 06:18:31]
+  **Test** Prec@1 62.060 Prec@5 95.780 Error@1 37.940
+
+==>>[2019-08-30 06:20:13] [Epoch=046/300] [Need: 12:56:31] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [046][000/391]   Time 1.760 (1.760)   Data 1.259 (1.259)   Loss 0.4233 (0.4233)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2019-08-30 06:20:15]
+  Epoch: [046][200/391]   Time 0.311 (0.414)   Data 0.000 (0.007)   Loss 0.2787 (0.3960)   Prec@1 92.969 (85.953)   Prec@5 99.219 (99.541)   [2019-08-30 06:21:36]
+  **Test** Prec@1 80.140 Prec@5 98.820 Error@1 19.860
+
+==>>[2019-08-30 06:23:17] [Epoch=047/300] [Need: 12:53:26] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [047][000/391]   Time 1.683 (1.683)   Data 1.262 (1.262)   Loss 0.4734 (0.4734)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2019-08-30 06:23:19]
+  Epoch: [047][200/391]   Time 0.316 (0.435)   Data 0.000 (0.007)   Loss 0.4104 (0.3872)   Prec@1 85.156 (86.773)   Prec@5 100.000 (99.491)   [2019-08-30 06:24:45]
+  **Test** Prec@1 79.190 Prec@5 99.060 Error@1 20.810
+
+==>>[2019-08-30 06:26:24] [Epoch=048/300] [Need: 12:50:42] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [048][000/391]   Time 3.469 (3.469)   Data 2.848 (2.848)   Loss 0.4030 (0.4030)   Prec@1 85.938 (85.938)   Prec@5 100.000 (100.000)   [2019-08-30 06:26:28]
+  Epoch: [048][200/391]   Time 0.381 (0.429)   Data 0.000 (0.014)   Loss 0.3097 (0.3931)   Prec@1 91.406 (86.283)   Prec@5 99.219 (99.452)   [2019-08-30 06:27:51]
+  **Test** Prec@1 71.660 Prec@5 98.050 Error@1 28.340
+
+==>>[2019-08-30 06:29:28] [Epoch=049/300] [Need: 12:47:44] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [049][000/391]   Time 2.292 (2.292)   Data 1.718 (1.718)   Loss 0.5347 (0.5347)   Prec@1 82.031 (82.031)   Prec@5 99.219 (99.219)   [2019-08-30 06:29:30]
+  Epoch: [049][200/391]   Time 0.375 (0.417)   Data 0.000 (0.009)   Loss 0.3789 (0.3765)   Prec@1 85.938 (86.933)   Prec@5 100.000 (99.545)   [2019-08-30 06:30:52]
+  **Test** Prec@1 80.700 Prec@5 98.900 Error@1 19.300
+
+==>>[2019-08-30 06:32:33] [Epoch=050/300] [Need: 12:44:49] [learning_rate=0.1000] [Best : Accuracy=81.30, Error=18.70]
+  Epoch: [050][000/391]   Time 1.623 (1.623)   Data 1.162 (1.162)   Loss 0.3880 (0.3880)   Prec@1 86.719 (86.719)   Prec@5 99.219 (99.219)   [2019-08-30 06:32:35]
+  Epoch: [050][200/391]   Time 0.431 (0.421)   Data 0.000 (0.006)   Loss 0.5150 (0.3867)   Prec@1 82.031 (86.501)   Prec@5 98.438 (99.580)   [2019-08-30 06:33:58]
+  **Test** Prec@1 82.970 Prec@5 99.160 Error@1 17.030
+
+==>>[2019-08-30 06:35:34] [Epoch=051/300] [Need: 12:41:33] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [051][000/391]   Time 3.092 (3.092)   Data 2.556 (2.556)   Loss 0.3064 (0.3064)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2019-08-30 06:35:37]
+  Epoch: [051][200/391]   Time 0.283 (0.433)   Data 0.000 (0.013)   Loss 0.2282 (0.3681)   Prec@1 93.750 (87.131)   Prec@5 100.000 (99.541)   [2019-08-30 06:37:01]
+  **Test** Prec@1 76.920 Prec@5 98.370 Error@1 23.080
+
+==>>[2019-08-30 06:38:41] [Epoch=052/300] [Need: 12:38:44] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [052][000/391]   Time 1.898 (1.898)   Data 1.400 (1.400)   Loss 0.3434 (0.3434)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2019-08-30 06:38:43]
+  Epoch: [052][200/391]   Time 0.537 (0.420)   Data 0.000 (0.008)   Loss 0.2571 (0.3676)   Prec@1 92.969 (87.123)   Prec@5 100.000 (99.600)   [2019-08-30 06:40:06]
+  **Test** Prec@1 78.960 Prec@5 98.840 Error@1 21.040
+
+==>>[2019-08-30 06:41:43] [Epoch=053/300] [Need: 12:35:35] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [053][000/391]   Time 2.286 (2.286)   Data 1.690 (1.690)   Loss 0.3865 (0.3865)   Prec@1 90.625 (90.625)   Prec@5 99.219 (99.219)   [2019-08-30 06:41:46]
+  Epoch: [053][200/391]   Time 0.395 (0.409)   Data 0.000 (0.009)   Loss 0.3958 (0.3614)   Prec@1 85.938 (87.624)   Prec@5 98.438 (99.499)   [2019-08-30 06:43:06]
+  **Test** Prec@1 79.820 Prec@5 98.880 Error@1 20.180
+
+==>>[2019-08-30 06:44:48] [Epoch=054/300] [Need: 12:32:34] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [054][000/391]   Time 3.117 (3.117)   Data 2.664 (2.664)   Loss 0.3117 (0.3117)   Prec@1 89.062 (89.062)   Prec@5 99.219 (99.219)   [2019-08-30 06:44:51]
+  Epoch: [054][200/391]   Time 0.430 (0.422)   Data 0.000 (0.014)   Loss 0.2898 (0.3624)   Prec@1 90.625 (87.547)   Prec@5 100.000 (99.537)   [2019-08-30 06:46:13]
+  **Test** Prec@1 80.240 Prec@5 98.540 Error@1 19.760
+
+==>>[2019-08-30 06:47:52] [Epoch=055/300] [Need: 12:29:33] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [055][000/391]   Time 2.404 (2.404)   Data 1.890 (1.890)   Loss 0.3408 (0.3408)   Prec@1 88.281 (88.281)   Prec@5 100.000 (100.000)   [2019-08-30 06:47:55]
+  Epoch: [055][200/391]   Time 0.341 (0.414)   Data 0.000 (0.010)   Loss 0.4362 (0.3534)   Prec@1 85.938 (87.706)   Prec@5 99.219 (99.569)   [2019-08-30 06:49:15]
+  **Test** Prec@1 75.550 Prec@5 97.520 Error@1 24.450
+
+==>>[2019-08-30 06:50:51] [Epoch=056/300] [Need: 12:26:14] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [056][000/391]   Time 3.386 (3.386)   Data 2.890 (2.890)   Loss 0.2401 (0.2401)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 06:50:55]
+  Epoch: [056][200/391]   Time 0.420 (0.428)   Data 0.000 (0.015)   Loss 0.4066 (0.3543)   Prec@1 86.719 (87.648)   Prec@5 99.219 (99.623)   [2019-08-30 06:52:17]
+  **Test** Prec@1 76.850 Prec@5 98.600 Error@1 23.150
+
+==>>[2019-08-30 06:53:56] [Epoch=057/300] [Need: 12:23:14] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [057][000/391]   Time 2.203 (2.203)   Data 1.648 (1.648)   Loss 0.3245 (0.3245)   Prec@1 89.844 (89.844)   Prec@5 99.219 (99.219)   [2019-08-30 06:53:58]
+  Epoch: [057][200/391]   Time 0.419 (0.421)   Data 0.000 (0.009)   Loss 0.2686 (0.3480)   Prec@1 92.969 (87.908)   Prec@5 100.000 (99.619)   [2019-08-30 06:55:20]
+  **Test** Prec@1 72.670 Prec@5 98.140 Error@1 27.330
+
+==>>[2019-08-30 06:57:01] [Epoch=058/300] [Need: 12:20:16] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [058][000/391]   Time 2.056 (2.056)   Data 1.648 (1.648)   Loss 0.5348 (0.5348)   Prec@1 81.250 (81.250)   Prec@5 98.438 (98.438)   [2019-08-30 06:57:03]
+  Epoch: [058][200/391]   Time 0.512 (0.412)   Data 0.000 (0.009)   Loss 0.3843 (0.3443)   Prec@1 87.500 (88.021)   Prec@5 100.000 (99.604)   [2019-08-30 06:58:24]
+  **Test** Prec@1 76.120 Prec@5 97.250 Error@1 23.880
+
+==>>[2019-08-30 07:00:03] [Epoch=059/300] [Need: 12:17:04] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [059][000/391]   Time 3.619 (3.619)   Data 3.065 (3.065)   Loss 0.3947 (0.3947)   Prec@1 85.938 (85.938)   Prec@5 100.000 (100.000)   [2019-08-30 07:00:07]
+  Epoch: [059][200/391]   Time 0.290 (0.428)   Data 0.000 (0.016)   Loss 0.3324 (0.3488)   Prec@1 87.500 (87.908)   Prec@5 99.219 (99.639)   [2019-08-30 07:01:30]
+  **Test** Prec@1 77.960 Prec@5 98.920 Error@1 22.040
+
+==>>[2019-08-30 07:03:07] [Epoch=060/300] [Need: 12:14:07] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [060][000/391]   Time 2.628 (2.628)   Data 2.107 (2.107)   Loss 0.4106 (0.4106)   Prec@1 87.500 (87.500)   Prec@5 99.219 (99.219)   [2019-08-30 07:03:10]
+  Epoch: [060][200/391]   Time 0.542 (0.422)   Data 0.000 (0.011)   Loss 0.3488 (0.3459)   Prec@1 86.719 (88.001)   Prec@5 99.219 (99.627)   [2019-08-30 07:04:32]
+  **Test** Prec@1 81.080 Prec@5 99.130 Error@1 18.920
+
+==>>[2019-08-30 07:06:11] [Epoch=061/300] [Need: 12:11:03] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [061][000/391]   Time 2.286 (2.286)   Data 1.780 (1.780)   Loss 0.3552 (0.3552)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2019-08-30 07:06:14]
+  Epoch: [061][200/391]   Time 0.467 (0.406)   Data 0.000 (0.009)   Loss 0.3860 (0.3404)   Prec@1 87.500 (88.211)   Prec@5 100.000 (99.572)   [2019-08-30 07:07:33]
+  **Test** Prec@1 71.760 Prec@5 97.660 Error@1 28.240
+
+==>>[2019-08-30 07:09:14] [Epoch=062/300] [Need: 12:07:55] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [062][000/391]   Time 2.916 (2.916)   Data 2.430 (2.430)   Loss 0.4987 (0.4987)   Prec@1 87.500 (87.500)   Prec@5 99.219 (99.219)   [2019-08-30 07:09:17]
+  Epoch: [062][200/391]   Time 0.390 (0.415)   Data 0.000 (0.013)   Loss 0.2500 (0.3296)   Prec@1 90.625 (88.581)   Prec@5 100.000 (99.658)   [2019-08-30 07:10:37]
+  **Test** Prec@1 74.290 Prec@5 97.610 Error@1 25.710
+
+==>>[2019-08-30 07:12:16] [Epoch=063/300] [Need: 12:04:45] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [063][000/391]   Time 3.227 (3.227)   Data 2.742 (2.742)   Loss 0.3779 (0.3779)   Prec@1 86.719 (86.719)   Prec@5 99.219 (99.219)   [2019-08-30 07:12:19]
+  Epoch: [063][200/391]   Time 0.318 (0.432)   Data 0.000 (0.014)   Loss 0.4048 (0.3363)   Prec@1 85.938 (88.347)   Prec@5 99.219 (99.631)   [2019-08-30 07:13:42]
+  **Test** Prec@1 79.280 Prec@5 98.720 Error@1 20.720
+
+==>>[2019-08-30 07:15:21] [Epoch=064/300] [Need: 12:01:50] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [064][000/391]   Time 2.634 (2.634)   Data 2.184 (2.184)   Loss 0.5152 (0.5152)   Prec@1 82.812 (82.812)   Prec@5 100.000 (100.000)   [2019-08-30 07:15:24]
+  Epoch: [064][200/391]   Time 0.330 (0.433)   Data 0.000 (0.011)   Loss 0.3217 (0.3305)   Prec@1 89.844 (88.643)   Prec@5 99.219 (99.670)   [2019-08-30 07:16:48]
+  **Test** Prec@1 79.660 Prec@5 98.820 Error@1 20.340
+
+==>>[2019-08-30 07:18:30] [Epoch=065/300] [Need: 11:59:04] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [065][000/391]   Time 2.851 (2.851)   Data 2.454 (2.454)   Loss 0.3307 (0.3307)   Prec@1 86.719 (86.719)   Prec@5 100.000 (100.000)   [2019-08-30 07:18:32]
+  Epoch: [065][200/391]   Time 0.442 (0.403)   Data 0.000 (0.013)   Loss 0.3902 (0.3211)   Prec@1 88.281 (88.856)   Prec@5 97.656 (99.623)   [2019-08-30 07:19:50]
+  **Test** Prec@1 80.920 Prec@5 98.770 Error@1 19.080
+
+==>>[2019-08-30 07:21:30] [Epoch=066/300] [Need: 11:55:49] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [066][000/391]   Time 3.960 (3.960)   Data 3.308 (3.308)   Loss 0.2822 (0.2822)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2019-08-30 07:21:34]
+  Epoch: [066][200/391]   Time 0.351 (0.429)   Data 0.000 (0.017)   Loss 0.2387 (0.3282)   Prec@1 92.188 (88.623)   Prec@5 100.000 (99.681)   [2019-08-30 07:22:56]
+  **Test** Prec@1 67.750 Prec@5 95.640 Error@1 32.250
+
+==>>[2019-08-30 07:24:37] [Epoch=067/300] [Need: 11:52:56] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [067][000/391]   Time 3.123 (3.123)   Data 2.620 (2.620)   Loss 0.3312 (0.3312)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2019-08-30 07:24:40]
+  Epoch: [067][200/391]   Time 0.492 (0.428)   Data 0.000 (0.013)   Loss 0.2501 (0.3260)   Prec@1 90.625 (88.720)   Prec@5 100.000 (99.619)   [2019-08-30 07:26:03]
+  **Test** Prec@1 78.500 Prec@5 98.160 Error@1 21.500
+
+==>>[2019-08-30 07:27:39] [Epoch=068/300] [Need: 11:49:51] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [068][000/391]   Time 2.212 (2.212)   Data 1.765 (1.765)   Loss 0.2797 (0.2797)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 07:27:42]
+  Epoch: [068][200/391]   Time 0.396 (0.419)   Data 0.000 (0.009)   Loss 0.3778 (0.3203)   Prec@1 89.062 (88.856)   Prec@5 99.219 (99.666)   [2019-08-30 07:29:03]
+  **Test** Prec@1 78.720 Prec@5 98.350 Error@1 21.280
+
+==>>[2019-08-30 07:30:45] [Epoch=069/300] [Need: 11:46:54] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [069][000/391]   Time 2.745 (2.745)   Data 2.234 (2.234)   Loss 0.3600 (0.3600)   Prec@1 89.062 (89.062)   Prec@5 97.656 (97.656)   [2019-08-30 07:30:48]
+  Epoch: [069][200/391]   Time 0.343 (0.417)   Data 0.000 (0.012)   Loss 0.2281 (0.3187)   Prec@1 91.406 (88.822)   Prec@5 100.000 (99.658)   [2019-08-30 07:32:09]
+  **Test** Prec@1 75.020 Prec@5 98.590 Error@1 24.980
+
+==>>[2019-08-30 07:33:48] [Epoch=070/300] [Need: 11:43:48] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [070][000/391]   Time 2.805 (2.805)   Data 2.178 (2.178)   Loss 0.3336 (0.3336)   Prec@1 88.281 (88.281)   Prec@5 100.000 (100.000)   [2019-08-30 07:33:51]
+  Epoch: [070][200/391]   Time 0.479 (0.429)   Data 0.000 (0.011)   Loss 0.2793 (0.3126)   Prec@1 87.500 (89.144)   Prec@5 100.000 (99.662)   [2019-08-30 07:35:14]
+  **Test** Prec@1 81.530 Prec@5 98.890 Error@1 18.470
+
+==>>[2019-08-30 07:36:49] [Epoch=071/300] [Need: 11:40:37] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [071][000/391]   Time 1.834 (1.834)   Data 1.314 (1.314)   Loss 0.3556 (0.3556)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2019-08-30 07:36:51]
+  Epoch: [071][200/391]   Time 0.357 (0.418)   Data 0.000 (0.007)   Loss 0.3349 (0.3127)   Prec@1 89.062 (89.280)   Prec@5 100.000 (99.623)   [2019-08-30 07:38:13]
+  **Test** Prec@1 74.640 Prec@5 98.900 Error@1 25.360
+
+==>>[2019-08-30 07:39:55] [Epoch=072/300] [Need: 11:37:42] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [072][000/391]   Time 2.320 (2.320)   Data 1.927 (1.927)   Loss 0.3104 (0.3104)   Prec@1 87.500 (87.500)   Prec@5 99.219 (99.219)   [2019-08-30 07:39:57]
+  Epoch: [072][200/391]   Time 0.300 (0.412)   Data 0.000 (0.010)   Loss 0.3963 (0.3076)   Prec@1 87.500 (89.284)   Prec@5 98.438 (99.666)   [2019-08-30 07:41:18]
+  **Test** Prec@1 80.680 Prec@5 98.470 Error@1 19.320
+
+==>>[2019-08-30 07:42:58] [Epoch=073/300] [Need: 11:34:37] [learning_rate=0.1000] [Best : Accuracy=82.97, Error=17.03]
+  Epoch: [073][000/391]   Time 1.728 (1.728)   Data 1.304 (1.304)   Loss 0.2593 (0.2593)   Prec@1 92.969 (92.969)   Prec@5 99.219 (99.219)   [2019-08-30 07:43:00]
+  Epoch: [073][200/391]   Time 0.442 (0.418)   Data 0.000 (0.007)   Loss 0.2327 (0.3083)   Prec@1 92.969 (89.346)   Prec@5 100.000 (99.751)   [2019-08-30 07:44:22]
+  **Test** Prec@1 83.470 Prec@5 99.050 Error@1 16.530
+
+==>>[2019-08-30 07:46:01] [Epoch=074/300] [Need: 11:31:26] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [074][000/391]   Time 3.698 (3.698)   Data 3.131 (3.131)   Loss 0.3797 (0.3797)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2019-08-30 07:46:05]
+  Epoch: [074][200/391]   Time 0.345 (0.438)   Data 0.000 (0.016)   Loss 0.2368 (0.3121)   Prec@1 91.406 (89.478)   Prec@5 99.219 (99.654)   [2019-08-30 07:47:29]
+  **Test** Prec@1 75.510 Prec@5 98.280 Error@1 24.490
+
+==>>[2019-08-30 07:49:08] [Epoch=075/300] [Need: 11:28:37] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [075][000/391]   Time 3.570 (3.570)   Data 2.996 (2.996)   Loss 0.2798 (0.2798)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2019-08-30 07:49:12]
+  Epoch: [075][200/391]   Time 0.528 (0.425)   Data 0.000 (0.015)   Loss 0.3911 (0.3147)   Prec@1 87.500 (89.028)   Prec@5 98.438 (99.689)   [2019-08-30 07:50:34]
+  **Test** Prec@1 76.170 Prec@5 98.670 Error@1 23.830
+
+==>>[2019-08-30 07:52:15] [Epoch=076/300] [Need: 11:25:45] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [076][000/391]   Time 1.813 (1.813)   Data 1.329 (1.329)   Loss 0.2496 (0.2496)   Prec@1 92.969 (92.969)   Prec@5 99.219 (99.219)   [2019-08-30 07:52:17]
+  Epoch: [076][200/391]   Time 0.538 (0.419)   Data 0.000 (0.007)   Loss 0.2485 (0.3099)   Prec@1 92.188 (89.183)   Prec@5 100.000 (99.747)   [2019-08-30 07:53:39]
+  **Test** Prec@1 74.390 Prec@5 97.810 Error@1 25.610
+
+==>>[2019-08-30 07:55:17] [Epoch=077/300] [Need: 11:22:36] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [077][000/391]   Time 3.068 (3.068)   Data 2.379 (2.379)   Loss 0.2830 (0.2830)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2019-08-30 07:55:20]
+  Epoch: [077][200/391]   Time 0.375 (0.431)   Data 0.000 (0.012)   Loss 0.2622 (0.3066)   Prec@1 93.750 (89.265)   Prec@5 100.000 (99.747)   [2019-08-30 07:56:44]
+  **Test** Prec@1 80.060 Prec@5 98.840 Error@1 19.940
+
+==>>[2019-08-30 07:58:22] [Epoch=078/300] [Need: 11:19:34] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [078][000/391]   Time 3.614 (3.614)   Data 3.059 (3.059)   Loss 0.3287 (0.3287)   Prec@1 89.062 (89.062)   Prec@5 100.000 (100.000)   [2019-08-30 07:58:26]
+  Epoch: [078][200/391]   Time 0.424 (0.425)   Data 0.000 (0.016)   Loss 0.2611 (0.2960)   Prec@1 91.406 (89.743)   Prec@5 100.000 (99.724)   [2019-08-30 07:59:48]
+  **Test** Prec@1 77.660 Prec@5 98.300 Error@1 22.340
+
+==>>[2019-08-30 08:01:28] [Epoch=079/300] [Need: 11:16:37] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [079][000/391]   Time 3.343 (3.343)   Data 2.856 (2.856)   Loss 0.3050 (0.3050)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2019-08-30 08:01:31]
+  Epoch: [079][200/391]   Time 0.391 (0.418)   Data 0.000 (0.015)   Loss 0.4789 (0.3121)   Prec@1 81.250 (89.261)   Prec@5 99.219 (99.724)   [2019-08-30 08:02:52]
+  **Test** Prec@1 81.180 Prec@5 99.110 Error@1 18.820
+
+==>>[2019-08-30 08:04:31] [Epoch=080/300] [Need: 11:13:31] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [080][000/391]   Time 2.357 (2.357)   Data 1.925 (1.925)   Loss 0.3043 (0.3043)   Prec@1 89.062 (89.062)   Prec@5 100.000 (100.000)   [2019-08-30 08:04:33]
+  Epoch: [080][200/391]   Time 0.343 (0.421)   Data 0.000 (0.010)   Loss 0.3209 (0.2979)   Prec@1 88.281 (89.688)   Prec@5 100.000 (99.701)   [2019-08-30 08:05:56]
+  **Test** Prec@1 82.390 Prec@5 98.980 Error@1 17.610
+
+==>>[2019-08-30 08:07:36] [Epoch=081/300] [Need: 11:10:31] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [081][000/391]   Time 1.953 (1.953)   Data 1.464 (1.464)   Loss 0.2750 (0.2750)   Prec@1 89.844 (89.844)   Prec@5 99.219 (99.219)   [2019-08-30 08:07:38]
+  Epoch: [081][200/391]   Time 0.347 (0.437)   Data 0.000 (0.008)   Loss 0.4147 (0.3103)   Prec@1 84.375 (89.078)   Prec@5 100.000 (99.720)   [2019-08-30 08:09:04]
+  **Test** Prec@1 79.640 Prec@5 97.980 Error@1 20.360
+
+==>>[2019-08-30 08:10:41] [Epoch=082/300] [Need: 11:07:29] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [082][000/391]   Time 4.024 (4.024)   Data 3.441 (3.441)   Loss 0.3672 (0.3672)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2019-08-30 08:10:45]
+  Epoch: [082][200/391]   Time 0.493 (0.433)   Data 0.000 (0.018)   Loss 0.2648 (0.2952)   Prec@1 92.188 (89.556)   Prec@5 100.000 (99.693)   [2019-08-30 08:12:08]
+  **Test** Prec@1 72.290 Prec@5 96.690 Error@1 27.710
+
+==>>[2019-08-30 08:13:50] [Epoch=083/300] [Need: 11:04:40] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [083][000/391]   Time 2.303 (2.303)   Data 1.904 (1.904)   Loss 0.3071 (0.3071)   Prec@1 90.625 (90.625)   Prec@5 99.219 (99.219)   [2019-08-30 08:13:52]
+  Epoch: [083][200/391]   Time 0.426 (0.418)   Data 0.000 (0.010)   Loss 0.5286 (0.2973)   Prec@1 78.125 (89.587)   Prec@5 100.000 (99.689)   [2019-08-30 08:15:14]
+  **Test** Prec@1 82.980 Prec@5 98.980 Error@1 17.020
+
+==>>[2019-08-30 08:16:54] [Epoch=084/300] [Need: 11:01:36] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [084][000/391]   Time 3.233 (3.233)   Data 2.798 (2.798)   Loss 0.3779 (0.3779)   Prec@1 88.281 (88.281)   Prec@5 100.000 (100.000)   [2019-08-30 08:16:57]
+  Epoch: [084][200/391]   Time 0.393 (0.428)   Data 0.000 (0.014)   Loss 0.2317 (0.2979)   Prec@1 93.750 (89.455)   Prec@5 100.000 (99.763)   [2019-08-30 08:18:20]
+  **Test** Prec@1 74.900 Prec@5 98.530 Error@1 25.100
+
+==>>[2019-08-30 08:19:57] [Epoch=085/300] [Need: 10:58:31] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [085][000/391]   Time 2.290 (2.290)   Data 1.696 (1.696)   Loss 0.4010 (0.4010)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2019-08-30 08:19:59]
+  Epoch: [085][200/391]   Time 0.475 (0.441)   Data 0.000 (0.009)   Loss 0.2613 (0.2945)   Prec@1 89.844 (89.739)   Prec@5 100.000 (99.677)   [2019-08-30 08:21:25]
+  **Test** Prec@1 70.630 Prec@5 97.110 Error@1 29.370
+
+==>>[2019-08-30 08:23:05] [Epoch=086/300] [Need: 10:55:40] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [086][000/391]   Time 1.901 (1.901)   Data 1.405 (1.405)   Loss 0.3033 (0.3033)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 08:23:07]
+  Epoch: [086][200/391]   Time 0.379 (0.417)   Data 0.000 (0.007)   Loss 0.3832 (0.2850)   Prec@1 87.500 (90.023)   Prec@5 100.000 (99.775)   [2019-08-30 08:24:29]
+  **Test** Prec@1 81.900 Prec@5 99.110 Error@1 18.100
+
+==>>[2019-08-30 08:26:09] [Epoch=087/300] [Need: 10:52:36] [learning_rate=0.1000] [Best : Accuracy=83.47, Error=16.53]
+  Epoch: [087][000/391]   Time 3.826 (3.826)   Data 3.106 (3.106)   Loss 0.2776 (0.2776)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 08:26:13]
+  Epoch: [087][200/391]   Time 0.408 (0.434)   Data 0.000 (0.016)   Loss 0.2898 (0.2920)   Prec@1 89.844 (89.723)   Prec@5 100.000 (99.712)   [2019-08-30 08:27:36]
+  **Test** Prec@1 85.050 Prec@5 99.330 Error@1 14.950
+
+==>>[2019-08-30 08:29:16] [Epoch=088/300] [Need: 10:49:39] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [088][000/391]   Time 3.388 (3.388)   Data 2.936 (2.936)   Loss 0.2945 (0.2945)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2019-08-30 08:29:20]
+  Epoch: [088][200/391]   Time 0.353 (0.431)   Data 0.000 (0.015)   Loss 0.3642 (0.2977)   Prec@1 89.062 (89.614)   Prec@5 100.000 (99.775)   [2019-08-30 08:30:43]
+  **Test** Prec@1 84.370 Prec@5 99.010 Error@1 15.630
+
+==>>[2019-08-30 08:32:24] [Epoch=089/300] [Need: 10:46:43] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [089][000/391]   Time 3.614 (3.614)   Data 3.058 (3.058)   Loss 0.3366 (0.3366)   Prec@1 88.281 (88.281)   Prec@5 99.219 (99.219)   [2019-08-30 08:32:28]
+  Epoch: [089][200/391]   Time 0.345 (0.426)   Data 0.000 (0.016)   Loss 0.4335 (0.2871)   Prec@1 84.375 (89.801)   Prec@5 99.219 (99.740)   [2019-08-30 08:33:50]
+  **Test** Prec@1 82.740 Prec@5 99.120 Error@1 17.260
+
+==>>[2019-08-30 08:35:30] [Epoch=090/300] [Need: 10:43:46] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [090][000/391]   Time 2.803 (2.803)   Data 2.343 (2.343)   Loss 0.2920 (0.2920)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2019-08-30 08:35:33]
+  Epoch: [090][200/391]   Time 0.461 (0.425)   Data 0.000 (0.012)   Loss 0.2196 (0.2836)   Prec@1 91.406 (90.065)   Prec@5 100.000 (99.724)   [2019-08-30 08:36:56]
+  **Test** Prec@1 82.270 Prec@5 98.980 Error@1 17.730
+
+==>>[2019-08-30 08:38:36] [Epoch=091/300] [Need: 10:40:48] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [091][000/391]   Time 2.261 (2.261)   Data 1.562 (1.562)   Loss 0.3189 (0.3189)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 08:38:39]
+  Epoch: [091][200/391]   Time 0.431 (0.419)   Data 0.001 (0.008)   Loss 0.2496 (0.2880)   Prec@1 89.062 (89.809)   Prec@5 100.000 (99.708)   [2019-08-30 08:40:00]
+  **Test** Prec@1 84.300 Prec@5 99.340 Error@1 15.700
+
+==>>[2019-08-30 08:41:40] [Epoch=092/300] [Need: 10:37:42] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [092][000/391]   Time 2.333 (2.333)   Data 1.668 (1.668)   Loss 0.2319 (0.2319)   Prec@1 92.969 (92.969)   Prec@5 99.219 (99.219)   [2019-08-30 08:41:42]
+  Epoch: [092][200/391]   Time 0.452 (0.415)   Data 0.000 (0.009)   Loss 0.2205 (0.2849)   Prec@1 93.750 (90.112)   Prec@5 99.219 (99.786)   [2019-08-30 08:43:03]
+  **Test** Prec@1 81.250 Prec@5 99.210 Error@1 18.750
+
+==>>[2019-08-30 08:44:42] [Epoch=093/300] [Need: 10:34:34] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [093][000/391]   Time 2.280 (2.280)   Data 1.826 (1.826)   Loss 0.2119 (0.2119)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 08:44:44]
+  Epoch: [093][200/391]   Time 0.368 (0.433)   Data 0.000 (0.010)   Loss 0.4020 (0.2795)   Prec@1 87.500 (90.306)   Prec@5 98.438 (99.790)   [2019-08-30 08:46:09]
+  **Test** Prec@1 84.080 Prec@5 99.340 Error@1 15.920
+
+==>>[2019-08-30 08:47:49] [Epoch=094/300] [Need: 10:31:38] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [094][000/391]   Time 1.688 (1.688)   Data 1.324 (1.324)   Loss 0.3103 (0.3103)   Prec@1 89.062 (89.062)   Prec@5 100.000 (100.000)   [2019-08-30 08:47:50]
+  Epoch: [094][200/391]   Time 0.462 (0.433)   Data 0.000 (0.007)   Loss 0.1557 (0.2822)   Prec@1 96.094 (90.232)   Prec@5 100.000 (99.763)   [2019-08-30 08:49:16]
+  **Test** Prec@1 72.110 Prec@5 98.460 Error@1 27.890
+
+==>>[2019-08-30 08:50:59] [Epoch=095/300] [Need: 10:28:44] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [095][000/391]   Time 2.333 (2.333)   Data 1.958 (1.958)   Loss 0.3507 (0.3507)   Prec@1 85.156 (85.156)   Prec@5 99.219 (99.219)   [2019-08-30 08:51:01]
+  Epoch: [095][200/391]   Time 0.326 (0.418)   Data 0.000 (0.010)   Loss 0.2226 (0.2855)   Prec@1 92.969 (90.058)   Prec@5 99.219 (99.732)   [2019-08-30 08:52:23]
+  **Test** Prec@1 81.920 Prec@5 98.950 Error@1 18.080
+
+==>>[2019-08-30 08:54:03] [Epoch=096/300] [Need: 10:25:42] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [096][000/391]   Time 3.627 (3.627)   Data 3.077 (3.077)   Loss 0.2502 (0.2502)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 08:54:07]
+  Epoch: [096][200/391]   Time 0.344 (0.424)   Data 0.000 (0.016)   Loss 0.2692 (0.2869)   Prec@1 92.188 (89.894)   Prec@5 100.000 (99.775)   [2019-08-30 08:55:29]
+  **Test** Prec@1 80.440 Prec@5 97.840 Error@1 19.560
+
+==>>[2019-08-30 08:57:07] [Epoch=097/300] [Need: 10:22:39] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [097][000/391]   Time 2.846 (2.846)   Data 2.221 (2.221)   Loss 0.2515 (0.2515)   Prec@1 91.406 (91.406)   Prec@5 99.219 (99.219)   [2019-08-30 08:57:10]
+  Epoch: [097][200/391]   Time 0.465 (0.419)   Data 0.000 (0.011)   Loss 0.2916 (0.2828)   Prec@1 89.062 (90.127)   Prec@5 100.000 (99.802)   [2019-08-30 08:58:31]
+  **Test** Prec@1 82.440 Prec@5 99.140 Error@1 17.560
+
+==>>[2019-08-30 09:00:09] [Epoch=098/300] [Need: 10:19:32] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [098][000/391]   Time 1.817 (1.817)   Data 1.401 (1.401)   Loss 0.3346 (0.3346)   Prec@1 85.156 (85.156)   Prec@5 100.000 (100.000)   [2019-08-30 09:00:11]
+  Epoch: [098][200/391]   Time 0.419 (0.428)   Data 0.002 (0.007)   Loss 0.3075 (0.2800)   Prec@1 89.062 (90.127)   Prec@5 100.000 (99.751)   [2019-08-30 09:01:35]
+  **Test** Prec@1 76.800 Prec@5 98.420 Error@1 23.200
+
+==>>[2019-08-30 09:03:17] [Epoch=099/300] [Need: 10:16:35] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [099][000/391]   Time 2.357 (2.357)   Data 1.830 (1.830)   Loss 0.2415 (0.2415)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2019-08-30 09:03:20]
+  Epoch: [099][200/391]   Time 0.419 (0.428)   Data 0.000 (0.010)   Loss 0.2636 (0.2799)   Prec@1 91.406 (90.326)   Prec@5 99.219 (99.712)   [2019-08-30 09:04:43]
+  **Test** Prec@1 79.930 Prec@5 98.530 Error@1 20.070
+
+==>>[2019-08-30 09:06:27] [Epoch=100/300] [Need: 10:13:40] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [100][000/391]   Time 3.858 (3.858)   Data 3.204 (3.204)   Loss 0.2243 (0.2243)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 09:06:31]
+  Epoch: [100][200/391]   Time 0.451 (0.421)   Data 0.000 (0.016)   Loss 0.2581 (0.2838)   Prec@1 91.406 (90.252)   Prec@5 100.000 (99.724)   [2019-08-30 09:07:51]
+  **Test** Prec@1 82.440 Prec@5 99.030 Error@1 17.560
+
+==>>[2019-08-30 09:09:31] [Epoch=101/300] [Need: 10:10:39] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [101][000/391]   Time 2.745 (2.745)   Data 2.103 (2.103)   Loss 0.2564 (0.2564)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2019-08-30 09:09:34]
+  Epoch: [101][200/391]   Time 0.464 (0.421)   Data 0.000 (0.011)   Loss 0.2131 (0.2790)   Prec@1 93.750 (90.380)   Prec@5 100.000 (99.701)   [2019-08-30 09:10:56]
+  **Test** Prec@1 79.330 Prec@5 98.690 Error@1 20.670
+
+==>>[2019-08-30 09:12:36] [Epoch=102/300] [Need: 10:07:35] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [102][000/391]   Time 2.395 (2.395)   Data 1.915 (1.915)   Loss 0.2909 (0.2909)   Prec@1 88.281 (88.281)   Prec@5 100.000 (100.000)   [2019-08-30 09:12:38]
+  Epoch: [102][200/391]   Time 0.372 (0.422)   Data 0.000 (0.010)   Loss 0.2420 (0.2755)   Prec@1 92.188 (90.302)   Prec@5 99.219 (99.771)   [2019-08-30 09:14:01]
+  **Test** Prec@1 83.060 Prec@5 98.710 Error@1 16.940
+
+==>>[2019-08-30 09:15:40] [Epoch=103/300] [Need: 10:04:31] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [103][000/391]   Time 2.401 (2.401)   Data 1.875 (1.875)   Loss 0.2115 (0.2115)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2019-08-30 09:15:42]
+  Epoch: [103][200/391]   Time 0.358 (0.420)   Data 0.000 (0.010)   Loss 0.3568 (0.2772)   Prec@1 89.062 (90.543)   Prec@5 99.219 (99.767)   [2019-08-30 09:17:04]
+  **Test** Prec@1 63.410 Prec@5 94.430 Error@1 36.590
+
+==>>[2019-08-30 09:18:46] [Epoch=104/300] [Need: 10:01:30] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [104][000/391]   Time 2.278 (2.278)   Data 1.828 (1.828)   Loss 0.2630 (0.2630)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 09:18:48]
+  Epoch: [104][200/391]   Time 0.456 (0.426)   Data 0.000 (0.010)   Loss 0.3296 (0.2800)   Prec@1 87.500 (90.419)   Prec@5 100.000 (99.786)   [2019-08-30 09:20:11]
+  **Test** Prec@1 73.390 Prec@5 98.140 Error@1 26.610
+
+==>>[2019-08-30 09:21:50] [Epoch=105/300] [Need: 09:58:25] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [105][000/391]   Time 3.338 (3.338)   Data 2.822 (2.822)   Loss 0.2487 (0.2487)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2019-08-30 09:21:54]
+  Epoch: [105][200/391]   Time 0.395 (0.424)   Data 0.000 (0.015)   Loss 0.2591 (0.2772)   Prec@1 89.062 (90.376)   Prec@5 100.000 (99.751)   [2019-08-30 09:23:15]
+  **Test** Prec@1 79.460 Prec@5 98.540 Error@1 20.540
+
+==>>[2019-08-30 09:24:54] [Epoch=106/300] [Need: 09:55:22] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [106][000/391]   Time 1.777 (1.777)   Data 1.349 (1.349)   Loss 0.2941 (0.2941)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 09:24:56]
+  Epoch: [106][200/391]   Time 0.557 (0.416)   Data 0.000 (0.007)   Loss 0.2416 (0.2752)   Prec@1 92.969 (90.462)   Prec@5 100.000 (99.743)   [2019-08-30 09:26:18]
+  **Test** Prec@1 76.090 Prec@5 98.150 Error@1 23.910
+
+==>>[2019-08-30 09:27:58] [Epoch=107/300] [Need: 09:52:17] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [107][000/391]   Time 3.165 (3.165)   Data 2.589 (2.589)   Loss 0.2223 (0.2223)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 09:28:01]
+  Epoch: [107][200/391]   Time 0.403 (0.425)   Data 0.000 (0.013)   Loss 0.3090 (0.2701)   Prec@1 89.062 (90.676)   Prec@5 100.000 (99.786)   [2019-08-30 09:29:23]
+  **Test** Prec@1 79.140 Prec@5 98.550 Error@1 20.860
+
+==>>[2019-08-30 09:31:05] [Epoch=108/300] [Need: 09:49:18] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [108][000/391]   Time 2.209 (2.209)   Data 1.807 (1.807)   Loss 0.2349 (0.2349)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 09:31:07]
+  Epoch: [108][200/391]   Time 0.380 (0.420)   Data 0.000 (0.010)   Loss 0.3373 (0.2712)   Prec@1 91.406 (90.528)   Prec@5 99.219 (99.767)   [2019-08-30 09:32:29]
+  **Test** Prec@1 79.490 Prec@5 99.130 Error@1 20.510
+
+==>>[2019-08-30 09:34:08] [Epoch=109/300] [Need: 09:46:11] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [109][000/391]   Time 2.081 (2.081)   Data 1.613 (1.613)   Loss 0.1717 (0.1717)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2019-08-30 09:34:10]
+  Epoch: [109][200/391]   Time 0.367 (0.435)   Data 0.000 (0.008)   Loss 0.2179 (0.2577)   Prec@1 92.969 (91.142)   Prec@5 99.219 (99.817)   [2019-08-30 09:35:35]
+  **Test** Prec@1 63.030 Prec@5 97.610 Error@1 36.970
+
+==>>[2019-08-30 09:37:14] [Epoch=110/300] [Need: 09:43:11] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [110][000/391]   Time 3.162 (3.162)   Data 2.692 (2.692)   Loss 0.3191 (0.3191)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 09:37:17]
+  Epoch: [110][200/391]   Time 0.384 (0.425)   Data 0.000 (0.014)   Loss 0.3192 (0.2713)   Prec@1 86.719 (90.493)   Prec@5 100.000 (99.794)   [2019-08-30 09:38:39]
+  **Test** Prec@1 73.970 Prec@5 97.790 Error@1 26.030
+
+==>>[2019-08-30 09:40:18] [Epoch=111/300] [Need: 09:40:08] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [111][000/391]   Time 2.215 (2.215)   Data 1.629 (1.629)   Loss 0.3862 (0.3862)   Prec@1 86.719 (86.719)   Prec@5 99.219 (99.219)   [2019-08-30 09:40:21]
+  Epoch: [111][200/391]   Time 0.326 (0.350)   Data 0.000 (0.008)   Loss 0.3533 (0.2635)   Prec@1 87.500 (90.796)   Prec@5 100.000 (99.778)   [2019-08-30 09:41:29]
+  **Test** Prec@1 79.080 Prec@5 98.790 Error@1 20.920
+
+==>>[2019-08-30 09:42:50] [Epoch=112/300] [Need: 09:36:09] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [112][000/391]   Time 1.441 (1.441)   Data 1.134 (1.134)   Loss 0.2363 (0.2363)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2019-08-30 09:42:51]
+  Epoch: [112][200/391]   Time 0.363 (0.342)   Data 0.000 (0.006)   Loss 0.2034 (0.2626)   Prec@1 94.531 (90.804)   Prec@5 100.000 (99.794)   [2019-08-30 09:43:58]
+  **Test** Prec@1 75.970 Prec@5 98.410 Error@1 24.030
+
+==>>[2019-08-30 09:45:18] [Epoch=113/300] [Need: 09:32:06] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [113][000/391]   Time 1.819 (1.819)   Data 1.346 (1.346)   Loss 0.1964 (0.1964)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2019-08-30 09:45:20]
+  Epoch: [113][200/391]   Time 0.341 (0.340)   Data 0.000 (0.007)   Loss 0.2490 (0.2721)   Prec@1 90.625 (90.578)   Prec@5 100.000 (99.778)   [2019-08-30 09:46:26]
+  **Test** Prec@1 83.000 Prec@5 99.240 Error@1 17.000
+
+==>>[2019-08-30 09:47:44] [Epoch=114/300] [Need: 09:28:01] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [114][000/391]   Time 1.865 (1.865)   Data 1.346 (1.346)   Loss 0.3378 (0.3378)   Prec@1 89.844 (89.844)   Prec@5 98.438 (98.438)   [2019-08-30 09:47:46]
+  Epoch: [114][200/391]   Time 0.341 (0.338)   Data 0.000 (0.007)   Loss 0.2744 (0.2653)   Prec@1 89.844 (90.769)   Prec@5 100.000 (99.810)   [2019-08-30 09:48:52]
+  **Test** Prec@1 81.000 Prec@5 98.250 Error@1 19.000
+
+==>>[2019-08-30 09:50:13] [Epoch=115/300] [Need: 09:24:02] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [115][000/391]   Time 2.095 (2.095)   Data 1.613 (1.613)   Loss 0.2044 (0.2044)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2019-08-30 09:50:15]
+  Epoch: [115][200/391]   Time 0.327 (0.338)   Data 0.000 (0.008)   Loss 0.3299 (0.2696)   Prec@1 89.062 (90.590)   Prec@5 100.000 (99.817)   [2019-08-30 09:51:21]
+  **Test** Prec@1 77.150 Prec@5 98.100 Error@1 22.850
+
+==>>[2019-08-30 09:52:40] [Epoch=116/300] [Need: 09:20:03] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [116][000/391]   Time 1.516 (1.516)   Data 1.141 (1.141)   Loss 0.3250 (0.3250)   Prec@1 89.062 (89.062)   Prec@5 100.000 (100.000)   [2019-08-30 09:52:42]
+  Epoch: [116][200/391]   Time 0.372 (0.352)   Data 0.000 (0.006)   Loss 0.2319 (0.2577)   Prec@1 92.188 (90.948)   Prec@5 100.000 (99.821)   [2019-08-30 09:53:51]
+  **Test** Prec@1 73.310 Prec@5 97.810 Error@1 26.690
+
+==>>[2019-08-30 09:55:12] [Epoch=117/300] [Need: 09:16:12] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [117][000/391]   Time 1.825 (1.825)   Data 1.346 (1.346)   Loss 0.2022 (0.2022)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2019-08-30 09:55:14]
+  Epoch: [117][200/391]   Time 0.274 (0.343)   Data 0.000 (0.007)   Loss 0.1866 (0.2640)   Prec@1 95.312 (90.761)   Prec@5 100.000 (99.775)   [2019-08-30 09:56:21]
+  **Test** Prec@1 81.610 Prec@5 98.760 Error@1 18.390
+
+==>>[2019-08-30 09:57:41] [Epoch=118/300] [Need: 09:12:18] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [118][000/391]   Time 1.827 (1.827)   Data 1.262 (1.262)   Loss 0.2880 (0.2880)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2019-08-30 09:57:43]
+  Epoch: [118][200/391]   Time 0.338 (0.333)   Data 0.000 (0.007)   Loss 0.2512 (0.2544)   Prec@1 92.188 (91.080)   Prec@5 99.219 (99.778)   [2019-08-30 09:58:48]
+  **Test** Prec@1 80.540 Prec@5 98.810 Error@1 19.460
+
+==>>[2019-08-30 10:00:08] [Epoch=119/300] [Need: 09:08:23] [learning_rate=0.1000] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [119][000/391]   Time 1.623 (1.623)   Data 1.265 (1.265)   Loss 0.2795 (0.2795)   Prec@1 89.844 (89.844)   Prec@5 99.219 (99.219)   [2019-08-30 10:00:10]
+  Epoch: [119][200/391]   Time 0.308 (0.332)   Data 0.000 (0.007)   Loss 0.1895 (0.2577)   Prec@1 94.531 (90.932)   Prec@5 100.000 (99.810)   [2019-08-30 10:01:15]
+  **Test** Prec@1 83.220 Prec@5 99.110 Error@1 16.780
+
+==>>[2019-08-30 10:02:33] [Epoch=120/300] [Need: 09:04:27] [learning_rate=0.0100] [Best : Accuracy=85.05, Error=14.95]
+  Epoch: [120][000/391]   Time 1.903 (1.903)   Data 1.464 (1.464)   Loss 0.2483 (0.2483)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2019-08-30 10:02:35]
+  Epoch: [120][200/391]   Time 0.282 (0.352)   Data 0.000 (0.008)   Loss 0.2061 (0.1876)   Prec@1 92.969 (93.571)   Prec@5 100.000 (99.880)   [2019-08-30 10:03:44]
+  **Test** Prec@1 90.080 Prec@5 99.720 Error@1 9.920
+
+==>>[2019-08-30 10:05:05] [Epoch=121/300] [Need: 09:00:41] [learning_rate=0.0100] [Best : Accuracy=90.08, Error=9.92]
+  Epoch: [121][000/391]   Time 1.589 (1.589)   Data 1.188 (1.188)   Loss 0.1303 (0.1303)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2019-08-30 10:05:07]
+  Epoch: [121][200/391]   Time 0.372 (0.339)   Data 0.000 (0.006)   Loss 0.1242 (0.1429)   Prec@1 94.531 (95.106)   Prec@5 100.000 (99.918)   [2019-08-30 10:06:13]
+  **Test** Prec@1 90.080 Prec@5 99.740 Error@1 9.920
+
+==>>[2019-08-30 10:07:33] [Epoch=122/300] [Need: 08:56:51] [learning_rate=0.0100] [Best : Accuracy=90.08, Error=9.92]
+  Epoch: [122][000/391]   Time 2.273 (2.273)   Data 1.880 (1.880)   Loss 0.0754 (0.0754)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 10:07:35]
+  Epoch: [122][200/391]   Time 0.305 (0.329)   Data 0.000 (0.010)   Loss 0.0915 (0.1252)   Prec@1 96.875 (95.686)   Prec@5 100.000 (99.969)   [2019-08-30 10:08:39]
+  **Test** Prec@1 90.270 Prec@5 99.720 Error@1 9.730
+
+==>>[2019-08-30 10:09:59] [Epoch=123/300] [Need: 08:52:59] [learning_rate=0.0100] [Best : Accuracy=90.27, Error=9.73]
+  Epoch: [123][000/391]   Time 1.831 (1.831)   Data 1.391 (1.391)   Loss 0.1192 (0.1192)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2019-08-30 10:10:01]
+  Epoch: [123][200/391]   Time 0.394 (0.340)   Data 0.000 (0.007)   Loss 0.1413 (0.1194)   Prec@1 96.094 (95.845)   Prec@5 99.219 (99.930)   [2019-08-30 10:11:07]
+  **Test** Prec@1 90.820 Prec@5 99.740 Error@1 9.180
+
+==>>[2019-08-30 10:12:28] [Epoch=124/300] [Need: 08:49:13] [learning_rate=0.0100] [Best : Accuracy=90.82, Error=9.18]
+  Epoch: [124][000/391]   Time 2.645 (2.645)   Data 2.162 (2.162)   Loss 0.1055 (0.1055)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 10:12:30]
+  Epoch: [124][200/391]   Time 0.229 (0.351)   Data 0.000 (0.011)   Loss 0.1168 (0.1139)   Prec@1 97.656 (96.206)   Prec@5 100.000 (99.942)   [2019-08-30 10:13:38]
+  **Test** Prec@1 90.670 Prec@5 99.690 Error@1 9.330
+
+==>>[2019-08-30 10:14:58] [Epoch=125/300] [Need: 08:45:31] [learning_rate=0.0100] [Best : Accuracy=90.82, Error=9.18]
+  Epoch: [125][000/391]   Time 1.682 (1.682)   Data 1.319 (1.319)   Loss 0.1267 (0.1267)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2019-08-30 10:15:00]
+  Epoch: [125][200/391]   Time 0.256 (0.350)   Data 0.000 (0.007)   Loss 0.2175 (0.1036)   Prec@1 92.969 (96.498)   Prec@5 100.000 (99.961)   [2019-08-30 10:16:08]
+  **Test** Prec@1 90.390 Prec@5 99.740 Error@1 9.610
+
+==>>[2019-08-30 10:17:29] [Epoch=126/300] [Need: 08:41:52] [learning_rate=0.0100] [Best : Accuracy=90.82, Error=9.18]
+  Epoch: [126][000/391]   Time 1.615 (1.615)   Data 1.289 (1.289)   Loss 0.1487 (0.1487)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2019-08-30 10:17:31]
+  Epoch: [126][200/391]   Time 0.333 (0.333)   Data 0.000 (0.007)   Loss 0.1169 (0.1031)   Prec@1 95.312 (96.451)   Prec@5 100.000 (99.961)   [2019-08-30 10:18:36]
+  **Test** Prec@1 90.480 Prec@5 99.780 Error@1 9.520
+
+==>>[2019-08-30 10:19:55] [Epoch=127/300] [Need: 08:38:04] [learning_rate=0.0100] [Best : Accuracy=90.82, Error=9.18]
+  Epoch: [127][000/391]   Time 2.463 (2.463)   Data 1.923 (1.923)   Loss 0.1429 (0.1429)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2019-08-30 10:19:57]
+  Epoch: [127][200/391]   Time 0.400 (0.350)   Data 0.000 (0.010)   Loss 0.1275 (0.1004)   Prec@1 94.531 (96.568)   Prec@5 100.000 (99.969)   [2019-08-30 10:21:05]
+  **Test** Prec@1 90.620 Prec@5 99.720 Error@1 9.380
+
+==>>[2019-08-30 10:22:25] [Epoch=128/300] [Need: 08:34:25] [learning_rate=0.0100] [Best : Accuracy=90.82, Error=9.18]
+  Epoch: [128][000/391]   Time 2.822 (2.822)   Data 2.258 (2.258)   Loss 0.1003 (0.1003)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 10:22:28]
+  Epoch: [128][200/391]   Time 0.325 (0.347)   Data 0.000 (0.011)   Loss 0.0491 (0.0926)   Prec@1 100.000 (96.774)   Prec@5 100.000 (99.992)   [2019-08-30 10:23:35]
+  **Test** Prec@1 90.610 Prec@5 99.680 Error@1 9.390
+
+==>>[2019-08-30 10:24:56] [Epoch=129/300] [Need: 08:30:48] [learning_rate=0.0100] [Best : Accuracy=90.82, Error=9.18]
+  Epoch: [129][000/391]   Time 1.881 (1.881)   Data 1.403 (1.403)   Loss 0.0746 (0.0746)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 10:24:58]
+  Epoch: [129][200/391]   Time 0.375 (0.341)   Data 0.000 (0.007)   Loss 0.1119 (0.0974)   Prec@1 95.312 (96.611)   Prec@5 100.000 (99.969)   [2019-08-30 10:26:05]
+  **Test** Prec@1 90.970 Prec@5 99.790 Error@1 9.030
+
+==>>[2019-08-30 10:27:24] [Epoch=130/300] [Need: 08:27:08] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [130][000/391]   Time 2.851 (2.851)   Data 2.328 (2.328)   Loss 0.1016 (0.1016)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2019-08-30 10:27:27]
+  Epoch: [130][200/391]   Time 0.341 (0.352)   Data 0.000 (0.012)   Loss 0.2514 (0.0941)   Prec@1 90.625 (96.782)   Prec@5 100.000 (99.965)   [2019-08-30 10:28:35]
+  **Test** Prec@1 90.430 Prec@5 99.730 Error@1 9.570
+
+==>>[2019-08-30 10:29:55] [Epoch=131/300] [Need: 08:23:33] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [131][000/391]   Time 2.480 (2.480)   Data 2.025 (2.025)   Loss 0.1006 (0.1006)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2019-08-30 10:29:58]
+  Epoch: [131][200/391]   Time 0.260 (0.357)   Data 0.000 (0.010)   Loss 0.0858 (0.0870)   Prec@1 96.875 (96.984)   Prec@5 100.000 (99.988)   [2019-08-30 10:31:07]
+  **Test** Prec@1 90.880 Prec@5 99.780 Error@1 9.120
+
+==>>[2019-08-30 10:32:26] [Epoch=132/300] [Need: 08:19:58] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [132][000/391]   Time 1.792 (1.792)   Data 1.309 (1.309)   Loss 0.0585 (0.0585)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 10:32:28]
+  Epoch: [132][200/391]   Time 0.310 (0.338)   Data 0.000 (0.007)   Loss 0.0738 (0.0856)   Prec@1 96.094 (97.174)   Prec@5 100.000 (99.946)   [2019-08-30 10:33:34]
+  **Test** Prec@1 90.230 Prec@5 99.780 Error@1 9.770
+
+==>>[2019-08-30 10:34:57] [Epoch=133/300] [Need: 08:16:24] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [133][000/391]   Time 1.569 (1.569)   Data 1.170 (1.170)   Loss 0.1142 (0.1142)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2019-08-30 10:34:58]
+  Epoch: [133][200/391]   Time 0.312 (0.332)   Data 0.000 (0.006)   Loss 0.0568 (0.0781)   Prec@1 97.656 (97.338)   Prec@5 100.000 (99.984)   [2019-08-30 10:36:03]
+  **Test** Prec@1 90.470 Prec@5 99.800 Error@1 9.530
+
+==>>[2019-08-30 10:37:22] [Epoch=134/300] [Need: 08:12:46] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [134][000/391]   Time 2.883 (2.883)   Data 2.425 (2.425)   Loss 0.0676 (0.0676)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 10:37:25]
+  Epoch: [134][200/391]   Time 0.396 (0.347)   Data 0.000 (0.012)   Loss 0.0953 (0.0859)   Prec@1 96.875 (97.027)   Prec@5 99.219 (99.953)   [2019-08-30 10:38:32]
+  **Test** Prec@1 90.280 Prec@5 99.700 Error@1 9.720
+
+==>>[2019-08-30 10:39:51] [Epoch=135/300] [Need: 08:09:12] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [135][000/391]   Time 2.230 (2.230)   Data 1.742 (1.742)   Loss 0.1102 (0.1102)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2019-08-30 10:39:53]
+  Epoch: [135][200/391]   Time 0.239 (0.344)   Data 0.000 (0.009)   Loss 0.1248 (0.0817)   Prec@1 96.094 (97.135)   Prec@5 100.000 (99.992)   [2019-08-30 10:41:00]
+  **Test** Prec@1 90.330 Prec@5 99.770 Error@1 9.670
+
+==>>[2019-08-30 10:42:21] [Epoch=136/300] [Need: 08:05:40] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [136][000/391]   Time 1.877 (1.877)   Data 1.454 (1.454)   Loss 0.0374 (0.0374)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 10:42:22]
+  Epoch: [136][200/391]   Time 0.336 (0.336)   Data 0.000 (0.008)   Loss 0.0393 (0.0822)   Prec@1 98.438 (97.190)   Prec@5 100.000 (99.969)   [2019-08-30 10:43:28]
+  **Test** Prec@1 89.920 Prec@5 99.680 Error@1 10.080
+
+==>>[2019-08-30 10:44:49] [Epoch=137/300] [Need: 08:02:07] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [137][000/391]   Time 3.033 (3.033)   Data 2.571 (2.571)   Loss 0.1282 (0.1282)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2019-08-30 10:44:52]
+  Epoch: [137][200/391]   Time 0.287 (0.351)   Data 0.000 (0.013)   Loss 0.0268 (0.0796)   Prec@1 100.000 (97.233)   Prec@5 100.000 (99.992)   [2019-08-30 10:45:59]
+  **Test** Prec@1 90.720 Prec@5 99.730 Error@1 9.280
+
+==>>[2019-08-30 10:47:19] [Epoch=138/300] [Need: 07:58:37] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [138][000/391]   Time 2.526 (2.526)   Data 2.043 (2.043)   Loss 0.1065 (0.1065)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 10:47:21]
+  Epoch: [138][200/391]   Time 0.399 (0.346)   Data 0.000 (0.011)   Loss 0.0589 (0.0781)   Prec@1 97.656 (97.244)   Prec@5 100.000 (99.984)   [2019-08-30 10:48:28]
+  **Test** Prec@1 90.270 Prec@5 99.740 Error@1 9.730
+
+==>>[2019-08-30 10:49:49] [Epoch=139/300] [Need: 07:55:08] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [139][000/391]   Time 1.772 (1.772)   Data 1.385 (1.385)   Loss 0.0264 (0.0264)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 10:49:50]
+  Epoch: [139][200/391]   Time 0.313 (0.339)   Data 0.000 (0.007)   Loss 0.0866 (0.0759)   Prec@1 96.875 (97.268)   Prec@5 100.000 (100.000)   [2019-08-30 10:50:57]
+  **Test** Prec@1 90.250 Prec@5 99.700 Error@1 9.750
+
+==>>[2019-08-30 10:52:19] [Epoch=140/300] [Need: 07:51:41] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [140][000/391]   Time 2.216 (2.216)   Data 1.789 (1.789)   Loss 0.0390 (0.0390)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 10:52:21]
+  Epoch: [140][200/391]   Time 0.335 (0.345)   Data 0.000 (0.009)   Loss 0.0905 (0.0797)   Prec@1 96.875 (97.318)   Prec@5 100.000 (99.973)   [2019-08-30 10:53:28]
+  **Test** Prec@1 90.000 Prec@5 99.740 Error@1 10.000
+
+==>>[2019-08-30 10:54:47] [Epoch=141/300] [Need: 07:48:12] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [141][000/391]   Time 1.580 (1.580)   Data 1.216 (1.216)   Loss 0.1185 (0.1185)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2019-08-30 10:54:49]
+  Epoch: [141][200/391]   Time 0.257 (0.352)   Data 0.000 (0.006)   Loss 0.0532 (0.0757)   Prec@1 98.438 (97.423)   Prec@5 100.000 (99.996)   [2019-08-30 10:55:58]
+  **Test** Prec@1 90.630 Prec@5 99.730 Error@1 9.370
+
+==>>[2019-08-30 10:57:17] [Epoch=142/300] [Need: 07:44:45] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [142][000/391]   Time 1.952 (1.952)   Data 1.506 (1.506)   Loss 0.0921 (0.0921)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2019-08-30 10:57:19]
+  Epoch: [142][200/391]   Time 0.421 (0.340)   Data 0.000 (0.008)   Loss 0.0556 (0.0736)   Prec@1 98.438 (97.439)   Prec@5 100.000 (100.000)   [2019-08-30 10:58:26]
+  **Test** Prec@1 90.900 Prec@5 99.720 Error@1 9.100
+
+==>>[2019-08-30 10:59:45] [Epoch=143/300] [Need: 07:41:17] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [143][000/391]   Time 2.183 (2.183)   Data 1.780 (1.780)   Loss 0.0518 (0.0518)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 10:59:47]
+  Epoch: [143][200/391]   Time 0.344 (0.340)   Data 0.000 (0.009)   Loss 0.0668 (0.0722)   Prec@1 97.656 (97.435)   Prec@5 100.000 (99.996)   [2019-08-30 11:00:53]
+  **Test** Prec@1 90.450 Prec@5 99.730 Error@1 9.550
+
+==>>[2019-08-30 11:02:15] [Epoch=144/300] [Need: 07:37:51] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [144][000/391]   Time 2.710 (2.710)   Data 2.147 (2.147)   Loss 0.0864 (0.0864)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:02:17]
+  Epoch: [144][200/391]   Time 0.430 (0.341)   Data 0.000 (0.011)   Loss 0.0897 (0.0730)   Prec@1 96.094 (97.536)   Prec@5 100.000 (99.992)   [2019-08-30 11:03:23]
+  **Test** Prec@1 89.510 Prec@5 99.710 Error@1 10.490
+
+==>>[2019-08-30 11:04:42] [Epoch=145/300] [Need: 07:34:25] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [145][000/391]   Time 2.027 (2.027)   Data 1.617 (1.617)   Loss 0.0444 (0.0444)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 11:04:44]
+  Epoch: [145][200/391]   Time 0.285 (0.352)   Data 0.000 (0.008)   Loss 0.0222 (0.0693)   Prec@1 99.219 (97.594)   Prec@5 100.000 (99.992)   [2019-08-30 11:05:52]
+  **Test** Prec@1 90.460 Prec@5 99.730 Error@1 9.540
+
+==>>[2019-08-30 11:07:13] [Epoch=146/300] [Need: 07:31:04] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [146][000/391]   Time 1.526 (1.526)   Data 1.173 (1.173)   Loss 0.0666 (0.0666)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:07:15]
+  Epoch: [146][200/391]   Time 0.363 (0.335)   Data 0.000 (0.006)   Loss 0.0533 (0.0717)   Prec@1 97.656 (97.431)   Prec@5 100.000 (99.988)   [2019-08-30 11:08:21]
+  **Test** Prec@1 90.510 Prec@5 99.740 Error@1 9.490
+
+==>>[2019-08-30 11:09:43] [Epoch=147/300] [Need: 07:27:40] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [147][000/391]   Time 1.815 (1.815)   Data 1.354 (1.354)   Loss 0.0561 (0.0561)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 11:09:45]
+  Epoch: [147][200/391]   Time 0.451 (0.338)   Data 0.000 (0.007)   Loss 0.0610 (0.0684)   Prec@1 97.656 (97.594)   Prec@5 100.000 (99.992)   [2019-08-30 11:10:51]
+  **Test** Prec@1 89.710 Prec@5 99.610 Error@1 10.290
+
+==>>[2019-08-30 11:12:10] [Epoch=148/300] [Need: 07:24:16] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [148][000/391]   Time 1.694 (1.694)   Data 1.316 (1.316)   Loss 0.0666 (0.0666)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 11:12:12]
+  Epoch: [148][200/391]   Time 0.277 (0.346)   Data 0.000 (0.007)   Loss 0.0428 (0.0714)   Prec@1 98.438 (97.532)   Prec@5 100.000 (99.977)   [2019-08-30 11:13:20]
+  **Test** Prec@1 90.260 Prec@5 99.640 Error@1 9.740
+
+==>>[2019-08-30 11:14:40] [Epoch=149/300] [Need: 07:20:54] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [149][000/391]   Time 2.113 (2.113)   Data 1.691 (1.691)   Loss 0.0538 (0.0538)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 11:14:42]
+  Epoch: [149][200/391]   Time 0.324 (0.342)   Data 0.000 (0.009)   Loss 0.0244 (0.0707)   Prec@1 100.000 (97.540)   Prec@5 100.000 (99.992)   [2019-08-30 11:15:49]
+  **Test** Prec@1 90.420 Prec@5 99.720 Error@1 9.580
+
+==>>[2019-08-30 11:17:09] [Epoch=150/300] [Need: 07:17:34] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [150][000/391]   Time 1.912 (1.912)   Data 1.478 (1.478)   Loss 0.0616 (0.0616)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:17:11]
+  Epoch: [150][200/391]   Time 0.328 (0.342)   Data 0.000 (0.008)   Loss 0.0764 (0.0663)   Prec@1 97.656 (97.715)   Prec@5 100.000 (99.984)   [2019-08-30 11:18:18]
+  **Test** Prec@1 90.420 Prec@5 99.690 Error@1 9.580
+
+==>>[2019-08-30 11:19:40] [Epoch=151/300] [Need: 07:14:15] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [151][000/391]   Time 1.377 (1.377)   Data 1.054 (1.054)   Loss 0.1251 (0.1251)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2019-08-30 11:19:41]
+  Epoch: [151][200/391]   Time 0.370 (0.338)   Data 0.000 (0.006)   Loss 0.0522 (0.0677)   Prec@1 98.438 (97.680)   Prec@5 100.000 (99.988)   [2019-08-30 11:20:48]
+  **Test** Prec@1 90.040 Prec@5 99.630 Error@1 9.960
+
+==>>[2019-08-30 11:22:07] [Epoch=152/300] [Need: 07:10:53] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [152][000/391]   Time 2.263 (2.263)   Data 1.702 (1.702)   Loss 0.0410 (0.0410)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 11:22:10]
+  Epoch: [152][200/391]   Time 0.354 (0.348)   Data 0.000 (0.009)   Loss 0.0917 (0.0684)   Prec@1 97.656 (97.699)   Prec@5 100.000 (99.984)   [2019-08-30 11:23:17]
+  **Test** Prec@1 90.210 Prec@5 99.710 Error@1 9.790
+
+==>>[2019-08-30 11:24:38] [Epoch=153/300] [Need: 07:07:35] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [153][000/391]   Time 1.687 (1.687)   Data 1.277 (1.277)   Loss 0.0595 (0.0595)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:24:39]
+  Epoch: [153][200/391]   Time 0.321 (0.335)   Data 0.000 (0.007)   Loss 0.0680 (0.0681)   Prec@1 96.094 (97.629)   Prec@5 100.000 (99.988)   [2019-08-30 11:25:45]
+  **Test** Prec@1 90.130 Prec@5 99.720 Error@1 9.870
+
+==>>[2019-08-30 11:27:07] [Epoch=154/300] [Need: 07:04:16] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [154][000/391]   Time 1.993 (1.993)   Data 1.458 (1.458)   Loss 0.0450 (0.0450)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 11:27:09]
+  Epoch: [154][200/391]   Time 0.348 (0.335)   Data 0.000 (0.008)   Loss 0.0654 (0.0686)   Prec@1 97.656 (97.629)   Prec@5 100.000 (99.996)   [2019-08-30 11:28:14]
+  **Test** Prec@1 90.170 Prec@5 99.740 Error@1 9.830
+
+==>>[2019-08-30 11:29:35] [Epoch=155/300] [Need: 07:00:57] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [155][000/391]   Time 1.480 (1.480)   Data 1.121 (1.121)   Loss 0.0544 (0.0544)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 11:29:36]
+  Epoch: [155][200/391]   Time 0.286 (0.348)   Data 0.000 (0.006)   Loss 0.0359 (0.0629)   Prec@1 100.000 (97.882)   Prec@5 100.000 (99.984)   [2019-08-30 11:30:45]
+  **Test** Prec@1 90.320 Prec@5 99.720 Error@1 9.680
+
+==>>[2019-08-30 11:32:05] [Epoch=156/300] [Need: 06:57:40] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [156][000/391]   Time 2.515 (2.515)   Data 2.055 (2.055)   Loss 0.0472 (0.0472)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:32:07]
+  Epoch: [156][200/391]   Time 0.296 (0.342)   Data 0.000 (0.010)   Loss 0.0810 (0.0619)   Prec@1 97.656 (97.858)   Prec@5 100.000 (99.996)   [2019-08-30 11:33:13]
+  **Test** Prec@1 89.720 Prec@5 99.640 Error@1 10.280
+
+==>>[2019-08-30 11:34:35] [Epoch=157/300] [Need: 06:54:25] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [157][000/391]   Time 1.941 (1.941)   Data 1.578 (1.578)   Loss 0.1616 (0.1616)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 11:34:37]
+  Epoch: [157][200/391]   Time 0.327 (0.335)   Data 0.000 (0.008)   Loss 0.0834 (0.0697)   Prec@1 97.656 (97.598)   Prec@5 100.000 (99.992)   [2019-08-30 11:35:43]
+  **Test** Prec@1 89.270 Prec@5 99.480 Error@1 10.730
+
+==>>[2019-08-30 11:37:04] [Epoch=158/300] [Need: 06:51:09] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [158][000/391]   Time 1.613 (1.613)   Data 1.130 (1.130)   Loss 0.1397 (0.1397)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2019-08-30 11:37:06]
+  Epoch: [158][200/391]   Time 0.306 (0.339)   Data 0.000 (0.006)   Loss 0.1312 (0.0666)   Prec@1 95.312 (97.687)   Prec@5 100.000 (99.988)   [2019-08-30 11:38:12]
+  **Test** Prec@1 89.750 Prec@5 99.740 Error@1 10.250
+
+==>>[2019-08-30 11:39:32] [Epoch=159/300] [Need: 06:47:51] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [159][000/391]   Time 1.633 (1.633)   Data 1.239 (1.239)   Loss 0.0536 (0.0536)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:39:33]
+  Epoch: [159][200/391]   Time 0.290 (0.346)   Data 0.000 (0.006)   Loss 0.1906 (0.0654)   Prec@1 92.188 (97.703)   Prec@5 100.000 (99.988)   [2019-08-30 11:40:41]
+  **Test** Prec@1 90.780 Prec@5 99.720 Error@1 9.220
+
+==>>[2019-08-30 11:42:01] [Epoch=160/300] [Need: 06:44:37] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [160][000/391]   Time 1.940 (1.940)   Data 1.402 (1.402)   Loss 0.0380 (0.0380)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 11:42:03]
+  Epoch: [160][200/391]   Time 0.225 (0.348)   Data 0.000 (0.007)   Loss 0.0396 (0.0642)   Prec@1 98.438 (97.707)   Prec@5 100.000 (99.992)   [2019-08-30 11:43:11]
+  **Test** Prec@1 90.570 Prec@5 99.600 Error@1 9.430
+
+==>>[2019-08-30 11:44:31] [Epoch=161/300] [Need: 06:41:24] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [161][000/391]   Time 2.173 (2.173)   Data 1.701 (1.701)   Loss 0.0789 (0.0789)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:44:34]
+  Epoch: [161][200/391]   Time 0.286 (0.332)   Data 0.000 (0.009)   Loss 0.0926 (0.0663)   Prec@1 96.094 (97.711)   Prec@5 100.000 (99.992)   [2019-08-30 11:45:38]
+  **Test** Prec@1 90.140 Prec@5 99.760 Error@1 9.860
+
+==>>[2019-08-30 11:46:59] [Epoch=162/300] [Need: 06:38:08] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [162][000/391]   Time 1.711 (1.711)   Data 1.368 (1.368)   Loss 0.0964 (0.0964)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 11:47:00]
+  Epoch: [162][200/391]   Time 0.360 (0.340)   Data 0.000 (0.007)   Loss 0.0616 (0.0649)   Prec@1 97.656 (97.761)   Prec@5 100.000 (100.000)   [2019-08-30 11:48:07]
+  **Test** Prec@1 90.470 Prec@5 99.760 Error@1 9.530
+
+==>>[2019-08-30 11:49:25] [Epoch=163/300] [Need: 06:34:52] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [163][000/391]   Time 1.881 (1.881)   Data 1.285 (1.285)   Loss 0.1074 (0.1074)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2019-08-30 11:49:27]
+  Epoch: [163][200/391]   Time 0.281 (0.346)   Data 0.000 (0.007)   Loss 0.0396 (0.0642)   Prec@1 98.438 (97.761)   Prec@5 100.000 (100.000)   [2019-08-30 11:50:34]
+  **Test** Prec@1 89.880 Prec@5 99.640 Error@1 10.120
+
+==>>[2019-08-30 11:51:54] [Epoch=164/300] [Need: 06:31:40] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [164][000/391]   Time 1.856 (1.856)   Data 1.396 (1.396)   Loss 0.0388 (0.0388)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 11:51:56]
+  Epoch: [164][200/391]   Time 0.337 (0.342)   Data 0.000 (0.007)   Loss 0.0756 (0.0670)   Prec@1 96.875 (97.645)   Prec@5 100.000 (99.996)   [2019-08-30 11:53:03]
+  **Test** Prec@1 90.260 Prec@5 99.730 Error@1 9.740
+
+==>>[2019-08-30 11:54:24] [Epoch=165/300] [Need: 06:28:29] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [165][000/391]   Time 1.780 (1.780)   Data 1.255 (1.255)   Loss 0.0513 (0.0513)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 11:54:26]
+  Epoch: [165][200/391]   Time 0.370 (0.340)   Data 0.000 (0.007)   Loss 0.1152 (0.0656)   Prec@1 94.531 (97.804)   Prec@5 100.000 (100.000)   [2019-08-30 11:55:33]
+  **Test** Prec@1 89.750 Prec@5 99.690 Error@1 10.250
+
+==>>[2019-08-30 11:56:54] [Epoch=166/300] [Need: 06:25:17] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [166][000/391]   Time 2.043 (2.043)   Data 1.539 (1.539)   Loss 0.0958 (0.0958)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 11:56:56]
+  Epoch: [166][200/391]   Time 0.390 (0.345)   Data 0.000 (0.008)   Loss 0.0951 (0.0615)   Prec@1 96.875 (97.816)   Prec@5 100.000 (99.996)   [2019-08-30 11:58:03]
+  **Test** Prec@1 89.820 Prec@5 99.600 Error@1 10.180
+
+==>>[2019-08-30 11:59:23] [Epoch=167/300] [Need: 06:22:06] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [167][000/391]   Time 1.813 (1.813)   Data 1.365 (1.365)   Loss 0.0716 (0.0716)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 11:59:24]
+  Epoch: [167][200/391]   Time 0.375 (0.342)   Data 0.009 (0.007)   Loss 0.0641 (0.0597)   Prec@1 98.438 (97.889)   Prec@5 100.000 (99.988)   [2019-08-30 12:00:31]
+  **Test** Prec@1 90.370 Prec@5 99.660 Error@1 9.630
+
+==>>[2019-08-30 12:01:45] [Epoch=168/300] [Need: 06:18:50] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [168][000/391]   Time 1.598 (1.598)   Data 1.177 (1.177)   Loss 0.0450 (0.0450)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 12:01:47]
+  Epoch: [168][200/391]   Time 0.287 (0.272)   Data 0.000 (0.006)   Loss 0.0845 (0.0614)   Prec@1 96.094 (97.831)   Prec@5 100.000 (99.996)   [2019-08-30 12:02:40]
+  **Test** Prec@1 90.250 Prec@5 99.660 Error@1 9.750
+
+==>>[2019-08-30 12:03:45] [Epoch=169/300] [Need: 06:15:17] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [169][000/391]   Time 1.680 (1.680)   Data 1.301 (1.301)   Loss 0.0517 (0.0517)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 12:03:46]
+  Epoch: [169][200/391]   Time 0.274 (0.276)   Data 0.000 (0.007)   Loss 0.0565 (0.0706)   Prec@1 97.656 (97.563)   Prec@5 100.000 (99.992)   [2019-08-30 12:04:40]
+  **Test** Prec@1 89.920 Prec@5 99.580 Error@1 10.080
+
+==>>[2019-08-30 12:05:42] [Epoch=170/300] [Need: 06:11:44] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [170][000/391]   Time 1.685 (1.685)   Data 1.267 (1.267)   Loss 0.0602 (0.0602)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 12:05:44]
+  Epoch: [170][200/391]   Time 0.266 (0.287)   Data 0.000 (0.007)   Loss 0.0286 (0.0639)   Prec@1 98.438 (97.715)   Prec@5 100.000 (100.000)   [2019-08-30 12:06:40]
+  **Test** Prec@1 89.690 Prec@5 99.660 Error@1 10.310
+
+==>>[2019-08-30 12:07:44] [Epoch=171/300] [Need: 06:08:14] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [171][000/391]   Time 1.659 (1.659)   Data 1.281 (1.281)   Loss 0.0377 (0.0377)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 12:07:45]
+  Epoch: [171][200/391]   Time 0.291 (0.275)   Data 0.000 (0.007)   Loss 0.0878 (0.0650)   Prec@1 97.656 (97.660)   Prec@5 100.000 (99.996)   [2019-08-30 12:08:39]
+  **Test** Prec@1 90.000 Prec@5 99.700 Error@1 10.000
+
+==>>[2019-08-30 12:09:44] [Epoch=172/300] [Need: 06:04:45] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [172][000/391]   Time 1.743 (1.743)   Data 1.304 (1.304)   Loss 0.0478 (0.0478)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 12:09:46]
+  Epoch: [172][200/391]   Time 0.262 (0.270)   Data 0.000 (0.007)   Loss 0.0351 (0.0662)   Prec@1 98.438 (97.715)   Prec@5 100.000 (99.992)   [2019-08-30 12:10:39]
+  **Test** Prec@1 89.570 Prec@5 99.580 Error@1 10.430
+
+==>>[2019-08-30 12:11:42] [Epoch=173/300] [Need: 06:01:15] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [173][000/391]   Time 1.504 (1.504)   Data 1.133 (1.133)   Loss 0.1397 (0.1397)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2019-08-30 12:11:43]
+  Epoch: [173][200/391]   Time 0.284 (0.284)   Data 0.000 (0.006)   Loss 0.0911 (0.0678)   Prec@1 97.656 (97.524)   Prec@5 100.000 (99.992)   [2019-08-30 12:12:39]
+  **Test** Prec@1 89.730 Prec@5 99.550 Error@1 10.270
+
+==>>[2019-08-30 12:13:42] [Epoch=174/300] [Need: 05:57:48] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [174][000/391]   Time 1.540 (1.540)   Data 1.158 (1.158)   Loss 0.0521 (0.0521)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 12:13:44]
+  Epoch: [174][200/391]   Time 0.207 (0.273)   Data 0.000 (0.006)   Loss 0.0555 (0.0689)   Prec@1 96.875 (97.582)   Prec@5 100.000 (99.996)   [2019-08-30 12:14:37]
+  **Test** Prec@1 89.180 Prec@5 99.610 Error@1 10.820
+
+==>>[2019-08-30 12:15:43] [Epoch=175/300] [Need: 05:54:22] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [175][000/391]   Time 1.651 (1.651)   Data 1.180 (1.180)   Loss 0.0268 (0.0268)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 12:15:45]
+  Epoch: [175][200/391]   Time 0.296 (0.273)   Data 0.000 (0.006)   Loss 0.0824 (0.0693)   Prec@1 96.875 (97.637)   Prec@5 100.000 (99.984)   [2019-08-30 12:16:38]
+  **Test** Prec@1 90.080 Prec@5 99.530 Error@1 9.920
+
+==>>[2019-08-30 12:17:41] [Epoch=176/300] [Need: 05:50:56] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [176][000/391]   Time 1.290 (1.290)   Data 1.008 (1.008)   Loss 0.0343 (0.0343)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 12:17:43]
+  Epoch: [176][200/391]   Time 0.292 (0.280)   Data 0.000 (0.005)   Loss 0.0725 (0.0625)   Prec@1 97.656 (97.792)   Prec@5 100.000 (99.996)   [2019-08-30 12:18:38]
+  **Test** Prec@1 89.780 Prec@5 99.510 Error@1 10.220
+
+==>>[2019-08-30 12:19:42] [Epoch=177/300] [Need: 05:47:31] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [177][000/391]   Time 1.543 (1.543)   Data 1.203 (1.203)   Loss 0.0630 (0.0630)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 12:19:43]
+  Epoch: [177][200/391]   Time 0.303 (0.275)   Data 0.000 (0.006)   Loss 0.0352 (0.0623)   Prec@1 98.438 (97.858)   Prec@5 100.000 (99.988)   [2019-08-30 12:20:37]
+  **Test** Prec@1 89.570 Prec@5 99.560 Error@1 10.430
+
+==>>[2019-08-30 12:21:41] [Epoch=178/300] [Need: 05:44:08] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [178][000/391]   Time 1.667 (1.667)   Data 1.217 (1.217)   Loss 0.0490 (0.0490)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 12:21:43]
+  Epoch: [178][200/391]   Time 0.289 (0.266)   Data 0.000 (0.006)   Loss 0.0787 (0.0620)   Prec@1 96.094 (97.804)   Prec@5 100.000 (100.000)   [2019-08-30 12:22:35]
+  **Test** Prec@1 89.890 Prec@5 99.520 Error@1 10.110
+
+==>>[2019-08-30 12:23:38] [Epoch=179/300] [Need: 05:40:43] [learning_rate=0.0100] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [179][000/391]   Time 1.590 (1.590)   Data 1.190 (1.190)   Loss 0.0788 (0.0788)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2019-08-30 12:23:40]
+  Epoch: [179][200/391]   Time 0.260 (0.277)   Data 0.000 (0.006)   Loss 0.0356 (0.0634)   Prec@1 98.438 (97.827)   Prec@5 100.000 (99.992)   [2019-08-30 12:24:34]
+  **Test** Prec@1 90.300 Prec@5 99.660 Error@1 9.700
+
+==>>[2019-08-30 12:25:36] [Epoch=180/300] [Need: 05:37:20] [learning_rate=0.0010] [Best : Accuracy=90.97, Error=9.03]
+  Epoch: [180][000/391]   Time 1.632 (1.632)   Data 1.193 (1.193)   Loss 0.1163 (0.1163)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2019-08-30 12:25:38]
+  Epoch: [180][200/391]   Time 0.246 (0.281)   Data 0.000 (0.006)   Loss 0.0100 (0.0502)   Prec@1 100.000 (98.321)   Prec@5 100.000 (100.000)   [2019-08-30 12:26:33]
+  **Test** Prec@1 90.990 Prec@5 99.700 Error@1 9.010
+
+==>>[2019-08-30 12:27:35] [Epoch=181/300] [Need: 05:33:59] [learning_rate=0.0010] [Best : Accuracy=90.99, Error=9.01]
+  Epoch: [181][000/391]   Time 1.952 (1.952)   Data 1.489 (1.489)   Loss 0.0118 (0.0118)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 12:27:37]
+  Epoch: [181][200/391]   Time 0.258 (0.274)   Data 0.000 (0.008)   Loss 0.0358 (0.0425)   Prec@1 97.656 (98.647)   Prec@5 100.000 (99.992)   [2019-08-30 12:28:30]
+  **Test** Prec@1 91.240 Prec@5 99.720 Error@1 8.760
+
+==>>[2019-08-30 12:29:37] [Epoch=182/300] [Need: 05:30:40] [learning_rate=0.0010] [Best : Accuracy=91.24, Error=8.76]
+  Epoch: [182][000/391]   Time 1.387 (1.387)   Data 1.059 (1.059)   Loss 0.0372 (0.0372)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 12:29:38]
+  Epoch: [182][200/391]   Time 0.321 (0.269)   Data 0.000 (0.005)   Loss 0.1151 (0.0386)   Prec@1 95.312 (98.745)   Prec@5 100.000 (100.000)   [2019-08-30 12:30:31]
+  **Test** Prec@1 91.280 Prec@5 99.750 Error@1 8.720
+
+==>>[2019-08-30 12:31:35] [Epoch=183/300] [Need: 05:27:20] [learning_rate=0.0010] [Best : Accuracy=91.28, Error=8.72]
+  Epoch: [183][000/391]   Time 1.704 (1.704)   Data 1.311 (1.311)   Loss 0.0299 (0.0299)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 12:31:37]
+  Epoch: [183][200/391]   Time 0.303 (0.289)   Data 0.000 (0.007)   Loss 0.0148 (0.0361)   Prec@1 100.000 (98.888)   Prec@5 100.000 (100.000)   [2019-08-30 12:32:33]
+  **Test** Prec@1 91.190 Prec@5 99.730 Error@1 8.810
+
+==>>[2019-08-30 12:33:37] [Epoch=184/300] [Need: 05:24:04] [learning_rate=0.0010] [Best : Accuracy=91.28, Error=8.72]
+  Epoch: [184][000/391]   Time 1.674 (1.674)   Data 1.167 (1.167)   Loss 0.0163 (0.0163)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 12:33:39]
+  Epoch: [184][200/391]   Time 0.260 (0.266)   Data 0.000 (0.006)   Loss 0.0151 (0.0311)   Prec@1 100.000 (99.001)   Prec@5 100.000 (100.000)   [2019-08-30 12:34:31]
+  **Test** Prec@1 91.360 Prec@5 99.700 Error@1 8.640
+
+==>>[2019-08-30 12:35:37] [Epoch=185/300] [Need: 05:20:46] [learning_rate=0.0010] [Best : Accuracy=91.36, Error=8.64]
+  Epoch: [185][000/391]   Time 1.785 (1.785)   Data 1.403 (1.403)   Loss 0.0156 (0.0156)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 12:35:39]
+  Epoch: [185][200/391]   Time 0.231 (0.272)   Data 0.000 (0.007)   Loss 0.0372 (0.0305)   Prec@1 99.219 (99.044)   Prec@5 100.000 (99.996)   [2019-08-30 12:36:31]
+  **Test** Prec@1 91.190 Prec@5 99.770 Error@1 8.810
+
+==>>[2019-08-30 12:37:33] [Epoch=186/300] [Need: 05:17:27] [learning_rate=0.0010] [Best : Accuracy=91.36, Error=8.64]
+  Epoch: [186][000/391]   Time 1.523 (1.523)   Data 1.166 (1.166)   Loss 0.0397 (0.0397)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 12:37:35]
+  Epoch: [186][200/391]   Time 0.287 (0.281)   Data 0.000 (0.006)   Loss 0.0425 (0.0309)   Prec@1 98.438 (99.059)   Prec@5 100.000 (99.992)   [2019-08-30 12:38:30]
+  **Test** Prec@1 91.410 Prec@5 99.720 Error@1 8.590
+
+==>>[2019-08-30 12:39:33] [Epoch=187/300] [Need: 05:14:12] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [187][000/391]   Time 1.699 (1.699)   Data 1.239 (1.239)   Loss 0.0385 (0.0385)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 12:39:34]
+  Epoch: [187][200/391]   Time 0.254 (0.276)   Data 0.000 (0.006)   Loss 0.0212 (0.0305)   Prec@1 99.219 (99.028)   Prec@5 100.000 (100.000)   [2019-08-30 12:40:28]
+  **Test** Prec@1 90.990 Prec@5 99.730 Error@1 9.010
+
+==>>[2019-08-30 12:41:33] [Epoch=188/300] [Need: 05:10:57] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [188][000/391]   Time 1.701 (1.701)   Data 1.280 (1.280)   Loss 0.0080 (0.0080)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 12:41:35]
+  Epoch: [188][200/391]   Time 0.268 (0.271)   Data 0.000 (0.007)   Loss 0.0471 (0.0295)   Prec@1 98.438 (99.063)   Prec@5 100.000 (100.000)   [2019-08-30 12:42:27]
+  **Test** Prec@1 90.950 Prec@5 99.680 Error@1 9.050
+
+==>>[2019-08-30 12:43:32] [Epoch=189/300] [Need: 05:07:42] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [189][000/391]   Time 1.448 (1.448)   Data 1.140 (1.140)   Loss 0.0160 (0.0160)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 12:43:34]
+  Epoch: [189][200/391]   Time 0.259 (0.283)   Data 0.000 (0.006)   Loss 0.0106 (0.0296)   Prec@1 100.000 (99.071)   Prec@5 100.000 (100.000)   [2019-08-30 12:44:29]
+  **Test** Prec@1 91.280 Prec@5 99.720 Error@1 8.720
+
+==>>[2019-08-30 12:45:32] [Epoch=190/300] [Need: 05:04:29] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [190][000/391]   Time 1.571 (1.571)   Data 1.284 (1.284)   Loss 0.0268 (0.0268)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 12:45:34]
+  Epoch: [190][200/391]   Time 0.244 (0.278)   Data 0.000 (0.007)   Loss 0.0190 (0.0299)   Prec@1 100.000 (99.005)   Prec@5 100.000 (100.000)   [2019-08-30 12:46:28]
+  **Test** Prec@1 91.280 Prec@5 99.660 Error@1 8.720
+
+==>>[2019-08-30 12:47:32] [Epoch=191/300] [Need: 05:01:17] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [191][000/391]   Time 1.599 (1.599)   Data 1.199 (1.199)   Loss 0.0645 (0.0645)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 12:47:34]
+  Epoch: [191][200/391]   Time 0.247 (0.270)   Data 0.000 (0.006)   Loss 0.0073 (0.0264)   Prec@1 100.000 (99.211)   Prec@5 100.000 (100.000)   [2019-08-30 12:48:26]
+  **Test** Prec@1 91.360 Prec@5 99.700 Error@1 8.640
+
+==>>[2019-08-30 12:49:31] [Epoch=192/300] [Need: 04:58:05] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [192][000/391]   Time 1.385 (1.385)   Data 1.063 (1.063)   Loss 0.0374 (0.0374)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 12:49:32]
+  Epoch: [192][200/391]   Time 0.297 (0.274)   Data 0.000 (0.006)   Loss 0.0544 (0.0278)   Prec@1 97.656 (99.122)   Prec@5 100.000 (100.000)   [2019-08-30 12:50:26]
+  **Test** Prec@1 91.190 Prec@5 99.710 Error@1 8.810
+
+==>>[2019-08-30 12:51:29] [Epoch=193/300] [Need: 04:54:53] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [193][000/391]   Time 1.652 (1.652)   Data 1.273 (1.273)   Loss 0.0164 (0.0164)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 12:51:31]
+  Epoch: [193][200/391]   Time 0.310 (0.280)   Data 0.000 (0.007)   Loss 0.0304 (0.0272)   Prec@1 99.219 (99.168)   Prec@5 100.000 (100.000)   [2019-08-30 12:52:26]
+  **Test** Prec@1 90.920 Prec@5 99.750 Error@1 9.080
+
+==>>[2019-08-30 12:53:28] [Epoch=194/300] [Need: 04:51:42] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [194][000/391]   Time 1.587 (1.587)   Data 1.195 (1.195)   Loss 0.0161 (0.0161)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 12:53:30]
+  Epoch: [194][200/391]   Time 0.203 (0.267)   Data 0.000 (0.006)   Loss 0.0744 (0.0271)   Prec@1 96.875 (99.110)   Prec@5 100.000 (100.000)   [2019-08-30 12:54:22]
+  **Test** Prec@1 91.290 Prec@5 99.750 Error@1 8.710
+
+==>>[2019-08-30 12:55:27] [Epoch=195/300] [Need: 04:48:32] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [195][000/391]   Time 1.685 (1.685)   Data 1.271 (1.271)   Loss 0.0208 (0.0208)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 12:55:28]
+  Epoch: [195][200/391]   Time 0.305 (0.273)   Data 0.000 (0.007)   Loss 0.0199 (0.0246)   Prec@1 99.219 (99.285)   Prec@5 100.000 (100.000)   [2019-08-30 12:56:22]
+  **Test** Prec@1 91.330 Prec@5 99.690 Error@1 8.670
+
+==>>[2019-08-30 12:57:23] [Epoch=196/300] [Need: 04:45:21] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [196][000/391]   Time 1.593 (1.593)   Data 1.172 (1.172)   Loss 0.0216 (0.0216)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 12:57:25]
+  Epoch: [196][200/391]   Time 0.269 (0.280)   Data 0.000 (0.006)   Loss 0.0236 (0.0287)   Prec@1 99.219 (99.075)   Prec@5 100.000 (100.000)   [2019-08-30 12:58:20]
+  **Test** Prec@1 91.330 Prec@5 99.710 Error@1 8.670
+
+==>>[2019-08-30 12:59:23] [Epoch=197/300] [Need: 04:42:13] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [197][000/391]   Time 1.582 (1.582)   Data 1.205 (1.205)   Loss 0.0686 (0.0686)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 12:59:25]
+  Epoch: [197][200/391]   Time 0.199 (0.275)   Data 0.000 (0.006)   Loss 0.0284 (0.0248)   Prec@1 98.438 (99.254)   Prec@5 100.000 (100.000)   [2019-08-30 13:00:18]
+  **Test** Prec@1 91.380 Prec@5 99.690 Error@1 8.620
+
+==>>[2019-08-30 13:01:23] [Epoch=198/300] [Need: 04:39:06] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [198][000/391]   Time 1.773 (1.773)   Data 1.378 (1.378)   Loss 0.0195 (0.0195)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 13:01:25]
+  Epoch: [198][200/391]   Time 0.282 (0.278)   Data 0.000 (0.007)   Loss 0.0288 (0.0236)   Prec@1 99.219 (99.281)   Prec@5 100.000 (100.000)   [2019-08-30 13:02:19]
+  **Test** Prec@1 91.250 Prec@5 99.740 Error@1 8.750
+
+==>>[2019-08-30 13:03:23] [Epoch=199/300] [Need: 04:35:59] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [199][000/391]   Time 1.605 (1.605)   Data 1.219 (1.219)   Loss 0.0338 (0.0338)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 13:03:25]
+  Epoch: [199][200/391]   Time 0.314 (0.277)   Data 0.000 (0.006)   Loss 0.0641 (0.0234)   Prec@1 96.094 (99.273)   Prec@5 100.000 (100.000)   [2019-08-30 13:04:19]
+  **Test** Prec@1 91.430 Prec@5 99.670 Error@1 8.570
+
+==>>[2019-08-30 13:05:21] [Epoch=200/300] [Need: 04:32:52] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [200][000/391]   Time 1.601 (1.601)   Data 1.243 (1.243)   Loss 0.0264 (0.0264)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 13:05:22]
+  Epoch: [200][200/391]   Time 0.322 (0.278)   Data 0.000 (0.006)   Loss 0.0076 (0.0248)   Prec@1 100.000 (99.250)   Prec@5 100.000 (100.000)   [2019-08-30 13:06:17]
+  **Test** Prec@1 91.310 Prec@5 99.580 Error@1 8.690
+
+==>>[2019-08-30 13:07:19] [Epoch=201/300] [Need: 04:29:46] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [201][000/391]   Time 1.650 (1.650)   Data 1.250 (1.250)   Loss 0.0106 (0.0106)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:07:21]
+  Epoch: [201][200/391]   Time 0.288 (0.272)   Data 0.000 (0.007)   Loss 0.0237 (0.0251)   Prec@1 99.219 (99.176)   Prec@5 100.000 (100.000)   [2019-08-30 13:08:14]
+  **Test** Prec@1 91.320 Prec@5 99.740 Error@1 8.680
+
+==>>[2019-08-30 13:09:20] [Epoch=202/300] [Need: 04:26:42] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [202][000/391]   Time 1.617 (1.617)   Data 1.206 (1.206)   Loss 0.0062 (0.0062)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:09:21]
+  Epoch: [202][200/391]   Time 0.254 (0.269)   Data 0.000 (0.006)   Loss 0.0032 (0.0241)   Prec@1 100.000 (99.285)   Prec@5 100.000 (99.996)   [2019-08-30 13:10:14]
+  **Test** Prec@1 91.200 Prec@5 99.660 Error@1 8.800
+
+==>>[2019-08-30 13:11:17] [Epoch=203/300] [Need: 04:23:37] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [203][000/391]   Time 1.669 (1.669)   Data 1.254 (1.254)   Loss 0.0117 (0.0117)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:11:19]
+  Epoch: [203][200/391]   Time 0.273 (0.280)   Data 0.000 (0.006)   Loss 0.0187 (0.0226)   Prec@1 99.219 (99.308)   Prec@5 100.000 (100.000)   [2019-08-30 13:12:14]
+  **Test** Prec@1 91.190 Prec@5 99.690 Error@1 8.810
+
+==>>[2019-08-30 13:13:17] [Epoch=204/300] [Need: 04:20:33] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [204][000/391]   Time 1.712 (1.712)   Data 1.249 (1.249)   Loss 0.0321 (0.0321)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 13:13:18]
+  Epoch: [204][200/391]   Time 0.202 (0.275)   Data 0.000 (0.006)   Loss 0.0390 (0.0221)   Prec@1 99.219 (99.343)   Prec@5 100.000 (100.000)   [2019-08-30 13:14:12]
+  **Test** Prec@1 91.360 Prec@5 99.630 Error@1 8.640
+
+==>>[2019-08-30 13:15:17] [Epoch=205/300] [Need: 04:17:31] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [205][000/391]   Time 1.624 (1.624)   Data 1.306 (1.306)   Loss 0.0498 (0.0498)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 13:15:19]
+  Epoch: [205][200/391]   Time 0.315 (0.272)   Data 0.000 (0.007)   Loss 0.0307 (0.0229)   Prec@1 98.438 (99.277)   Prec@5 100.000 (100.000)   [2019-08-30 13:16:12]
+  **Test** Prec@1 91.300 Prec@5 99.700 Error@1 8.700
+
+==>>[2019-08-30 13:17:16] [Epoch=206/300] [Need: 04:14:28] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [206][000/391]   Time 1.343 (1.343)   Data 1.014 (1.014)   Loss 0.0186 (0.0186)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:17:18]
+  Epoch: [206][200/391]   Time 0.232 (0.278)   Data 0.000 (0.005)   Loss 0.0101 (0.0227)   Prec@1 100.000 (99.363)   Prec@5 100.000 (100.000)   [2019-08-30 13:18:12]
+  **Test** Prec@1 91.280 Prec@5 99.720 Error@1 8.720
+
+==>>[2019-08-30 13:19:15] [Epoch=207/300] [Need: 04:11:26] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [207][000/391]   Time 1.788 (1.788)   Data 1.426 (1.426)   Loss 0.0231 (0.0231)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:19:17]
+  Epoch: [207][200/391]   Time 0.275 (0.277)   Data 0.000 (0.007)   Loss 0.0225 (0.0227)   Prec@1 99.219 (99.300)   Prec@5 100.000 (100.000)   [2019-08-30 13:20:11]
+  **Test** Prec@1 91.190 Prec@5 99.710 Error@1 8.810
+
+==>>[2019-08-30 13:21:16] [Epoch=208/300] [Need: 04:08:26] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [208][000/391]   Time 1.508 (1.508)   Data 1.148 (1.148)   Loss 0.0299 (0.0299)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 13:21:18]
+  Epoch: [208][200/391]   Time 0.290 (0.271)   Data 0.000 (0.006)   Loss 0.0039 (0.0241)   Prec@1 100.000 (99.192)   Prec@5 100.000 (100.000)   [2019-08-30 13:22:11]
+  **Test** Prec@1 91.280 Prec@5 99.670 Error@1 8.720
+
+==>>[2019-08-30 13:23:15] [Epoch=209/300] [Need: 04:05:25] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [209][000/391]   Time 1.765 (1.765)   Data 1.396 (1.396)   Loss 0.0113 (0.0113)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:23:17]
+  Epoch: [209][200/391]   Time 0.300 (0.270)   Data 0.000 (0.007)   Loss 0.0285 (0.0223)   Prec@1 98.438 (99.328)   Prec@5 100.000 (100.000)   [2019-08-30 13:24:09]
+  **Test** Prec@1 91.270 Prec@5 99.680 Error@1 8.730
+
+==>>[2019-08-30 13:25:11] [Epoch=210/300] [Need: 04:02:23] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [210][000/391]   Time 1.588 (1.588)   Data 1.182 (1.182)   Loss 0.0343 (0.0343)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 13:25:12]
+  Epoch: [210][200/391]   Time 0.290 (0.275)   Data 0.000 (0.006)   Loss 0.0475 (0.0236)   Prec@1 97.656 (99.211)   Prec@5 100.000 (100.000)   [2019-08-30 13:26:06]
+  **Test** Prec@1 91.320 Prec@5 99.740 Error@1 8.680
+
+==>>[2019-08-30 13:27:09] [Epoch=211/300] [Need: 03:59:23] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [211][000/391]   Time 1.659 (1.659)   Data 1.249 (1.249)   Loss 0.0279 (0.0279)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 13:27:10]
+  Epoch: [211][200/391]   Time 0.241 (0.270)   Data 0.000 (0.006)   Loss 0.0099 (0.0226)   Prec@1 100.000 (99.277)   Prec@5 100.000 (99.996)   [2019-08-30 13:28:03]
+  **Test** Prec@1 91.380 Prec@5 99.610 Error@1 8.620
+
+==>>[2019-08-30 13:29:09] [Epoch=212/300] [Need: 03:56:25] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [212][000/391]   Time 1.660 (1.660)   Data 1.321 (1.321)   Loss 0.0132 (0.0132)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:29:11]
+  Epoch: [212][200/391]   Time 0.292 (0.269)   Data 0.000 (0.007)   Loss 0.0463 (0.0214)   Prec@1 98.438 (99.335)   Prec@5 100.000 (99.992)   [2019-08-30 13:30:03]
+  **Test** Prec@1 91.150 Prec@5 99.720 Error@1 8.850
+
+==>>[2019-08-30 13:31:04] [Epoch=213/300] [Need: 03:53:25] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [213][000/391]   Time 1.516 (1.516)   Data 1.094 (1.094)   Loss 0.0217 (0.0217)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 13:31:05]
+  Epoch: [213][200/391]   Time 0.254 (0.278)   Data 0.000 (0.006)   Loss 0.0184 (0.0211)   Prec@1 99.219 (99.363)   Prec@5 100.000 (100.000)   [2019-08-30 13:32:00]
+  **Test** Prec@1 91.290 Prec@5 99.730 Error@1 8.710
+
+==>>[2019-08-30 13:33:03] [Epoch=214/300] [Need: 03:50:27] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [214][000/391]   Time 1.636 (1.636)   Data 1.240 (1.240)   Loss 0.0869 (0.0869)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2019-08-30 13:33:05]
+  Epoch: [214][200/391]   Time 0.253 (0.277)   Data 0.000 (0.006)   Loss 0.0116 (0.0227)   Prec@1 100.000 (99.269)   Prec@5 100.000 (100.000)   [2019-08-30 13:33:59]
+  **Test** Prec@1 91.160 Prec@5 99.650 Error@1 8.840
+
+==>>[2019-08-30 13:35:04] [Epoch=215/300] [Need: 03:47:30] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [215][000/391]   Time 1.718 (1.718)   Data 1.299 (1.299)   Loss 0.0099 (0.0099)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:35:05]
+  Epoch: [215][200/391]   Time 0.282 (0.270)   Data 0.000 (0.007)   Loss 0.0257 (0.0211)   Prec@1 99.219 (99.355)   Prec@5 100.000 (100.000)   [2019-08-30 13:35:58]
+  **Test** Prec@1 91.010 Prec@5 99.660 Error@1 8.990
+
+==>>[2019-08-30 13:37:02] [Epoch=216/300] [Need: 03:44:33] [learning_rate=0.0010] [Best : Accuracy=91.43, Error=8.57]
+  Epoch: [216][000/391]   Time 1.701 (1.701)   Data 1.288 (1.288)   Loss 0.0180 (0.0180)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:37:03]
+  Epoch: [216][200/391]   Time 0.281 (0.277)   Data 0.000 (0.007)   Loss 0.0221 (0.0227)   Prec@1 99.219 (99.401)   Prec@5 100.000 (99.996)   [2019-08-30 13:37:58]
+  **Test** Prec@1 91.710 Prec@5 99.710 Error@1 8.290
+
+==>>[2019-08-30 13:39:00] [Epoch=217/300] [Need: 03:41:37] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [217][000/391]   Time 1.771 (1.771)   Data 1.258 (1.258)   Loss 0.0265 (0.0265)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 13:39:02]
+  Epoch: [217][200/391]   Time 0.290 (0.283)   Data 0.000 (0.006)   Loss 0.0143 (0.0207)   Prec@1 100.000 (99.398)   Prec@5 100.000 (100.000)   [2019-08-30 13:39:57]
+  **Test** Prec@1 91.410 Prec@5 99.680 Error@1 8.590
+
+==>>[2019-08-30 13:41:01] [Epoch=218/300] [Need: 03:38:42] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [218][000/391]   Time 1.576 (1.576)   Data 1.169 (1.169)   Loss 0.0169 (0.0169)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 13:41:03]
+  Epoch: [218][200/391]   Time 0.276 (0.273)   Data 0.000 (0.006)   Loss 0.0288 (0.0209)   Prec@1 98.438 (99.351)   Prec@5 100.000 (100.000)   [2019-08-30 13:41:56]
+  **Test** Prec@1 91.530 Prec@5 99.660 Error@1 8.470
+
+==>>[2019-08-30 13:43:02] [Epoch=219/300] [Need: 03:35:47] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [219][000/391]   Time 1.570 (1.570)   Data 1.229 (1.229)   Loss 0.0073 (0.0073)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:43:04]
+  Epoch: [219][200/391]   Time 0.253 (0.267)   Data 0.000 (0.006)   Loss 0.0410 (0.0200)   Prec@1 98.438 (99.363)   Prec@5 100.000 (100.000)   [2019-08-30 13:43:56]
+  **Test** Prec@1 91.370 Prec@5 99.660 Error@1 8.630
+
+==>>[2019-08-30 13:45:00] [Epoch=220/300] [Need: 03:32:52] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [220][000/391]   Time 1.647 (1.647)   Data 1.171 (1.171)   Loss 0.0088 (0.0088)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:45:01]
+  Epoch: [220][200/391]   Time 0.263 (0.284)   Data 0.000 (0.006)   Loss 0.0197 (0.0198)   Prec@1 100.000 (99.363)   Prec@5 100.000 (100.000)   [2019-08-30 13:45:57]
+  **Test** Prec@1 91.300 Prec@5 99.670 Error@1 8.700
+
+==>>[2019-08-30 13:47:00] [Epoch=221/300] [Need: 03:29:58] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [221][000/391]   Time 1.654 (1.654)   Data 1.225 (1.225)   Loss 0.0144 (0.0144)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:47:02]
+  Epoch: [221][200/391]   Time 0.253 (0.272)   Data 0.000 (0.006)   Loss 0.0550 (0.0206)   Prec@1 96.094 (99.331)   Prec@5 100.000 (100.000)   [2019-08-30 13:47:55]
+  **Test** Prec@1 91.250 Prec@5 99.660 Error@1 8.750
+
+==>>[2019-08-30 13:48:59] [Epoch=222/300] [Need: 03:27:05] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [222][000/391]   Time 1.546 (1.546)   Data 1.155 (1.155)   Loss 0.0069 (0.0069)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:49:00]
+  Epoch: [222][200/391]   Time 0.264 (0.271)   Data 0.000 (0.006)   Loss 0.0108 (0.0220)   Prec@1 100.000 (99.304)   Prec@5 100.000 (100.000)   [2019-08-30 13:49:53]
+  **Test** Prec@1 91.190 Prec@5 99.580 Error@1 8.810
+
+==>>[2019-08-30 13:50:58] [Epoch=223/300] [Need: 03:24:11] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [223][000/391]   Time 1.361 (1.361)   Data 1.051 (1.051)   Loss 0.0030 (0.0030)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:50:59]
+  Epoch: [223][200/391]   Time 0.314 (0.278)   Data 0.000 (0.005)   Loss 0.0221 (0.0200)   Prec@1 99.219 (99.398)   Prec@5 100.000 (100.000)   [2019-08-30 13:51:54]
+  **Test** Prec@1 91.380 Prec@5 99.700 Error@1 8.620
+
+==>>[2019-08-30 13:52:56] [Epoch=224/300] [Need: 03:21:18] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [224][000/391]   Time 1.589 (1.589)   Data 1.178 (1.178)   Loss 0.0113 (0.0113)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 13:52:57]
+  Epoch: [224][200/391]   Time 0.229 (0.278)   Data 0.000 (0.006)   Loss 0.0522 (0.0207)   Prec@1 98.438 (99.343)   Prec@5 100.000 (100.000)   [2019-08-30 13:53:52]
+  **Test** Prec@1 91.290 Prec@5 99.730 Error@1 8.710
+
+==>>[2019-08-30 13:54:54] [Epoch=225/300] [Need: 03:18:26] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [225][000/391]   Time 1.560 (1.560)   Data 1.208 (1.208)   Loss 0.0186 (0.0186)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 13:54:56]
+  Epoch: [225][200/391]   Time 0.251 (0.268)   Data 0.000 (0.006)   Loss 0.0085 (0.0186)   Prec@1 100.000 (99.429)   Prec@5 100.000 (100.000)   [2019-08-30 13:55:48]
+  **Test** Prec@1 91.270 Prec@5 99.750 Error@1 8.730
+
+==>>[2019-08-30 13:56:53] [Epoch=226/300] [Need: 03:15:34] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [226][000/391]   Time 1.553 (1.553)   Data 1.241 (1.241)   Loss 0.0176 (0.0176)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 13:56:54]
+  Epoch: [226][200/391]   Time 0.312 (0.272)   Data 0.000 (0.006)   Loss 0.0229 (0.0216)   Prec@1 99.219 (99.320)   Prec@5 100.000 (100.000)   [2019-08-30 13:57:48]
+  **Test** Prec@1 91.610 Prec@5 99.740 Error@1 8.390
+
+==>>[2019-08-30 13:58:50] [Epoch=227/300] [Need: 03:12:42] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [227][000/391]   Time 1.495 (1.495)   Data 1.124 (1.124)   Loss 0.0373 (0.0373)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 13:58:52]
+  Epoch: [227][200/391]   Time 0.252 (0.279)   Data 0.000 (0.006)   Loss 0.0116 (0.0205)   Prec@1 99.219 (99.363)   Prec@5 100.000 (100.000)   [2019-08-30 13:59:46]
+  **Test** Prec@1 91.360 Prec@5 99.690 Error@1 8.640
+
+==>>[2019-08-30 14:00:50] [Epoch=228/300] [Need: 03:09:52] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [228][000/391]   Time 1.841 (1.841)   Data 1.468 (1.468)   Loss 0.0051 (0.0051)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:00:52]
+  Epoch: [228][200/391]   Time 0.276 (0.276)   Data 0.000 (0.008)   Loss 0.0261 (0.0213)   Prec@1 99.219 (99.347)   Prec@5 100.000 (100.000)   [2019-08-30 14:01:46]
+  **Test** Prec@1 91.390 Prec@5 99.680 Error@1 8.610
+
+==>>[2019-08-30 14:02:50] [Epoch=229/300] [Need: 03:07:02] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [229][000/391]   Time 1.771 (1.771)   Data 1.333 (1.333)   Loss 0.0049 (0.0049)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:02:52]
+  Epoch: [229][200/391]   Time 0.227 (0.272)   Data 0.000 (0.007)   Loss 0.0224 (0.0184)   Prec@1 99.219 (99.452)   Prec@5 100.000 (100.000)   [2019-08-30 14:03:45]
+  **Test** Prec@1 90.990 Prec@5 99.690 Error@1 9.010
+
+==>>[2019-08-30 14:04:51] [Epoch=230/300] [Need: 03:04:12] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [230][000/391]   Time 1.426 (1.426)   Data 1.053 (1.053)   Loss 0.0191 (0.0191)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 14:04:52]
+  Epoch: [230][200/391]   Time 0.254 (0.280)   Data 0.000 (0.005)   Loss 0.0334 (0.0196)   Prec@1 98.438 (99.363)   Prec@5 100.000 (99.996)   [2019-08-30 14:05:47]
+  **Test** Prec@1 91.450 Prec@5 99.640 Error@1 8.550
+
+==>>[2019-08-30 14:06:50] [Epoch=231/300] [Need: 03:01:23] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [231][000/391]   Time 1.680 (1.680)   Data 1.217 (1.217)   Loss 0.0133 (0.0133)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:06:52]
+  Epoch: [231][200/391]   Time 0.213 (0.284)   Data 0.000 (0.006)   Loss 0.0131 (0.0182)   Prec@1 100.000 (99.464)   Prec@5 100.000 (100.000)   [2019-08-30 14:07:47]
+  **Test** Prec@1 91.210 Prec@5 99.660 Error@1 8.790
+
+==>>[2019-08-30 14:08:52] [Epoch=232/300] [Need: 02:58:35] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [232][000/391]   Time 1.579 (1.579)   Data 1.157 (1.157)   Loss 0.0092 (0.0092)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:08:54]
+  Epoch: [232][200/391]   Time 0.248 (0.272)   Data 0.000 (0.006)   Loss 0.0053 (0.0183)   Prec@1 100.000 (99.409)   Prec@5 100.000 (100.000)   [2019-08-30 14:09:47]
+  **Test** Prec@1 91.300 Prec@5 99.670 Error@1 8.700
+
+==>>[2019-08-30 14:10:53] [Epoch=233/300] [Need: 02:55:46] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [233][000/391]   Time 1.414 (1.414)   Data 1.088 (1.088)   Loss 0.0148 (0.0148)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:10:54]
+  Epoch: [233][200/391]   Time 0.252 (0.272)   Data 0.000 (0.006)   Loss 0.0258 (0.0191)   Prec@1 99.219 (99.417)   Prec@5 100.000 (100.000)   [2019-08-30 14:11:47]
+  **Test** Prec@1 91.370 Prec@5 99.720 Error@1 8.630
+
+==>>[2019-08-30 14:12:48] [Epoch=234/300] [Need: 02:52:57] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [234][000/391]   Time 1.448 (1.448)   Data 1.071 (1.071)   Loss 0.0113 (0.0113)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:12:50]
+  Epoch: [234][200/391]   Time 0.211 (0.224)   Data 0.000 (0.006)   Loss 0.0250 (0.0213)   Prec@1 98.438 (99.331)   Prec@5 100.000 (100.000)   [2019-08-30 14:13:33]
+  **Test** Prec@1 91.190 Prec@5 99.590 Error@1 8.810
+
+==>>[2019-08-30 14:14:24] [Epoch=235/300] [Need: 02:50:03] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [235][000/391]   Time 1.352 (1.352)   Data 1.006 (1.006)   Loss 0.0252 (0.0252)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 14:14:26]
+  Epoch: [235][200/391]   Time 0.203 (0.222)   Data 0.000 (0.005)   Loss 0.0271 (0.0192)   Prec@1 98.438 (99.370)   Prec@5 100.000 (100.000)   [2019-08-30 14:15:09]
+  **Test** Prec@1 90.870 Prec@5 99.730 Error@1 9.130
+
+==>>[2019-08-30 14:15:59] [Epoch=236/300] [Need: 02:47:09] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [236][000/391]   Time 1.443 (1.443)   Data 1.110 (1.110)   Loss 0.0091 (0.0091)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:16:01]
+  Epoch: [236][200/391]   Time 0.185 (0.222)   Data 0.000 (0.006)   Loss 0.0249 (0.0201)   Prec@1 99.219 (99.366)   Prec@5 100.000 (100.000)   [2019-08-30 14:16:44]
+  **Test** Prec@1 91.000 Prec@5 99.700 Error@1 9.000
+
+==>>[2019-08-30 14:17:34] [Epoch=237/300] [Need: 02:44:16] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [237][000/391]   Time 1.407 (1.407)   Data 1.083 (1.083)   Loss 0.0039 (0.0039)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:17:35]
+  Epoch: [237][200/391]   Time 0.213 (0.224)   Data 0.000 (0.006)   Loss 0.0243 (0.0209)   Prec@1 99.219 (99.359)   Prec@5 100.000 (100.000)   [2019-08-30 14:18:19]
+  **Test** Prec@1 91.290 Prec@5 99.710 Error@1 8.710
+
+==>>[2019-08-30 14:19:09] [Epoch=238/300] [Need: 02:41:23] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [238][000/391]   Time 1.407 (1.407)   Data 1.070 (1.070)   Loss 0.0062 (0.0062)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:19:10]
+  Epoch: [238][200/391]   Time 0.253 (0.223)   Data 0.000 (0.005)   Loss 0.0122 (0.0194)   Prec@1 100.000 (99.366)   Prec@5 100.000 (100.000)   [2019-08-30 14:19:54]
+  **Test** Prec@1 91.190 Prec@5 99.650 Error@1 8.810
+
+==>>[2019-08-30 14:20:44] [Epoch=239/300] [Need: 02:38:32] [learning_rate=0.0010] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [239][000/391]   Time 1.349 (1.349)   Data 1.038 (1.038)   Loss 0.0273 (0.0273)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 14:20:46]
+  Epoch: [239][200/391]   Time 0.221 (0.223)   Data 0.000 (0.005)   Loss 0.0093 (0.0191)   Prec@1 100.000 (99.436)   Prec@5 100.000 (100.000)   [2019-08-30 14:21:29]
+  **Test** Prec@1 91.070 Prec@5 99.720 Error@1 8.930
+
+==>>[2019-08-30 14:22:19] [Epoch=240/300] [Need: 02:35:41] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [240][000/391]   Time 1.344 (1.344)   Data 1.043 (1.043)   Loss 0.0222 (0.0222)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 14:22:21]
+  Epoch: [240][200/391]   Time 0.203 (0.222)   Data 0.000 (0.005)   Loss 0.0063 (0.0179)   Prec@1 100.000 (99.475)   Prec@5 100.000 (100.000)   [2019-08-30 14:23:04]
+  **Test** Prec@1 91.400 Prec@5 99.650 Error@1 8.600
+
+==>>[2019-08-30 14:23:55] [Epoch=241/300] [Need: 02:32:50] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [241][000/391]   Time 1.386 (1.386)   Data 1.058 (1.058)   Loss 0.0280 (0.0280)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 14:23:56]
+  Epoch: [241][200/391]   Time 0.195 (0.223)   Data 0.000 (0.005)   Loss 0.0185 (0.0182)   Prec@1 99.219 (99.436)   Prec@5 100.000 (100.000)   [2019-08-30 14:24:39]
+  **Test** Prec@1 91.310 Prec@5 99.710 Error@1 8.690
+
+==>>[2019-08-30 14:25:30] [Epoch=242/300] [Need: 02:30:00] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [242][000/391]   Time 1.310 (1.310)   Data 0.989 (0.989)   Loss 0.0259 (0.0259)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 14:25:31]
+  Epoch: [242][200/391]   Time 0.206 (0.224)   Data 0.000 (0.005)   Loss 0.0175 (0.0176)   Prec@1 99.219 (99.425)   Prec@5 100.000 (100.000)   [2019-08-30 14:26:15]
+  **Test** Prec@1 91.190 Prec@5 99.630 Error@1 8.810
+
+==>>[2019-08-30 14:27:05] [Epoch=243/300] [Need: 02:27:11] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [243][000/391]   Time 1.357 (1.357)   Data 1.033 (1.033)   Loss 0.0078 (0.0078)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:27:06]
+  Epoch: [243][200/391]   Time 0.229 (0.223)   Data 0.000 (0.005)   Loss 0.0299 (0.0176)   Prec@1 98.438 (99.471)   Prec@5 100.000 (100.000)   [2019-08-30 14:27:50]
+  **Test** Prec@1 91.280 Prec@5 99.670 Error@1 8.720
+
+==>>[2019-08-30 14:28:40] [Epoch=244/300] [Need: 02:24:22] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [244][000/391]   Time 1.381 (1.381)   Data 1.003 (1.003)   Loss 0.0053 (0.0053)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:28:42]
+  Epoch: [244][200/391]   Time 0.195 (0.223)   Data 0.000 (0.005)   Loss 0.0299 (0.0155)   Prec@1 99.219 (99.580)   Prec@5 100.000 (100.000)   [2019-08-30 14:29:25]
+  **Test** Prec@1 91.330 Prec@5 99.680 Error@1 8.670
+
+==>>[2019-08-30 14:30:16] [Epoch=245/300] [Need: 02:21:34] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [245][000/391]   Time 1.381 (1.381)   Data 1.071 (1.071)   Loss 0.0117 (0.0117)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:30:18]
+  Epoch: [245][200/391]   Time 0.222 (0.225)   Data 0.000 (0.006)   Loss 0.0090 (0.0158)   Prec@1 100.000 (99.557)   Prec@5 100.000 (100.000)   [2019-08-30 14:31:01]
+  **Test** Prec@1 91.450 Prec@5 99.640 Error@1 8.550
+
+==>>[2019-08-30 14:31:52] [Epoch=246/300] [Need: 02:18:47] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [246][000/391]   Time 1.388 (1.388)   Data 1.030 (1.030)   Loss 0.0346 (0.0346)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 14:31:53]
+  Epoch: [246][200/391]   Time 0.249 (0.222)   Data 0.000 (0.005)   Loss 0.0045 (0.0153)   Prec@1 100.000 (99.607)   Prec@5 100.000 (100.000)   [2019-08-30 14:32:36]
+  **Test** Prec@1 91.330 Prec@5 99.670 Error@1 8.670
+
+==>>[2019-08-30 14:33:27] [Epoch=247/300] [Need: 02:16:00] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [247][000/391]   Time 1.346 (1.346)   Data 0.998 (0.998)   Loss 0.0210 (0.0210)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 14:33:28]
+  Epoch: [247][200/391]   Time 0.182 (0.221)   Data 0.000 (0.005)   Loss 0.0165 (0.0154)   Prec@1 99.219 (99.565)   Prec@5 100.000 (100.000)   [2019-08-30 14:34:11]
+  **Test** Prec@1 91.270 Prec@5 99.690 Error@1 8.730
+
+==>>[2019-08-30 14:35:00] [Epoch=248/300] [Need: 02:13:14] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [248][000/391]   Time 1.376 (1.376)   Data 1.078 (1.078)   Loss 0.0070 (0.0070)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:35:02]
+  Epoch: [248][200/391]   Time 0.225 (0.221)   Data 0.000 (0.006)   Loss 0.0349 (0.0156)   Prec@1 99.219 (99.545)   Prec@5 100.000 (100.000)   [2019-08-30 14:35:45]
+  **Test** Prec@1 91.470 Prec@5 99.720 Error@1 8.530
+
+==>>[2019-08-30 14:36:35] [Epoch=249/300] [Need: 02:10:28] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [249][000/391]   Time 1.359 (1.359)   Data 1.019 (1.019)   Loss 0.0126 (0.0126)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:36:37]
+  Epoch: [249][200/391]   Time 0.227 (0.223)   Data 0.000 (0.005)   Loss 0.0073 (0.0158)   Prec@1 100.000 (99.553)   Prec@5 100.000 (100.000)   [2019-08-30 14:37:20]
+  **Test** Prec@1 91.450 Prec@5 99.670 Error@1 8.550
+
+==>>[2019-08-30 14:38:10] [Epoch=250/300] [Need: 02:07:43] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [250][000/391]   Time 1.435 (1.435)   Data 1.121 (1.121)   Loss 0.0059 (0.0059)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:38:12]
+  Epoch: [250][200/391]   Time 0.266 (0.223)   Data 0.000 (0.006)   Loss 0.0093 (0.0168)   Prec@1 100.000 (99.495)   Prec@5 100.000 (100.000)   [2019-08-30 14:38:55]
+  **Test** Prec@1 91.480 Prec@5 99.690 Error@1 8.520
+
+==>>[2019-08-30 14:39:45] [Epoch=251/300] [Need: 02:04:58] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [251][000/391]   Time 1.281 (1.281)   Data 0.975 (0.975)   Loss 0.0242 (0.0242)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 14:39:46]
+  Epoch: [251][200/391]   Time 0.202 (0.223)   Data 0.000 (0.005)   Loss 0.0130 (0.0172)   Prec@1 100.000 (99.553)   Prec@5 100.000 (100.000)   [2019-08-30 14:40:30]
+  **Test** Prec@1 91.320 Prec@5 99.680 Error@1 8.680
+
+==>>[2019-08-30 14:41:21] [Epoch=252/300] [Need: 02:02:14] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [252][000/391]   Time 1.338 (1.338)   Data 1.038 (1.038)   Loss 0.0202 (0.0202)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 14:41:22]
+  Epoch: [252][200/391]   Time 0.178 (0.222)   Data 0.000 (0.005)   Loss 0.0138 (0.0167)   Prec@1 99.219 (99.506)   Prec@5 100.000 (100.000)   [2019-08-30 14:42:05]
+  **Test** Prec@1 91.400 Prec@5 99.730 Error@1 8.600
+
+==>>[2019-08-30 14:42:56] [Epoch=253/300] [Need: 01:59:30] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [253][000/391]   Time 1.342 (1.342)   Data 1.042 (1.042)   Loss 0.0018 (0.0018)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:42:57]
+  Epoch: [253][200/391]   Time 0.201 (0.220)   Data 0.000 (0.005)   Loss 0.0072 (0.0166)   Prec@1 100.000 (99.464)   Prec@5 100.000 (100.000)   [2019-08-30 14:43:40]
+  **Test** Prec@1 91.530 Prec@5 99.760 Error@1 8.470
+
+==>>[2019-08-30 14:44:30] [Epoch=254/300] [Need: 01:56:47] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [254][000/391]   Time 1.361 (1.361)   Data 1.016 (1.016)   Loss 0.0189 (0.0189)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 14:44:31]
+  Epoch: [254][200/391]   Time 0.214 (0.224)   Data 0.000 (0.005)   Loss 0.0458 (0.0169)   Prec@1 96.875 (99.491)   Prec@5 100.000 (100.000)   [2019-08-30 14:45:15]
+  **Test** Prec@1 91.340 Prec@5 99.740 Error@1 8.660
+
+==>>[2019-08-30 14:46:05] [Epoch=255/300] [Need: 01:54:05] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [255][000/391]   Time 1.292 (1.292)   Data 0.989 (0.989)   Loss 0.0181 (0.0181)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:46:07]
+  Epoch: [255][200/391]   Time 0.254 (0.222)   Data 0.000 (0.005)   Loss 0.0162 (0.0157)   Prec@1 100.000 (99.549)   Prec@5 100.000 (100.000)   [2019-08-30 14:46:50]
+  **Test** Prec@1 91.240 Prec@5 99.710 Error@1 8.760
+
+==>>[2019-08-30 14:47:40] [Epoch=256/300] [Need: 01:51:23] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [256][000/391]   Time 1.392 (1.392)   Data 1.078 (1.078)   Loss 0.0168 (0.0168)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:47:41]
+  Epoch: [256][200/391]   Time 0.246 (0.223)   Data 0.000 (0.006)   Loss 0.0189 (0.0159)   Prec@1 99.219 (99.518)   Prec@5 100.000 (100.000)   [2019-08-30 14:48:25]
+  **Test** Prec@1 91.500 Prec@5 99.690 Error@1 8.500
+
+==>>[2019-08-30 14:49:15] [Epoch=257/300] [Need: 01:48:41] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [257][000/391]   Time 1.443 (1.443)   Data 1.096 (1.096)   Loss 0.0084 (0.0084)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:49:17]
+  Epoch: [257][200/391]   Time 0.201 (0.222)   Data 0.000 (0.006)   Loss 0.0037 (0.0144)   Prec@1 100.000 (99.631)   Prec@5 100.000 (100.000)   [2019-08-30 14:50:00]
+  **Test** Prec@1 91.340 Prec@5 99.670 Error@1 8.660
+
+==>>[2019-08-30 14:50:51] [Epoch=258/300] [Need: 01:46:01] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [258][000/391]   Time 1.368 (1.368)   Data 1.046 (1.046)   Loss 0.0038 (0.0038)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:50:52]
+  Epoch: [258][200/391]   Time 0.212 (0.221)   Data 0.000 (0.005)   Loss 0.0068 (0.0149)   Prec@1 100.000 (99.596)   Prec@5 100.000 (100.000)   [2019-08-30 14:51:35]
+  **Test** Prec@1 91.460 Prec@5 99.670 Error@1 8.540
+
+==>>[2019-08-30 14:52:25] [Epoch=259/300] [Need: 01:43:20] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [259][000/391]   Time 1.365 (1.365)   Data 1.045 (1.045)   Loss 0.0359 (0.0359)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2019-08-30 14:52:27]
+  Epoch: [259][200/391]   Time 0.212 (0.221)   Data 0.000 (0.005)   Loss 0.0135 (0.0152)   Prec@1 100.000 (99.580)   Prec@5 100.000 (99.996)   [2019-08-30 14:53:10]
+  **Test** Prec@1 91.550 Prec@5 99.700 Error@1 8.450
+
+==>>[2019-08-30 14:54:00] [Epoch=260/300] [Need: 01:40:40] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [260][000/391]   Time 1.386 (1.386)   Data 1.078 (1.078)   Loss 0.0074 (0.0074)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:54:02]
+  Epoch: [260][200/391]   Time 0.204 (0.216)   Data 0.000 (0.006)   Loss 0.0198 (0.0147)   Prec@1 99.219 (99.627)   Prec@5 100.000 (100.000)   [2019-08-30 14:54:44]
+  **Test** Prec@1 91.260 Prec@5 99.710 Error@1 8.740
+
+==>>[2019-08-30 14:55:34] [Epoch=261/300] [Need: 01:38:01] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [261][000/391]   Time 1.338 (1.338)   Data 1.041 (1.041)   Loss 0.0178 (0.0178)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:55:36]
+  Epoch: [261][200/391]   Time 0.190 (0.225)   Data 0.000 (0.005)   Loss 0.0165 (0.0168)   Prec@1 99.219 (99.479)   Prec@5 100.000 (100.000)   [2019-08-30 14:56:19]
+  **Test** Prec@1 91.410 Prec@5 99.710 Error@1 8.590
+
+==>>[2019-08-30 14:57:09] [Epoch=262/300] [Need: 01:35:22] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [262][000/391]   Time 1.455 (1.455)   Data 1.109 (1.109)   Loss 0.0089 (0.0089)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:57:11]
+  Epoch: [262][200/391]   Time 0.201 (0.223)   Data 0.000 (0.006)   Loss 0.0068 (0.0157)   Prec@1 100.000 (99.549)   Prec@5 100.000 (100.000)   [2019-08-30 14:57:54]
+  **Test** Prec@1 91.310 Prec@5 99.700 Error@1 8.690
+
+==>>[2019-08-30 14:58:44] [Epoch=263/300] [Need: 01:32:43] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [263][000/391]   Time 1.384 (1.384)   Data 1.037 (1.037)   Loss 0.0021 (0.0021)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 14:58:45]
+  Epoch: [263][200/391]   Time 0.283 (0.223)   Data 0.000 (0.005)   Loss 0.0060 (0.0157)   Prec@1 100.000 (99.584)   Prec@5 100.000 (100.000)   [2019-08-30 14:59:29]
+  **Test** Prec@1 91.450 Prec@5 99.670 Error@1 8.550
+
+==>>[2019-08-30 15:00:19] [Epoch=264/300] [Need: 01:30:05] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [264][000/391]   Time 1.375 (1.375)   Data 1.048 (1.048)   Loss 0.0043 (0.0043)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:00:20]
+  Epoch: [264][200/391]   Time 0.192 (0.223)   Data 0.000 (0.005)   Loss 0.0413 (0.0171)   Prec@1 98.438 (99.444)   Prec@5 100.000 (100.000)   [2019-08-30 15:01:04]
+  **Test** Prec@1 91.300 Prec@5 99.730 Error@1 8.700
+
+==>>[2019-08-30 15:01:54] [Epoch=265/300] [Need: 01:27:28] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [265][000/391]   Time 1.284 (1.284)   Data 0.993 (0.993)   Loss 0.0471 (0.0471)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:01:55]
+  Epoch: [265][200/391]   Time 0.235 (0.222)   Data 0.000 (0.005)   Loss 0.0026 (0.0155)   Prec@1 100.000 (99.565)   Prec@5 100.000 (100.000)   [2019-08-30 15:02:39]
+  **Test** Prec@1 91.410 Prec@5 99.690 Error@1 8.590
+
+==>>[2019-08-30 15:03:29] [Epoch=266/300] [Need: 01:24:51] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [266][000/391]   Time 1.395 (1.395)   Data 1.067 (1.067)   Loss 0.0133 (0.0133)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:03:30]
+  Epoch: [266][200/391]   Time 0.217 (0.222)   Data 0.000 (0.005)   Loss 0.0040 (0.0153)   Prec@1 100.000 (99.592)   Prec@5 100.000 (100.000)   [2019-08-30 15:04:14]
+  **Test** Prec@1 91.590 Prec@5 99.670 Error@1 8.410
+
+==>>[2019-08-30 15:05:04] [Epoch=267/300] [Need: 01:22:15] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [267][000/391]   Time 1.364 (1.364)   Data 1.045 (1.045)   Loss 0.0060 (0.0060)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:05:06]
+  Epoch: [267][200/391]   Time 0.209 (0.222)   Data 0.000 (0.005)   Loss 0.0177 (0.0158)   Prec@1 99.219 (99.557)   Prec@5 100.000 (100.000)   [2019-08-30 15:05:49]
+  **Test** Prec@1 91.290 Prec@5 99.690 Error@1 8.710
+
+==>>[2019-08-30 15:06:39] [Epoch=268/300] [Need: 01:19:39] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [268][000/391]   Time 1.368 (1.368)   Data 0.978 (0.978)   Loss 0.0039 (0.0039)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:06:40]
+  Epoch: [268][200/391]   Time 0.221 (0.224)   Data 0.000 (0.005)   Loss 0.0064 (0.0146)   Prec@1 100.000 (99.588)   Prec@5 100.000 (100.000)   [2019-08-30 15:07:24]
+  **Test** Prec@1 91.480 Prec@5 99.690 Error@1 8.520
+
+==>>[2019-08-30 15:08:15] [Epoch=269/300] [Need: 01:17:03] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [269][000/391]   Time 1.382 (1.382)   Data 1.007 (1.007)   Loss 0.0214 (0.0214)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 15:08:16]
+  Epoch: [269][200/391]   Time 0.251 (0.225)   Data 0.000 (0.005)   Loss 0.0462 (0.0157)   Prec@1 97.656 (99.522)   Prec@5 100.000 (100.000)   [2019-08-30 15:09:00]
+  **Test** Prec@1 91.330 Prec@5 99.750 Error@1 8.670
+
+==>>[2019-08-30 15:09:50] [Epoch=270/300] [Need: 01:14:28] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [270][000/391]   Time 1.419 (1.419)   Data 1.099 (1.099)   Loss 0.0291 (0.0291)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:09:51]
+  Epoch: [270][200/391]   Time 0.252 (0.222)   Data 0.000 (0.006)   Loss 0.0080 (0.0138)   Prec@1 100.000 (99.631)   Prec@5 100.000 (100.000)   [2019-08-30 15:10:35]
+  **Test** Prec@1 91.280 Prec@5 99.710 Error@1 8.720
+
+==>>[2019-08-30 15:11:25] [Epoch=271/300] [Need: 01:11:53] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [271][000/391]   Time 1.340 (1.340)   Data 0.996 (0.996)   Loss 0.0057 (0.0057)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:11:26]
+  Epoch: [271][200/391]   Time 0.241 (0.227)   Data 0.000 (0.005)   Loss 0.0284 (0.0154)   Prec@1 98.438 (99.557)   Prec@5 100.000 (100.000)   [2019-08-30 15:12:11]
+  **Test** Prec@1 91.540 Prec@5 99.700 Error@1 8.460
+
+==>>[2019-08-30 15:13:01] [Epoch=272/300] [Need: 01:09:19] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [272][000/391]   Time 1.321 (1.321)   Data 1.018 (1.018)   Loss 0.0058 (0.0058)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:13:02]
+  Epoch: [272][200/391]   Time 0.194 (0.225)   Data 0.000 (0.005)   Loss 0.0089 (0.0134)   Prec@1 100.000 (99.615)   Prec@5 100.000 (100.000)   [2019-08-30 15:13:46]
+  **Test** Prec@1 91.590 Prec@5 99.680 Error@1 8.410
+
+==>>[2019-08-30 15:14:37] [Epoch=273/300] [Need: 01:06:45] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [273][000/391]   Time 1.356 (1.356)   Data 1.023 (1.023)   Loss 0.0134 (0.0134)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:14:38]
+  Epoch: [273][200/391]   Time 0.220 (0.223)   Data 0.000 (0.005)   Loss 0.0121 (0.0158)   Prec@1 100.000 (99.545)   Prec@5 100.000 (100.000)   [2019-08-30 15:15:22]
+  **Test** Prec@1 91.490 Prec@5 99.690 Error@1 8.510
+
+==>>[2019-08-30 15:16:12] [Epoch=274/300] [Need: 01:04:12] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [274][000/391]   Time 1.374 (1.374)   Data 1.039 (1.039)   Loss 0.0166 (0.0166)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:16:14]
+  Epoch: [274][200/391]   Time 0.216 (0.223)   Data 0.000 (0.005)   Loss 0.0081 (0.0145)   Prec@1 100.000 (99.565)   Prec@5 100.000 (100.000)   [2019-08-30 15:16:57]
+  **Test** Prec@1 91.400 Prec@5 99.660 Error@1 8.600
+
+==>>[2019-08-30 15:17:48] [Epoch=275/300] [Need: 01:01:39] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [275][000/391]   Time 1.325 (1.325)   Data 0.983 (0.983)   Loss 0.0301 (0.0301)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:17:49]
+  Epoch: [275][200/391]   Time 0.214 (0.219)   Data 0.000 (0.005)   Loss 0.0068 (0.0144)   Prec@1 100.000 (99.604)   Prec@5 100.000 (100.000)   [2019-08-30 15:18:32]
+  **Test** Prec@1 91.550 Prec@5 99.700 Error@1 8.450
+
+==>>[2019-08-30 15:19:23] [Epoch=276/300] [Need: 00:59:06] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [276][000/391]   Time 1.288 (1.288)   Data 0.975 (0.975)   Loss 0.0167 (0.0167)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:19:24]
+  Epoch: [276][200/391]   Time 0.223 (0.224)   Data 0.000 (0.005)   Loss 0.0129 (0.0155)   Prec@1 100.000 (99.580)   Prec@5 100.000 (100.000)   [2019-08-30 15:20:08]
+  **Test** Prec@1 91.460 Prec@5 99.640 Error@1 8.540
+
+==>>[2019-08-30 15:21:00] [Epoch=277/300] [Need: 00:56:34] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [277][000/391]   Time 1.447 (1.447)   Data 1.092 (1.092)   Loss 0.0101 (0.0101)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:21:01]
+  Epoch: [277][200/391]   Time 0.240 (0.223)   Data 0.000 (0.006)   Loss 0.0148 (0.0155)   Prec@1 100.000 (99.545)   Prec@5 100.000 (100.000)   [2019-08-30 15:21:44]
+  **Test** Prec@1 91.180 Prec@5 99.700 Error@1 8.820
+
+==>>[2019-08-30 15:22:35] [Epoch=278/300] [Need: 00:54:03] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [278][000/391]   Time 1.326 (1.326)   Data 1.030 (1.030)   Loss 0.0025 (0.0025)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:22:36]
+  Epoch: [278][200/391]   Time 0.239 (0.223)   Data 0.000 (0.005)   Loss 0.0180 (0.0147)   Prec@1 99.219 (99.537)   Prec@5 100.000 (100.000)   [2019-08-30 15:23:20]
+  **Test** Prec@1 91.390 Prec@5 99.690 Error@1 8.610
+
+==>>[2019-08-30 15:24:11] [Epoch=279/300] [Need: 00:51:31] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [279][000/391]   Time 1.341 (1.341)   Data 1.009 (1.009)   Loss 0.0203 (0.0203)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:24:12]
+  Epoch: [279][200/391]   Time 0.175 (0.221)   Data 0.000 (0.005)   Loss 0.0397 (0.0145)   Prec@1 98.438 (99.596)   Prec@5 100.000 (100.000)   [2019-08-30 15:24:56]
+  **Test** Prec@1 91.270 Prec@5 99.640 Error@1 8.730
+
+==>>[2019-08-30 15:25:46] [Epoch=280/300] [Need: 00:49:00] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [280][000/391]   Time 1.395 (1.395)   Data 1.075 (1.075)   Loss 0.0064 (0.0064)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:25:47]
+  Epoch: [280][200/391]   Time 0.247 (0.223)   Data 0.000 (0.006)   Loss 0.0120 (0.0142)   Prec@1 100.000 (99.565)   Prec@5 100.000 (100.000)   [2019-08-30 15:26:31]
+  **Test** Prec@1 91.360 Prec@5 99.710 Error@1 8.640
+
+==>>[2019-08-30 15:27:21] [Epoch=281/300] [Need: 00:46:30] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [281][000/391]   Time 1.407 (1.407)   Data 1.053 (1.053)   Loss 0.0042 (0.0042)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:27:23]
+  Epoch: [281][200/391]   Time 0.181 (0.225)   Data 0.000 (0.005)   Loss 0.0201 (0.0145)   Prec@1 99.219 (99.576)   Prec@5 100.000 (100.000)   [2019-08-30 15:28:07]
+  **Test** Prec@1 91.470 Prec@5 99.610 Error@1 8.530
+
+==>>[2019-08-30 15:28:57] [Epoch=282/300] [Need: 00:44:00] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [282][000/391]   Time 1.404 (1.404)   Data 1.101 (1.101)   Loss 0.0045 (0.0045)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:28:59]
+  Epoch: [282][200/391]   Time 0.240 (0.223)   Data 0.000 (0.006)   Loss 0.0113 (0.0136)   Prec@1 100.000 (99.607)   Prec@5 100.000 (100.000)   [2019-08-30 15:29:42]
+  **Test** Prec@1 91.590 Prec@5 99.710 Error@1 8.410
+
+==>>[2019-08-30 15:30:32] [Epoch=283/300] [Need: 00:41:30] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [283][000/391]   Time 1.362 (1.362)   Data 1.049 (1.049)   Loss 0.0092 (0.0092)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:30:34]
+  Epoch: [283][200/391]   Time 0.262 (0.224)   Data 0.000 (0.005)   Loss 0.0065 (0.0149)   Prec@1 100.000 (99.580)   Prec@5 100.000 (100.000)   [2019-08-30 15:31:17]
+  **Test** Prec@1 91.310 Prec@5 99.740 Error@1 8.690
+
+==>>[2019-08-30 15:32:08] [Epoch=284/300] [Need: 00:39:01] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [284][000/391]   Time 1.390 (1.390)   Data 1.065 (1.065)   Loss 0.0339 (0.0339)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:32:09]
+  Epoch: [284][200/391]   Time 0.251 (0.224)   Data 0.000 (0.006)   Loss 0.0166 (0.0157)   Prec@1 99.219 (99.530)   Prec@5 100.000 (100.000)   [2019-08-30 15:32:53]
+  **Test** Prec@1 91.340 Prec@5 99.720 Error@1 8.660
+
+==>>[2019-08-30 15:33:44] [Epoch=285/300] [Need: 00:36:32] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [285][000/391]   Time 1.356 (1.356)   Data 1.023 (1.023)   Loss 0.0098 (0.0098)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:33:45]
+  Epoch: [285][200/391]   Time 0.213 (0.225)   Data 0.000 (0.005)   Loss 0.0100 (0.0143)   Prec@1 100.000 (99.545)   Prec@5 100.000 (100.000)   [2019-08-30 15:34:29]
+  **Test** Prec@1 91.390 Prec@5 99.640 Error@1 8.610
+
+==>>[2019-08-30 15:35:19] [Epoch=286/300] [Need: 00:34:03] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [286][000/391]   Time 1.431 (1.431)   Data 1.072 (1.072)   Loss 0.0078 (0.0078)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:35:20]
+  Epoch: [286][200/391]   Time 0.195 (0.223)   Data 0.000 (0.006)   Loss 0.0420 (0.0152)   Prec@1 97.656 (99.549)   Prec@5 100.000 (100.000)   [2019-08-30 15:36:04]
+  **Test** Prec@1 91.580 Prec@5 99.750 Error@1 8.420
+
+==>>[2019-08-30 15:36:54] [Epoch=287/300] [Need: 00:31:35] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [287][000/391]   Time 1.399 (1.399)   Data 1.039 (1.039)   Loss 0.0323 (0.0323)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 15:36:55]
+  Epoch: [287][200/391]   Time 0.182 (0.224)   Data 0.000 (0.005)   Loss 0.0534 (0.0160)   Prec@1 98.438 (99.506)   Prec@5 100.000 (100.000)   [2019-08-30 15:37:39]
+  **Test** Prec@1 91.460 Prec@5 99.670 Error@1 8.540
+
+==>>[2019-08-30 15:38:30] [Epoch=288/300] [Need: 00:29:07] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [288][000/391]   Time 1.345 (1.345)   Data 1.021 (1.021)   Loss 0.0180 (0.0180)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:38:31]
+  Epoch: [288][200/391]   Time 0.198 (0.225)   Data 0.000 (0.005)   Loss 0.0133 (0.0132)   Prec@1 100.000 (99.677)   Prec@5 100.000 (100.000)   [2019-08-30 15:39:15]
+  **Test** Prec@1 91.040 Prec@5 99.760 Error@1 8.960
+
+==>>[2019-08-30 15:40:06] [Epoch=289/300] [Need: 00:26:39] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [289][000/391]   Time 1.499 (1.499)   Data 1.177 (1.177)   Loss 0.0213 (0.0213)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:40:07]
+  Epoch: [289][200/391]   Time 0.197 (0.223)   Data 0.000 (0.006)   Loss 0.0285 (0.0141)   Prec@1 97.656 (99.600)   Prec@5 100.000 (100.000)   [2019-08-30 15:40:51]
+  **Test** Prec@1 91.450 Prec@5 99.740 Error@1 8.550
+
+==>>[2019-08-30 15:41:42] [Epoch=290/300] [Need: 00:24:12] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [290][000/391]   Time 1.408 (1.408)   Data 1.051 (1.051)   Loss 0.0134 (0.0134)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:41:43]
+  Epoch: [290][200/391]   Time 0.198 (0.224)   Data 0.000 (0.005)   Loss 0.0069 (0.0144)   Prec@1 100.000 (99.607)   Prec@5 100.000 (100.000)   [2019-08-30 15:42:27]
+  **Test** Prec@1 91.410 Prec@5 99.650 Error@1 8.590
+
+==>>[2019-08-30 15:43:17] [Epoch=291/300] [Need: 00:21:45] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [291][000/391]   Time 1.392 (1.392)   Data 1.058 (1.058)   Loss 0.0205 (0.0205)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 15:43:18]
+  Epoch: [291][200/391]   Time 0.209 (0.223)   Data 0.000 (0.005)   Loss 0.0149 (0.0152)   Prec@1 99.219 (99.526)   Prec@5 100.000 (100.000)   [2019-08-30 15:44:02]
+  **Test** Prec@1 91.410 Prec@5 99.650 Error@1 8.590
+
+==>>[2019-08-30 15:44:52] [Epoch=292/300] [Need: 00:19:19] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [292][000/391]   Time 1.369 (1.369)   Data 1.045 (1.045)   Loss 0.0073 (0.0073)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:44:54]
+  Epoch: [292][200/391]   Time 0.199 (0.222)   Data 0.000 (0.005)   Loss 0.0076 (0.0151)   Prec@1 100.000 (99.592)   Prec@5 100.000 (100.000)   [2019-08-30 15:45:37]
+  **Test** Prec@1 91.290 Prec@5 99.710 Error@1 8.710
+
+==>>[2019-08-30 15:46:28] [Epoch=293/300] [Need: 00:16:53] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [293][000/391]   Time 1.419 (1.419)   Data 1.031 (1.031)   Loss 0.0161 (0.0161)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:46:29]
+  Epoch: [293][200/391]   Time 0.174 (0.222)   Data 0.000 (0.005)   Loss 0.0237 (0.0141)   Prec@1 99.219 (99.627)   Prec@5 100.000 (100.000)   [2019-08-30 15:47:13]
+  **Test** Prec@1 91.130 Prec@5 99.670 Error@1 8.870
+
+==>>[2019-08-30 15:48:04] [Epoch=294/300] [Need: 00:14:27] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [294][000/391]   Time 1.323 (1.323)   Data 1.023 (1.023)   Loss 0.0318 (0.0318)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2019-08-30 15:48:05]
+  Epoch: [294][200/391]   Time 0.232 (0.223)   Data 0.000 (0.005)   Loss 0.0072 (0.0140)   Prec@1 100.000 (99.627)   Prec@5 100.000 (100.000)   [2019-08-30 15:48:48]
+  **Test** Prec@1 91.270 Prec@5 99.700 Error@1 8.730
+
+==>>[2019-08-30 15:49:39] [Epoch=295/300] [Need: 00:12:02] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [295][000/391]   Time 1.396 (1.396)   Data 1.035 (1.035)   Loss 0.0046 (0.0046)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:49:41]
+  Epoch: [295][200/391]   Time 0.209 (0.224)   Data 0.000 (0.005)   Loss 0.0130 (0.0154)   Prec@1 99.219 (99.534)   Prec@5 100.000 (100.000)   [2019-08-30 15:50:24]
+  **Test** Prec@1 91.370 Prec@5 99.730 Error@1 8.630
+
+==>>[2019-08-30 15:51:15] [Epoch=296/300] [Need: 00:09:37] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [296][000/391]   Time 1.423 (1.423)   Data 1.081 (1.081)   Loss 0.0314 (0.0314)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:51:17]
+  Epoch: [296][200/391]   Time 0.220 (0.222)   Data 0.000 (0.006)   Loss 0.0218 (0.0145)   Prec@1 100.000 (99.557)   Prec@5 100.000 (100.000)   [2019-08-30 15:52:00]
+  **Test** Prec@1 91.350 Prec@5 99.620 Error@1 8.650
+
+==>>[2019-08-30 15:52:50] [Epoch=297/300] [Need: 00:07:12] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [297][000/391]   Time 1.389 (1.389)   Data 1.056 (1.056)   Loss 0.0178 (0.0178)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:52:51]
+  Epoch: [297][200/391]   Time 0.230 (0.224)   Data 0.000 (0.005)   Loss 0.0062 (0.0160)   Prec@1 100.000 (99.526)   Prec@5 100.000 (100.000)   [2019-08-30 15:53:35]
+  **Test** Prec@1 91.590 Prec@5 99.670 Error@1 8.410
+
+==>>[2019-08-30 15:54:25] [Epoch=298/300] [Need: 00:04:47] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [298][000/391]   Time 1.504 (1.504)   Data 1.099 (1.099)   Loss 0.0027 (0.0027)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2019-08-30 15:54:27]
+  Epoch: [298][200/391]   Time 0.219 (0.227)   Data 0.000 (0.006)   Loss 0.0247 (0.0140)   Prec@1 98.438 (99.600)   Prec@5 100.000 (100.000)   [2019-08-30 15:55:11]
+  **Test** Prec@1 91.220 Prec@5 99.710 Error@1 8.780
+
+==>>[2019-08-30 15:56:01] [Epoch=299/300] [Need: 00:02:23] [learning_rate=0.0001] [Best : Accuracy=91.71, Error=8.29]
+  Epoch: [299][000/391]   Time 1.367 (1.367)   Data 1.042 (1.042)   Loss 0.0444 (0.0444)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2019-08-30 15:56:03]
+  Epoch: [299][200/391]   Time 0.229 (0.220)   Data 0.000 (0.005)   Loss 0.0157 (0.0164)   Prec@1 99.219 (99.502)   Prec@5 100.000 (100.000)   [2019-08-30 15:56:45]
+  **Test** Prec@1 91.500 Prec@5 99.650 Error@1 8.500
