@@ -2,7 +2,7 @@
 
 set -e
 
-NET=mobilenetv5
+NET=mobilenetv2
 
 dataset=cifar10
 epochs=300
