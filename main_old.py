@@ -114,7 +114,7 @@ def main():
   # Init model, criterion, and optimizer
   net = None
   if args.aq_type == 'uniform':
-      net = models.__dict__[args.arch](num_classes, args.aq_type, aq_bits=args.aq_bits)
+      net = models.__dict__[args.arch](num_classes)
   else:
       net = models.__dict__[args.arch](num_classes, args.aq_type)
   print_log("=> network :\n {}".format(net), log)

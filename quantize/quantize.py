@@ -10,6 +10,7 @@ import torch.nn as nn
 import torch.nn.init as init
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
+from torch.autograd import Function
 from torch.nn.modules.utils import _single, _pair, _triple
 
 from progress.bar import Bar
@@ -320,7 +321,7 @@ class QModule(nn.Module):
             self.w_bit if self.w_bit > 0 else -1, self.a_bit if self.a_bit > 0 else -1,
             self.half_wave, self._tanh_weight
         )
-s
+
 class Quantize(Function):
 
     @staticmethod

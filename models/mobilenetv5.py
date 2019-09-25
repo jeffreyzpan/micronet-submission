@@ -1,14 +1,13 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import quantize as Q
 
 
 __all__ = ['MobileNetV5', 'mobilenetv5', 'mobilenetv75']
 
 def conv3x3(in_planes, out_planes, stride=1):
     "3x3 convolution with padding"
-    return Q.QuantConv2d(in_planes, out_planes, kernel_size=3, stride=stride,
+    return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=1, bias=False)
 
 def conv_bn(inp, oup, stride, conv_layer=nn.Conv2d, norm_layer=nn.BatchNorm2d, nlin_layer=nn.ReLU6):
@@ -86,7 +85,7 @@ class MobileBottleneck(nn.Module):
         padding = (kernel - 1) // 2
         self.use_res_connect = stride == 1 and inp == oup
 
-        conv_layer = Q.QuantConv2d
+        conv_layer = nn.Conv2d
         norm_layer = nn.BatchNorm2d
         if nl == 'RE':
             nlin_layer = nn.ReLU6 # or ReLU
@@ -263,7 +262,7 @@ class MobileNetV5(nn.Module):
                     nn.init.zeros_(m.bias)
 
 
-def mobilenetv5(pretrained=False, num_classes=10, **kwargs):
+def mobilenetv5(pretrained=False, num_classes=100, **kwargs):
     model = MobileNetV5(num_classes, **kwargs)
     '''
     if pretrained:

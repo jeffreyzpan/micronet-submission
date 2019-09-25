@@ -1,0 +1,7 @@
+save path : ./snapshots/finetune_cifar10_resnet20_300
+{'aq_bits': None, 'aq_type': 'uniform', 'arch': 'resnet20', 'batch_size': 128, 'data_path': '../datasets/CIFAR10/cifar', 'dataset': 'cifar10', 'decay': 0.0001, 'epochs': 300, 'evaluate': False, 'gammas': [0.1, 0.1, 0.1], 'learning_rate': 0.1, 'manualSeed': 7617, 'momentum': 0.9, 'ngpu': 4, 'pretrained': 'pretrained/cifar10_resnet20_164/model_best.pth.tar', 'print_freq': 200, 'resume': None, 'save_path': './snapshots/finetune_cifar10_resnet20_300', 'schedule': [120, 180, 240], 'start_epoch': 0, 'use_cuda': True, 'workers': 16}
+Random Seed: 7617
+python version : 3.7.3 (default, Mar 27 2019, 22:11:17)  [GCC 7.3.0]
+torch  version : 1.1.0
+cudnn  version : 7501
+=> creating model 'resnet20'

@@ -7,4 +7,4 @@ architectures:
 
 from .resnet import resnet18, resnet20, resnet32, resnet44, resnet56, resnet110
 from .mobilenetv5 import * 
-from .rnq_resnet import *
+from .qmobilenetv5 import *
