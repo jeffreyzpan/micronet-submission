@@ -1,14 +1,13 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import quantize as Q
 
 
-__all__ = ['QMobileNetV5', 'qmobilenetv5', 'qmobilenetv75']
+__all__ = ['MobileNetV5', 'mobilenetv5', 'mobilenetv75']
 
 def conv3x3(in_planes, out_planes, stride=1):
     "3x3 convolution with padding"
-    return Q.QuantConv2d(in_planes, out_planes, kernel_size=3, stride=stride,
+    return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=1, bias=False)
 
 def conv_bn(inp, oup, stride, conv_layer=nn.Conv2d, norm_layer=nn.BatchNorm2d, nlin_layer=nn.ReLU6):
@@ -86,7 +85,7 @@ class MobileBottleneck(nn.Module):
         padding = (kernel - 1) // 2
         self.use_res_connect = stride == 1 and inp == oup
 
-        conv_layer = Q.QuantConv2d
+        conv_layer = nn.Conv2d
         norm_layer = nn.BatchNorm2d
         if nl == 'RE':
             nlin_layer = nn.ReLU6 # or ReLU
@@ -121,7 +120,7 @@ class MobileBottleneck(nn.Module):
             return self.conv(x)
 
 
-class QMobileNetV5(nn.Module):
+class MobileNetV5(nn.Module):
     def __init__(self, num_classes=2, input_size=224, dropout=0.0, mode='amc', width_mult=0.5):
         super(MobileNetV5, self).__init__()
         input_channel = 16
@@ -180,7 +179,7 @@ class QMobileNetV5(nn.Module):
         elif mode == 'amc':
             mobile_setting = [
                 # k, exp, c,  se,     nl,  s,
-                [3,  24,  16,  False,  'RE', 1],
+                [3,  24,  16,  False,  'RE', 2],
                 [5,  40,  32,  False,  'RE', 1],
                 [3,  72,  32,  False,  'RE', 1],
                 [7,  64,  40,  False,  'RE', 2],
@@ -263,7 +262,7 @@ class QMobileNetV5(nn.Module):
                     nn.init.zeros_(m.bias)
 
 
-def qmobilenetv5(pretrained=False, num_classes=10, **kwargs):
+def mobilenetv5(pretrained=False, num_classes=100, **kwargs):
     model = MobileNetV5(num_classes, **kwargs)
     '''
     if pretrained:
@@ -283,7 +282,7 @@ def qmobilenetv5(pretrained=False, num_classes=10, **kwargs):
     return model
 
 
-def qmobilenetv75(pretrained=False, **kwargs):
+def mobilenetv75(pretrained=False, **kwargs):
     model = MobileNetV5(width_mult=0.75, **kwargs)
     if pretrained:
         # state_dict = torch.load('pretrained/imagenet/mobilenetv3_small_67.218.pth.tar')
