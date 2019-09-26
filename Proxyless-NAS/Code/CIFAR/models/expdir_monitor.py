@@ -47,7 +47,7 @@ class ExpdirMonitor:
 
 	""" methods for loading """
 
-	def load_run_config(self, print_info=False, dataset='cifar100'):
+	def load_run_config(self, print_info=False, dataset='cifar10'):
 		if os.path.isfile(self.run_config_path):
 			run_config = json.load(open(self.run_config_path, 'r'))
 		else:

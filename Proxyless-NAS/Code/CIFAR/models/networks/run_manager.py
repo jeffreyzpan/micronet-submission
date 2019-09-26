@@ -324,7 +324,7 @@ class RunManager:
 				lr = self.run_config.adjust_learning_rate(self.optimizer, epoch, batch=i, nBatch=len(data_loader))
 
 				if torch.cuda.is_available():
-					target = target.cuda(async=True)
+					target = target.cuda()
 					_input = _input.cuda()
 				input_var = torch.autograd.Variable(_input, requires_grad=False)
 				target_var = torch.autograd.Variable(target, requires_grad=False)
@@ -399,7 +399,7 @@ class RunManager:
 		end = time.time()
 		for i, (_input, target) in enumerate(data_loader):
 			if torch.cuda.is_available():
-				target = target.cuda(async=True)
+				target = target.cuda()
 				_input = _input.cuda()
 			input_var = torch.autograd.Variable(_input, volatile=True)
 			target_var = torch.autograd.Variable(target, volatile=True)
