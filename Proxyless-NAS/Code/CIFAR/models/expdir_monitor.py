@@ -83,7 +83,7 @@ class ExpdirMonitor:
 	""" methods for running """
 	def run(self, train=True, is_test=True, valid_size=None, resume=False):
 		init = self.load_init()
-		dataset = 'C100+' if init is None else init.get('dataset', 'C10+')
+		dataset = 'cifar100' if init is None else init.get('dataset', 'C10+')
 		run_config = self.load_run_config(print_info=True, dataset=dataset)
 		if valid_size is not None:
 			run_config.valid_size = valid_size

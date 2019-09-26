@@ -80,7 +80,7 @@ class CifarDataProvider(DataProvider):
 	@property
 	def save_path(self):
 		if self._save_path is None:
-			self._save_path = os.path.join('../../dataset', 'cifar%d' % self.n_classes)
+			self._save_path = os.path.join('~/dataset', 'cifar%d' % self.n_classes)
 		return self._save_path
 
 	@property

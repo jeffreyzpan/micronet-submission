@@ -277,7 +277,7 @@ class RunManager:
 		""" dump run_config and net_config to the model_folder """
 		os.makedirs(self.path, exist_ok=True)
 		net_save_path = os.path.join(self.path, 'net.config')
-		json.dump(self.net.module.config, open(net_save_path, 'w'), indent=4)
+		json.dump(self.net.config, open(net_save_path, 'w'), indent=4)
 		if print_info:
 			print('Network configs dump to %s' % self.save_path)
 
@@ -335,8 +335,8 @@ class RunManager:
 
 				# measure accuracy and record loss
 				acc1, _ = accuracy(output.data, target, topk=(1, 5))
-				losses.update(loss.data[0], _input.size(0))
-				top1.update(acc1[0], _input.size(0))
+				losses.update(loss.data.item(), _input.size(0))
+				top1.update(acc1.item(), _input.size(0))
 
 				# compute gradient and do SGD step
 				self.net.zero_grad()  # or self.optimizer.zero_grad()
@@ -410,8 +410,8 @@ class RunManager:
 
 			# measure accuracy and record loss
 			acc1, _ = accuracy(output.data, target, topk=(1, 5))
-			losses.update(loss.data[0], _input.size(0))
-			top1.update(acc1[0], _input.size(0))
+			losses.update(loss.data.item(), _input.size(0))
+			top1.update(acc1.item(), _input.size(0))
 
 			# measure elapsed time
 			batch_time.update(time.time() - end)
