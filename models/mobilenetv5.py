@@ -179,7 +179,7 @@ class MobileNetV5(nn.Module):
         elif mode == 'amc':
             mobile_setting = [
                 # k, exp, c,  se,     nl,  s,
-                [3,  24,  16,  False,  'RE', 2],
+                [3,  24,  16,  False,  'RE', 1],
                 [5,  40,  32,  False,  'RE', 1],
                 [3,  72,  32,  False,  'RE', 1],
                 [7,  64,  40,  False,  'RE', 2],
