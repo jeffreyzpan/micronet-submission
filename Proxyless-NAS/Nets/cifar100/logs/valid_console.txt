@@ -1,0 +1,3 @@
+test_loss: nan	 test_acc1: 1.000000
+Valid [1/300]	loss 3.233	top 1-acc 21.530 (21.530)
+Valid [1/300]	loss 3.328	top 1-acc 19.630 (19.630)

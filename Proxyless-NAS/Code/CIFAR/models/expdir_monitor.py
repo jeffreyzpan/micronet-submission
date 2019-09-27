@@ -15,9 +15,10 @@ from models.networks import get_net_by_name
 
 class ExpdirMonitor:
 
-	def __init__(self, expdir):
+	def __init__(self, expdir, dataset='cifar100'):
 		self.expdir = os.path.realpath(expdir)
 		os.makedirs(self.expdir, exist_ok=True)
+		self.dataset=dataset
 
 	""" expdir paths """
 
@@ -83,7 +84,9 @@ class ExpdirMonitor:
 	""" methods for running """
 	def run(self, train=True, is_test=True, valid_size=None, resume=False):
 		init = self.load_init()
-		dataset = 'cifar100' if init is None else init.get('dataset', 'C10+')
+		dataset=self.dataset
+		#dataset = 'cifar10' if init is None else init.get('dataset', 'C10+')
+		print(dataset)
 		run_config = self.load_run_config(print_info=True, dataset=dataset)
 		if valid_size is not None:
 			run_config.valid_size = valid_size

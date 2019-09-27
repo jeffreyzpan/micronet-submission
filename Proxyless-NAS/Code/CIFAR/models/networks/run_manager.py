@@ -17,7 +17,7 @@ from models.utils import *
 class RunConfig:
 
 	def __init__(self, n_epochs=300, init_lr=0.1, lr_schedule_type='cosine', lr_schedule_param=None,
-	             dataset='cifar10', train_batch_size=64, test_batch_size=200, valid_size=None, drop_last=True,
+	             dataset='cifar10', train_batch_size=64, test_batch_size=100, valid_size=None, drop_last=True,
 	             use_cutout=False, cutout_n_holes=1, cutout_size=16,
 	             opt_type='sgd', opt_param=None, weight_decay=1e-4,
 	             model_init='he_fout', init_div_groups=True,
@@ -139,6 +139,7 @@ class RunManager:
 		self.run_config = run_config
 		self.out_log = out_log
 
+		print(run_config.dataset)
 		self._logs_path, self._save_path = None, None
 		self.best_acc = 0
 		self.start_epoch = 0
@@ -277,7 +278,7 @@ class RunManager:
 		""" dump run_config and net_config to the model_folder """
 		os.makedirs(self.path, exist_ok=True)
 		net_save_path = os.path.join(self.path, 'net.config')
-		json.dump(self.net.config, open(net_save_path, 'w'), indent=4)
+		json.dump(self.net.module.config, open(net_save_path, 'w'), indent=4)
 		if print_info:
 			print('Network configs dump to %s' % self.save_path)
 
