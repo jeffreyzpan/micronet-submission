@@ -325,14 +325,12 @@ class RunManager:
 				lr = self.run_config.adjust_learning_rate(self.optimizer, epoch, batch=i, nBatch=len(data_loader))
 
 				if torch.cuda.is_available():
-					target = target.cuda()
+					target = target.cuda(non_blocking=True)
 					_input = _input.cuda()
-				input_var = torch.autograd.Variable(_input, requires_grad=False)
-				target_var = torch.autograd.Variable(target, requires_grad=False)
 
 				# compute output
-				output = self.net(input_var)
-				loss = self.criterion(output, target_var)
+				output = self.net(_input)
+				loss = self.criterion(output, target)
 
 				# measure accuracy and record loss
 				acc1, _ = accuracy(output.data, target, topk=(1, 5))
@@ -398,30 +396,31 @@ class RunManager:
 		top1 = AverageMeter()
 
 		end = time.time()
-		for i, (_input, target) in enumerate(data_loader):
-			if torch.cuda.is_available():
-				target = target.cuda()
-				_input = _input.cuda()
-			input_var = torch.autograd.Variable(_input, volatile=True)
-			target_var = torch.autograd.Variable(target, volatile=True)
+		with torch.no_grad():
+			for i, (_input, target) in enumerate(data_loader):
+				if torch.cuda.is_available():
+					target = target.cuda(non_blocking=True)
+					_input = _input.cuda()
+				#input_var = torch.autograd.Variable(_input, volatile=True)
+				#target_var = torch.autograd.Variable(target, volatile=True)
 
-			# compute output
-			output = net(input_var)
-			loss = self.criterion(output, target_var)
+				# compute output
+				output = net(_input)
+				loss = self.criterion(output, target)
 
-			# measure accuracy and record loss
-			acc1, _ = accuracy(output.data, target, topk=(1, 5))
-			losses.update(loss.data.item(), _input.size(0))
-			top1.update(acc1.item(), _input.size(0))
+				# measure accuracy and record loss
+				acc1, _ = accuracy(output.data, target, topk=(1, 5))
+				losses.update(loss.data.item(), _input.size(0))
+				top1.update(acc1.item(), _input.size(0))
 
-			# measure elapsed time
-			batch_time.update(time.time() - end)
-			end = time.time()
+				# measure elapsed time
+				batch_time.update(time.time() - end)
+				end = time.time()
 
-			if i % self.run_config.print_frequency == 0 or i + 1 == len(data_loader):
-				print('Test: [{0}/{1}]\t'
-				      'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
-				      'Loss {loss.val:.4f} ({loss.avg:.4f})\t'
-				      'top 1-acc {top1.val:.3f} ({top1.avg:.3f})'.
-				      format(i, len(data_loader), batch_time=batch_time, loss=losses, top1=top1))
+				if i % self.run_config.print_frequency == 0 or i + 1 == len(data_loader):
+					print('Test: [{0}/{1}]\t'
+				      	'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
+				      	'Loss {loss.val:.4f} ({loss.avg:.4f})\t'
+				      	'top 1-acc {top1.val:.3f} ({top1.avg:.3f})'.
+				      	format(i, len(data_loader), batch_time=batch_time, loss=losses, top1=top1))
 		return losses.avg, top1.avg
