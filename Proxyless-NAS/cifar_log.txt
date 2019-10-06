@@ -1,8 +1,0 @@
-Total training params: 5.73M
-Files already downloaded and verified
-Total FLOPs: 1213.2M
-Network configs dump to /anonymous-code/Nets/cifar/checkpoint
-Run configs dump to /anonymous-code/Nets/cifar/run.config
-Test: [0/50]	Time 3.645 (3.645)	Loss 0.0291 (0.0291)	top 1-acc 98.500 (98.500)
-Test: [49/50]	Time 0.892 (0.928)	Loss 0.0820 (0.0821)	top 1-acc 98.000 (97.920)
-test_loss: 0.082096	 test_acc1: 97.920000
