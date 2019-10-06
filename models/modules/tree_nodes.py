@@ -4,7 +4,7 @@ from models.utils import *
 from models.modules.layers import set_layer_from_config
 
 
-def set_tree_node_from_config(tree_node_config, quantize=quantize):
+def set_tree_node_from_config(tree_node_config, quantize=False):
 	name2tree_node = {
 		NormalTreeNode.__name__: NormalTreeNode,
 	}

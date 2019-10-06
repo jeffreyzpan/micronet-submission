@@ -15,7 +15,7 @@ if __name__ == '__main__':
 	parser.add_argument('--path', type=str)
 	parser.add_argument('--gpu', help='gpu available', default='0')
 	parser.add_argument('--dataset', help='dataset to train on', default='cifar100')
-        parser.add_argument('--quantize', help='finetune and quantize the full precision model', action='store_true') 
+	parser.add_argument('--quantize', help='finetune and quantize the full precision model', action='store_true') 
 	parser.add_argument('--train', action='store_true')
 	parser.add_argument('--valid', action='store_true')
 	parser.add_argument('--valid_size', default=None, type=int)

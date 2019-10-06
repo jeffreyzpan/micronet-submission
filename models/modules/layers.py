@@ -13,6 +13,8 @@ def set_layer_from_config(layer_config, quantize=False):
 
 	layer_name = layer_config.pop('name')
 	layer = name2layer[layer_name]
+	if layer_name == 'PoolingLayer' or layer_name == 'IdentityLayer':
+		return layer.build_from_config(layer_config)
 	return layer.build_from_config(layer_config, quantize=quantize)
 
 
