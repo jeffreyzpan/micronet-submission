@@ -60,7 +60,7 @@ class ExpdirMonitor:
 				print('\t%s: %s' % (k, v))
 		return run_config
 
-	def load_net(self, print_info=False):
+	def load_net(self, print_info=False, quantize=False):
 		assert os.path.isfile(self.net_config_path), 'No net configs found in <%s>' % self.expdir
 		net_config_json = json.load(open(self.net_config_path, 'r'))
 		if print_info:
@@ -68,7 +68,7 @@ class ExpdirMonitor:
 			for k, v in net_config_json.items():
 				if k != 'blocks':
 					print('\t%s: %s' % (k, v))
-		net = get_net_by_name(net_config_json['name']).build_from_config(net_config_json)
+		net = get_net_by_name(net_config_json['name']).build_from_config(net_config_json, quantize=quantize)
 		return net
 
 	def load_init(self):
@@ -82,7 +82,7 @@ class ExpdirMonitor:
 			return None
 
 	""" methods for running """
-	def run(self, train=True, is_test=True, valid_size=None, resume=False):
+	def run(self, quantize=False, train=True, is_test=True, valid_size=None, resume=False):
 		init = self.load_init()
 		dataset=self.dataset
 		#dataset = 'cifar10' if init is None else init.get('dataset', 'C10+')
@@ -91,14 +91,14 @@ class ExpdirMonitor:
 		if valid_size is not None:
 			run_config.valid_size = valid_size
 
-		net = self.load_net(print_info=True)
+		net = self.load_net(print_info=True, quantize=quantize)
 		run_manager = RunManager(self.expdir, net, run_config, out_log=True)
 		run_manager.save_config(print_info=True)
 
 		if resume:
 			run_manager.load_model()
 		elif init is not None:
-			run_manager.net.module.load_state_dict(init['state_dict'])
+			run_manager.net.module.load_state_dict(init['state_dict'], strict=False)
 
 		if train:
 			run_manager.train()

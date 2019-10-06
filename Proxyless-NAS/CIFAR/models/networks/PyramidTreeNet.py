@@ -13,8 +13,8 @@ class PyramidTreeNet(BasicBlockwiseTreeNet):
 		return config
 
 	@staticmethod
-	def build_from_config(config):
-		blocks, classifier = BasicBlockwiseTreeNet.build_from_config(config)
+	def build_from_config(config, quantize=False):
+		blocks, classifier = BasicBlockwiseTreeNet.build_from_config(config, quantize=quantize)
 		return PyramidTreeNet(blocks, classifier, **config)
 
 	@staticmethod

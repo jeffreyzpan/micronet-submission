@@ -4,14 +4,14 @@ from models.utils import *
 from models.modules.layers import set_layer_from_config
 
 
-def set_tree_node_from_config(tree_node_config):
+def set_tree_node_from_config(tree_node_config, quantize=quantize):
 	name2tree_node = {
 		NormalTreeNode.__name__: NormalTreeNode,
 	}
 
 	tree_node_name = tree_node_config.pop('name')
 	tree_node = name2tree_node[tree_node_name]
-	return tree_node.build_from_config(tree_node_config)
+	return tree_node.build_from_config(tree_node_config, quantize=quantize)
 
 
 class NormalTreeNode(BasicUnit):
@@ -198,19 +198,19 @@ class NormalTreeNode(BasicUnit):
 		}
 
 	@staticmethod
-	def build_from_config(config):
+	def build_from_config(config, quantize=False):
 		edges = []
 		for edge_config in config.pop('edges'):
 			if edge_config is None:
 				edges.append(None)
 			else:
-				edges.append(set_layer_from_config(edge_config))
+				edges.append(set_layer_from_config(edge_config, quantize=quantize))
 		child_nodes = []
 		for child_config in config.pop('child_nodes'):
 			if child_config is None:
 				child_nodes.append(None)
 			else:
-				child_nodes.append(set_tree_node_from_config(child_config))
+				child_nodes.append(set_tree_node_from_config(child_config, quantize=quantize))
 		return NormalTreeNode(edges=edges, child_nodes=child_nodes, **config)
 
 	def get_flops(self, x):

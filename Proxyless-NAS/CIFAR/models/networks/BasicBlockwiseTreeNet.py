@@ -7,7 +7,7 @@ from models.modules.layers import set_layer_from_config
 from models.modules.tree_nodes import set_tree_node_from_config
 
 
-def set_block_from_config(config):
+def set_block_from_config(config, quantize=False):
 	name2block = {
 		TransitionBlock.__name__: TransitionBlock,
 		ResidualTreeBlock.__name__: ResidualTreeBlock,
@@ -15,7 +15,7 @@ def set_block_from_config(config):
 
 	block_name = config.pop('name')
 	block = name2block[block_name]
-	return block.build_from_config(config)
+	return block.build_from_config(config, quantize=quantize)
 
 
 class BasicBlockwiseTreeNet(BasicUnit):
@@ -50,12 +50,12 @@ class BasicBlockwiseTreeNet(BasicUnit):
 		}
 
 	@staticmethod
-	def build_from_config(config):
+	def build_from_config(config, quantize=False):
 		if 'name' in config:
 			config.pop('name')
 		blocks = []
 		for block_config in config.pop('blocks'):
-			block = set_block_from_config(block_config)
+			block = set_block_from_config(block_config, quantize=quantize)
 			blocks.append(block)
 
 		classifier = set_layer_from_config(config.pop('classifier'))
@@ -129,10 +129,10 @@ class TransitionBlock(BasicUnit):
 		}
 
 	@staticmethod
-	def build_from_config(config):
+	def build_from_config(config, quantize=False):
 		layers = []
 		for layer_config in config.get('layers'):
-			layer = set_layer_from_config(layer_config)
+			layer = set_layer_from_config(layer_config, quantize=False)
 			layers.append(layer)
 		block = TransitionBlock(layers)
 		return block
@@ -233,18 +233,18 @@ class ResidualTreeBlock(BasicUnit):
 		}
 
 	@staticmethod
-	def build_from_config(config):
+	def build_from_config(config, quantize=False):
 		if config.get('in_bottle'):
-			in_bottle = set_layer_from_config(config.get('in_bottle'))
+			in_bottle = set_layer_from_config(config.get('in_bottle'), quantize=quantize)
 		else:
 			in_bottle = None
 
 		if config.get('out_bottle'):
-			out_bottle = set_layer_from_config(config.get('out_bottle'))
+			out_bottle = set_layer_from_config(config.get('out_bottle'), quantize=quantize)
 		else:
 			out_bottle = None
 		shortcut = set_layer_from_config(config.get('shortcut'))
-		cell = set_tree_node_from_config(config.get('cell'))
+		cell = set_tree_node_from_config(config.get('cell'), quantize=quantize)
 		final_bn = config.get('final_bn')
 		cell_drop_rate = config.get('cell_drop_rate')
 

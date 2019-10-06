@@ -1,7 +1,8 @@
 from models.utils import *
+import quantize as Q
 
 
-def set_layer_from_config(layer_config):
+def set_layer_from_config(layer_config, quantize=False):
 	name2layer = {
 		ConvLayer.__name__: ConvLayer,
 		DepthConvLayer.__name__: DepthConvLayer,
@@ -12,7 +13,7 @@ def set_layer_from_config(layer_config):
 
 	layer_name = layer_config.pop('name')
 	layer = name2layer[layer_name]
-	return layer.build_from_config(layer_config)
+	return layer.build_from_config(layer_config, quantize=quantize)
 
 
 class BasicLayer(BasicUnit):
@@ -110,7 +111,7 @@ class BasicLayer(BasicUnit):
 
 class ConvLayer(BasicLayer):
 
-	def __init__(self, in_channels, out_channels,
+	def __init__(self, in_channels, out_channels, quantize=False,
 	             kernel_size=3, stride=1, dilation=1, groups=1, bias=False, has_shuffle=False,
 	             use_bn=True, act_func='relu', dropout_rate=0, ops_order='weight_bn_act'):
 		super(ConvLayer, self).__init__(in_channels, out_channels, use_bn, act_func, dropout_rate, ops_order)
@@ -129,7 +130,11 @@ class ConvLayer(BasicLayer):
 			padding[0] *= self.dilation
 			padding[1] *= self.dilation
 		# `kernel_size`, `stride`, `padding`, `dilation` can either be `int` or `tuple` of int
-		self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=self.kernel_size, stride=self.stride,
+		if quantize:
+			self.conv = Q.QConv2d(in_channels, out_channels, kernel_size=self.kernel_size, stride=self.stride,
+		                      padding=padding, dilation=self.dilation, groups=self.groups, bias=self.bias)
+		else:
+			self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=self.kernel_size, stride=self.stride,
 		                      padding=padding, dilation=self.dilation, groups=self.groups, bias=self.bias)
 
 	def weight_call(self, x):
@@ -170,8 +175,8 @@ class ConvLayer(BasicLayer):
 		return config
 
 	@staticmethod
-	def build_from_config(config):
-		return ConvLayer(**config)
+	def build_from_config(config, quantize=False):
+		return ConvLayer(quantize=quantize, **config)
 
 	def get_flops(self, x):
 		return count_conv_flop(self.conv, x), self.forward(x)
@@ -179,7 +184,7 @@ class ConvLayer(BasicLayer):
 
 class DepthConvLayer(BasicLayer):
 
-	def __init__(self, in_channels, out_channels,
+	def __init__(self, in_channels, out_channels, quantize=False,
 	             kernel_size=3, stride=1, dilation=1, groups=1, bias=False, has_shuffle=False,
 	             use_bn=True, act_func='relu', dropout_rate=0, ops_order='weight_bn_act'):
 		super(DepthConvLayer, self).__init__(in_channels, out_channels, use_bn, act_func, dropout_rate, ops_order)
@@ -198,9 +203,14 @@ class DepthConvLayer(BasicLayer):
 			padding[0] *= self.dilation
 			padding[1] *= self.dilation
 		# `kernel_size`, `stride`, `padding`, `dilation` can either be `int` or `tuple` of int
-		self.depth_conv = nn.Conv2d(in_channels, in_channels, kernel_size=self.kernel_size, stride=self.stride,
+		if quantize:
+			self.depth_conv = Q.QConv2d(in_channels, in_channels, kernel_size=self.kernel_size, stride=self.stride,
 		                            padding=padding, dilation=self.dilation, groups=in_channels, bias=False)
-		self.point_conv = nn.Conv2d(in_channels, out_channels, kernel_size=1, groups=self.groups, bias=self.bias)
+			self.point_conv = Q.QConv2d(in_channels, out_channels, kernel_size=1, groups=self.groups, bias=self.bias)
+		else:
+			self.depth_conv = nn.Conv2d(in_channels, in_channels, kernel_size=self.kernel_size, stride=self.stride,
+		                            padding=padding, dilation=self.dilation, groups=in_channels, bias=False)
+			self.point_conv = nn.Conv2d(in_channels, out_channels, kernel_size=1, groups=self.groups, bias=self.bias)
 
 	def weight_call(self, x):
 		x = self.depth_conv(x)
@@ -235,8 +245,8 @@ class DepthConvLayer(BasicLayer):
 		return config
 
 	@staticmethod
-	def build_from_config(config):
-		return DepthConvLayer(**config)
+	def build_from_config(config, quantize=False):
+		return DepthConvLayer(quantize=quantize, **config)
 
 	def get_flops(self, x):
 		depth_flop = count_conv_flop(self.depth_conv, x)
@@ -329,7 +339,7 @@ class IdentityLayer(BasicLayer):
 
 class LinearLayer(BasicUnit):
 
-	def __init__(self, in_features, out_features, bias=True,
+	def __init__(self, in_features, out_features, quantize=False, bias=True,
 	             use_bn=False, act_func=None, dropout_rate=0, ops_order='weight_bn_act'):
 		super(LinearLayer, self).__init__()
 
@@ -369,7 +379,11 @@ class LinearLayer(BasicUnit):
 		else:
 			self.dropout = None
 		# linear
-		self.linear = nn.Linear(self.in_features, self.out_features, self.bias)
+		if quantize:
+			self.linear = Q.QLinear(self.in_features, self.out_features, self.bias)
+		else:
+			self.linear = nn.Linear(self.in_features, self.out_features, self.bias)
+
 
 	@property
 	def ops_list(self):
@@ -419,8 +433,8 @@ class LinearLayer(BasicUnit):
 		}
 
 	@staticmethod
-	def build_from_config(config):
-		return LinearLayer(**config)
+	def build_from_config(config, quantize=False):
+		return LinearLayer(quantize=quantize, **config)
 
 	def get_flops(self, x):
 		return self.linear.weight.numel(), self.forward(x)
