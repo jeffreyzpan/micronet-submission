@@ -1,1 +1,1 @@
-{"test_loss": "nan", "test_acc1": "1.000000"}
+{"valid_loss": "0.747284", "valid_acc1": "82.870000", "valid_size": null}

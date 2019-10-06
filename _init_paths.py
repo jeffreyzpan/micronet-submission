@@ -1,5 +1,3 @@
-"""Set up paths for TernaryNet."""
-
 import os.path as osp
 import sys
 
@@ -11,3 +9,4 @@ base_dir = osp.join(osp.dirname(__file__), '..')
 
 # Add lib to PYTHONPATH
 add_path(base_dir)
+
