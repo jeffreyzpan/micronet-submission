@@ -241,6 +241,7 @@ class RunManager:
 				model_fname = fin.readline()
 				if model_fname[-1] == '\n':
 					model_fname = model_fname[:-1]
+			model_fname = model_fname + '/checkpoint.pth.tar'
 		try:
 			if model_fname is None or not os.path.exists(model_fname):
 				model_fname = '%s/checkpoint.pth.tar' % self.save_path
@@ -259,9 +260,9 @@ class RunManager:
 			if 'best_acc' in checkpoint:
 				self.best_acc = checkpoint['best_acc']
 			if 'optimizer' in checkpoint:
-				self.optimizer.load_state_dict(checkpoint['optimizer'])
+				self.optimizer.load_state_dict(checkpoint['optimizer'], strict=False)
 
-			self.net.module.load_state_dict(checkpoint['state_dict'])
+			self.net.module.load_state_dict(checkpoint['state_dict'], strict=False)
 			if self.out_log:
 				print("=> loaded checkpoint '{}'".format(model_fname))
 
@@ -270,7 +271,8 @@ class RunManager:
 			torch.manual_seed(new_manual_seed)
 			torch.cuda.manual_seed_all(new_manual_seed)
 			np.random.seed(new_manual_seed)
-		except Exception:
+		except Exception as e:
+			print(e)
 			if self.out_log:
 				print('fail to load checkpoint from %s' % self.save_path)
 

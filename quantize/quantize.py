@@ -16,6 +16,15 @@ from torch.nn.modules.utils import _single, _pair, _triple
 from progress.bar import Bar
 from sklearn.cluster import KMeans
 
+def calc_threshold(aw, method='TTQ'):
+    if method == 'TTQ':
+        # return 0.05 * aw.max()
+        return 0.7 * aw.mean()
+    elif method == 'CTQ':
+        # return 0.05 * aw.data.view(aw.shape[0], -1).max(dim=1)
+        # w_max, _ = aw.data.view(aw.shape[0], -1).max(dim=1)
+        # return 0.1 * w_max.unsqueeze(1).unsqueeze(1).unsqueeze(1)
+        return 0.7 * aw.mean(dim=1, keepdim=True).mean(dim=2, keepdim=True).mean(dim=3, keepdim=True)
 
 def k_means_cpu(weight, n_clusters, init='k-means++', max_iter=50):
     # flatten the weight for computing k-means
@@ -132,7 +141,8 @@ class QModule(nn.Module):
         self._half_wave = half_wave
 
         self.activation_range = nn.Parameter(torch.Tensor([6.0]))
-        self.weight_range = nn.Parameter(torch.Tensor([-1.0]))
+        self.wp = nn.Parameter(torch.Tensor(1))
+        self.wn = nn.Parameter(torch.Tensor(1))
 
         self._quantized = True
         self._tanh_weight = False

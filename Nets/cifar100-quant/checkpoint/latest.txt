@@ -1,1 +1,1 @@
-/home/hansong01/micronet-submission/Proxyless-NAS/Nets/cifar100/checkpoint/checkpoint.pth.tar
+/home/hansong01/micronet-submission/Nets/cifar100-quant/checkpoint
