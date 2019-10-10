@@ -141,10 +141,10 @@ class ConvLayer(BasicLayer):
 		                      padding=padding, dilation=self.dilation, groups=self.groups, bias=self.bias)
 
 	def weight_call(self, x):
-		end = time.time()
+		#end = time.time()
 		x = self.conv(x)
-		time_forward = time.time()-end
-		print(time_forward)
+		#time_forward = time.time()-end
+		#print(time_forward)
 		if self.has_shuffle and self.groups > 1:
 			x = shuffle_layer(x, self.groups)
 		return x

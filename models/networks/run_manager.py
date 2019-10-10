@@ -334,7 +334,6 @@ class RunManager:
 				# compute output
 				output = self.net(_input)
 				forward_time += time.time() - end
-				print("forward time: " + str(time.time() - end))
 				loss = self.criterion(output, target)
 
 				# measure accuracy and record loss
@@ -361,7 +360,6 @@ class RunManager:
 					           batch_time=batch_time, data_time=data_time, losses=losses, top1=top1, lr=lr)
 					self.write_log(batch_log, 'train')
 			time_per_epoch = batch_time.sum
-			print(forward_time)
 			seconds_left = int((self.run_config.n_epochs - epoch - 1) * time_per_epoch)
 			print('Time per epoch: %s, Est. complete in: %s' % (
 				str(timedelta(seconds=time_per_epoch)),

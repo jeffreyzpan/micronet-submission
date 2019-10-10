@@ -35,10 +35,10 @@ class Quantize(Function):
             # wn = wn.view(1, 1, 1, 1)
 
             output = fp_weight.clone().zero_()
-            # output += mask_p.float() * wp * scale
-            # output += mask_n.float() * wn * scale
-            output.masked_fill_(mask_p, wp[0] * scale)
-            output.masked_fill_(mask_n, wn[0] * scale)
+            output += mask_p.float() * wp * scale
+            output += mask_n.float() * wn * scale
+            #output.masked_fill_(mask_p, wp[0] * scale)
+            #output.masked_fill_(mask_n, wn[0] * scale)
 
         elif method == 'CTQ':
             abs_weight = fp_weight.abs()
