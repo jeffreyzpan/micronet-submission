@@ -1,4 +1,5 @@
 from models.utils import *
+import time
 import quantize as Q
 
 
@@ -140,7 +141,10 @@ class ConvLayer(BasicLayer):
 		                      padding=padding, dilation=self.dilation, groups=self.groups, bias=self.bias)
 
 	def weight_call(self, x):
+		end = time.time()
 		x = self.conv(x)
+		time_forward = time.time()-end
+		print(time_forward)
 		if self.has_shuffle and self.groups > 1:
 			x = shuffle_layer(x, self.groups)
 		return x
@@ -205,7 +209,8 @@ class DepthConvLayer(BasicLayer):
 			padding[0] *= self.dilation
 			padding[1] *= self.dilation
 		# `kernel_size`, `stride`, `padding`, `dilation` can either be `int` or `tuple` of int
-		if quantize:
+		#if quantize:
+		if False:
 			self.depth_conv = Q.QuantConv2d(in_channels, in_channels, kernel_size=self.kernel_size, stride=self.stride,
 		                            padding=padding, dilation=self.dilation, groups=in_channels, bias=False)
 			self.point_conv = Q.QuantConv2d(in_channels, out_channels, kernel_size=1, groups=self.groups, bias=self.bias)
