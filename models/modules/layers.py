@@ -133,7 +133,7 @@ class ConvLayer(BasicLayer):
 			padding[1] *= self.dilation
 		# `kernel_size`, `stride`, `padding`, `dilation` can either be `int` or `tuple` of int
 		if quantize:
-			self.conv = Q.QConv2d(in_channels, out_channels, kernel_size=self.kernel_size, stride=self.stride,
+			self.conv = Q.QuantConv2d(in_channels, out_channels, kernel_size=self.kernel_size, stride=self.stride,
 		                      padding=padding, dilation=self.dilation, groups=self.groups, bias=self.bias)
 		else:
 			self.conv = nn.Conv2d(in_channels, out_channels, kernel_size=self.kernel_size, stride=self.stride,
@@ -206,9 +206,9 @@ class DepthConvLayer(BasicLayer):
 			padding[1] *= self.dilation
 		# `kernel_size`, `stride`, `padding`, `dilation` can either be `int` or `tuple` of int
 		if quantize:
-			self.depth_conv = Q.QConv2d(in_channels, in_channels, kernel_size=self.kernel_size, stride=self.stride,
+			self.depth_conv = Q.QuantConv2d(in_channels, in_channels, kernel_size=self.kernel_size, stride=self.stride,
 		                            padding=padding, dilation=self.dilation, groups=in_channels, bias=False)
-			self.point_conv = Q.QConv2d(in_channels, out_channels, kernel_size=1, groups=self.groups, bias=self.bias)
+			self.point_conv = Q.QuantConv2d(in_channels, out_channels, kernel_size=1, groups=self.groups, bias=self.bias)
 		else:
 			self.depth_conv = nn.Conv2d(in_channels, in_channels, kernel_size=self.kernel_size, stride=self.stride,
 		                            padding=padding, dilation=self.dilation, groups=in_channels, bias=False)
@@ -382,7 +382,7 @@ class LinearLayer(BasicUnit):
 			self.dropout = None
 		# linear
 		if quantize:
-			self.linear = Q.QLinear(self.in_features, self.out_features, self.bias)
+			self.linear = Q.QuantLinear(self.in_features, self.out_features, self.bias)
 		else:
 			self.linear = nn.Linear(self.in_features, self.out_features, self.bias)
 

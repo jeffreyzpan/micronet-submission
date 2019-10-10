@@ -1,0 +1,7 @@
+Valid [1/150]	loss 1.362	top 1-acc 63.430 (63.430)
+Valid [2/150]	loss 1.087	top 1-acc 70.480 (70.480)
+Valid [3/150]	loss 1.088	top 1-acc 70.260 (70.480)
+Valid [4/150]	loss 1.014	top 1-acc 72.720 (72.720)
+Valid [5/150]	loss 0.997	top 1-acc 73.680 (73.680)
+Valid [6/150]	loss 0.955	top 1-acc 74.000 (74.000)
+Valid [7/150]	loss 1.030	top 1-acc 73.310 (74.000)
