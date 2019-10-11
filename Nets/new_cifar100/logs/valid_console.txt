@@ -400,3 +400,5 @@ Valid [98/100]	loss 0.820	top 1-acc 81.680 (82.040)
 Valid [99/100]	loss 0.821	top 1-acc 81.710 (82.040)
 Valid [100/100]	loss 0.819	top 1-acc 81.770 (82.040)
 valid_loss: 0.819371	 valid_acc1: 81.770000
+test_loss: 1.847823	 test_acc1: 60.030000
+test_loss: 0.819371	 test_acc1: 81.770000

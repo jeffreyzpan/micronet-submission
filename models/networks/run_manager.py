@@ -432,9 +432,10 @@ class RunManager:
 	def quantize(self):
 		quantize_index = []
 		for idx, module in enumerate(self.net.modules()):
-			print(type(module))
 			if type(module) in [nn.Conv2d, nn.Linear]:
 				quantize_index.append(idx)
-			print(idx, '->', module)
 		print(quantize_index)
+		print(len(quantize_index))
+		print(self.net.print_net_info())
+		
 		

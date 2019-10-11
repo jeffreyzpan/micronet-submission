@@ -1,1 +1,0 @@
-/home/hansong01/micronet-submission/Nets/cifar100-quant/checkpoint/checkpoint.pth.tar
