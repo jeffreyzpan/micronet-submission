@@ -433,7 +433,8 @@ class RunManager:
 		quantize_index = []
 		for idx, module in enumerate(self.net.modules()):
 			print(type(module))
-			if type(module) == layers.DepthConvLayer:
+			if type(module) == in [nn.Conv2d, nn.Linear]:
 				quantize_index.append(idx)
 			print(idx, '->', module)
 		print(quantize_index)
+		
