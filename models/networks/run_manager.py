@@ -428,3 +428,5 @@ class RunManager:
 				      	'top 1-acc {top1.val:.3f} ({top1.avg:.3f})'.
 				      	format(i, len(data_loader), batch_time=batch_time, loss=losses, top1=top1))
 		return losses.avg, top1.avg
+	def quantize(self):
+		print(self.model)
