@@ -12,6 +12,7 @@ import torch.optim
 
 from data_providers import get_data_provider_by_name
 from models.utils import *
+import models.modules.layers as layers
 
 
 class RunConfig:
@@ -429,4 +430,10 @@ class RunManager:
 				      	format(i, len(data_loader), batch_time=batch_time, loss=losses, top1=top1))
 		return losses.avg, top1.avg
 	def quantize(self):
-		print(self.model)
+		quantize_index = []
+		for idx, module in enumerate(self.net.modules()):
+			print(type(module))
+			if type(module) == layers.DepthConvLayer:
+				quantize_index.append(idx)
+			print(idx, '->', module)
+		print(quantize_index)

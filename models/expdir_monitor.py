@@ -99,14 +99,14 @@ class ExpdirMonitor:
 			run_manager.load_model()
 		elif init is not None:
 			run_manager.net.module.load_state_dict(init['state_dict'], strict=False)
+		if quantize_dw:
+			run_manager.quantize()
 
 		if train:
 			run_manager.train()
 			run_manager.save_model()
 
 		loss, acc1 = run_manager.validate(is_test=is_test)
-		if quantize_dw:
-			run_manager.quantize()
 		if is_test:
 			log = 'test_loss: %f\t test_acc1: %f' % (loss, acc1)
 			run_manager.write_log(log, prefix='test')
