@@ -7,7 +7,15 @@ This submission used [Proxyless NAS](https://github.com/mit-han-lab/ProxylessNAS
 
 Next, we used [TTQ](https://github.com/czhu95/ternarynet) to quantize all our layers to two-bit weights, excluding our depthwise convolutions, as they have fewer parameters. 
 
-Finally, we used [HAQ](https://github.com/mit-han-lab/haq-release) to quantize the remaining layers to 8-bit precision. 
+Finally, we used [HAQ](https://github.com/mit-han-lab/haq-release) to quantize the remaining layers to 8-bit precision.
+
+### Parameter Calculations
+
+For our 
+
+### FLOPS Calculations
+
+The total number of FLOPS can be found in the function ```net_flops``` in the file ```models/networks/run_manager.py```, which calls the ```get_flops``` functions of each layer in ```models/modules/layers.py```. As we do not do any FLOP quantization, the total number of FLOPS is the sum of the FLOPS in each layer.
 
 ## Results
 
