@@ -31,7 +31,7 @@ To evaluated our pretrained checkpoint, run:
 python run_exp.py --resume --quantize --gpu <list of gpus> --path Nets/cifar100_final
 ```
 
-where the `--resume` flag specifies a pretrained checkpoint, the `--quantize` flag uses TTQ, and the `--quantize_dw` flag uses HAQ.
+where the `--resume` flag specifies a pretrained checkpoint and the `--quantize` flag uses TTQ.
 
 ### Finetune Full Precision Model
 
