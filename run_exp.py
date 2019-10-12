@@ -16,7 +16,6 @@ if __name__ == '__main__':
 	parser.add_argument('--gpu', help='gpu available', default='0')
 	parser.add_argument('--dataset', help='dataset to train on', default='cifar100')
 	parser.add_argument('--quantize', help='finetune and quantize all conv layers except depthwise convs in model', action='store_true') 
-	parser.add_argument('--quantize_dw', help='quantize all remaining layers in model', action='store_true')
 	parser.add_argument('--train', action='store_true')
 	parser.add_argument('--valid', action='store_true')
 	parser.add_argument('--valid_size', default=None, type=int)
@@ -32,4 +31,4 @@ if __name__ == '__main__':
 	os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 
 	expdir_monitor = ExpdirMonitor(args.path, args.dataset)
-	expdir_monitor.run(quantize=args.quantize, quantize_dw=args.quantize_dw, train=args.train, is_test=(not args.valid), valid_size=args.valid_size, resume=args.resume)
+	expdir_monitor.run(quantize=args.quantize, train=args.train, is_test=(not args.valid), valid_size=args.valid_size, resume=args.resume)

@@ -82,7 +82,7 @@ class ExpdirMonitor:
 			return None
 
 	""" methods for running """
-	def run(self, quantize=False, quantize_dw=False, train=True, is_test=True, valid_size=None, resume=False):
+	def run(self, quantize=False, train=True, is_test=True, valid_size=None, resume=False):
 		init = self.load_init()
 		dataset=self.dataset
 		#dataset = 'cifar10' if init is None else init.get('dataset', 'C10+')
@@ -95,13 +95,10 @@ class ExpdirMonitor:
 		run_manager = RunManager(self.expdir, net, run_config, out_log=True)
 		run_manager.save_config(print_info=True)
 
-		if resume or quantize_dw:
+		if resume:
 			run_manager.load_model()
 		elif init is not None:
 			run_manager.net.module.load_state_dict(init['state_dict'], strict=False)
-
-		if quantize_dw:
-			run_manager.quantize()
 
 		if train:
 			run_manager.train()

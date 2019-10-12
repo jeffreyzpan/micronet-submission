@@ -430,13 +430,3 @@ class RunManager:
 				      	format(i, len(data_loader), batch_time=batch_time, loss=losses, top1=top1))
 		return losses.avg, top1.avg
 
-	def quantize(self):
-		quantize_index = []
-		for index, module in enumerate(self.net.modules()):
-			if type(module) in [nn.Conv2d, nn.Linear]:
-				quantize_index.append(index)
-		
-		strategy = [8] * len(quantize_index)
-		centroid_label_dict = quantize_utils.quantize_model(self.net, quantize_index, strategy)
-		print(centroid_label_dict)
-		quantize_utils.kmeans_update_model(self.net, quantize_index, centroid_label_dict) 	
