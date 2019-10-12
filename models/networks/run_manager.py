@@ -12,7 +12,6 @@ import torch.optim
 
 from data_providers import get_data_provider_by_name
 from models.utils import *
-import quantize_utils 
 
 
 class RunConfig:
