@@ -32,3 +32,6 @@ valid_loss: 0.702780	 valid_acc1: 82.440000
 test_loss: 389033828953371980226336129024.000000	 test_acc1: 1.000000
 test_loss: 0.702780	 test_acc1: 82.440000
 test_loss: 0.702780	 test_acc1: 82.440000
+test_loss: 0.875854	 test_acc1: 78.160000
+test_loss: 0.875854	 test_acc1: 78.160000
+test_loss: 0.702780	 test_acc1: 82.440000
