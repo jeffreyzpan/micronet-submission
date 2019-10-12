@@ -26,8 +26,8 @@ The total number of FLOPS can be found in the function ```net_flops``` in the fi
 
  Models                   | # of Parameters |Parameter Storage | FLOPS | Top1 Acc (%) |
 | ------------------------ | --------------| -------------- | ------------ | ------------ |
-| WideResNet-28-10 (baseline)|    36.5M   |       139.2MB      |     10.49B    |    81.7     |
-| Ours |       5.77M      |      3.85MB        |    1.213B    |    82.44     |
+| WideResNet-28-10 (baseline)|    36.5M   |       146MB      |     10.49B    |    81.7     |
+| Ours |       5.77M      |      4.04MB        |    1.213B    |    82.44     |
 
 ## Usage
 
