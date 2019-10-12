@@ -12,7 +12,7 @@ import torch.optim
 
 from data_providers import get_data_provider_by_name
 from models.utils import *
-import models.modules.layers as layers
+import quantize_utils 
 
 
 class RunConfig:
@@ -429,13 +429,14 @@ class RunManager:
 				      	'top 1-acc {top1.val:.3f} ({top1.avg:.3f})'.
 				      	format(i, len(data_loader), batch_time=batch_time, loss=losses, top1=top1))
 		return losses.avg, top1.avg
+
 	def quantize(self):
 		quantize_index = []
-		for idx, module in enumerate(self.net.modules()):
+		for index, module in enumerate(self.net.modules()):
 			if type(module) in [nn.Conv2d, nn.Linear]:
-				quantize_index.append(idx)
-		print(quantize_index)
-		print(len(quantize_index))
-		print(self.net.print_net_info())
+				quantize_index.append(index)
 		
-		
+		strategy = [8] * len(quantize_index)
+		centroid_label_dict = quantize_utils.quantize_model(self.net, quantize_index, strategy)
+		print(centroid_label_dict)
+		quantize_utils.kmeans_update_model(self.net, quantize_index, centroid_label_dict) 	

@@ -298,4 +298,3 @@ Valid [297/300]	loss 0.754	top 1-acc 82.790 (82.910)
 Valid [298/300]	loss 0.753	top 1-acc 82.660 (82.910)
 Valid [299/300]	loss 0.750	top 1-acc 82.690 (82.910)
 Valid [300/300]	loss 0.747	top 1-acc 82.870 (82.910)
-valid_loss: 0.747284	 valid_acc1: 82.870000

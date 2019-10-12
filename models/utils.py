@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.optim
+import quantize as Q
 
 
 def get_same_padding(kernel_size):
@@ -42,7 +43,20 @@ def list_sum(x):
 
 
 def count_parameters(model):
-	total_params = sum([p.data.nelement() for p in model.parameters()])
+	#total_params = sum([p.data.nelement() for p in model.parameters()])
+	total_params = 0
+	for module in model.modules():
+		if type(module) in [nn.Conv2d, nn.Linear]:	
+			total_params += module.weight.data.nelement()
+			if type(module) in [nn.Linear]:
+				total_params += module.bias.data.nelement()
+		elif type(module) in [Q.QuantConv2d, Q.QuantLinear]:
+			total_params += module.weight.data.nelement()/16 + 2
+			if type(module) in [Q.QuantLinear]:
+				total_params += module.bias.data.nelement()
+		elif type(module) in [nn.BatchNorm2d]:
+			total_params += module.weight.data.nelement()
+			total_params += module.bias.data.nelement()
 	return total_params
 
 

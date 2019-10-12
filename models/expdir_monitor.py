@@ -99,6 +99,7 @@ class ExpdirMonitor:
 			run_manager.load_model()
 		elif init is not None:
 			run_manager.net.module.load_state_dict(init['state_dict'], strict=False)
+
 		if quantize_dw:
 			run_manager.quantize()
 
