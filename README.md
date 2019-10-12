@@ -14,7 +14,7 @@ Finally, we used [HAQ](https://github.com/mit-han-lab/haq-release) to quantize t
  Models                   | Parameters | FLOPS | Top1 Acc (%) |
 | ------------------------ | -------------- | ------------ | ------------ |
 | WideResNet-28-10 (baseline)   |       36.5M      |     10.49B    |    81.7     |
-| PyramidTreeNet (TTQ and HAQ)|       1.01M      |     1.213B    |    82.44     |
+| Ours |       1.01M      |     1.213B    |    82.44     |
 
 ## Usage
 
