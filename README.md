@@ -5,13 +5,11 @@ This is my submission to the 2019 MicroNet Challenge hosted at NeurIPS 2019.
 
 This submission used [Proxyless NAS](https://github.com/mit-han-lab/ProxylessNAS) to first search an architecture optimized for the CIFAR100 dataset. 
 
-Next, we used [TTQ](https://github.com/czhu95/ternarynet) to quantize all our layers to two-bit weights, excluding our depthwise convolutions, as they have fewer parameters. 
-
-Finally, we used [HAQ](https://github.com/mit-han-lab/haq-release) to quantize the remaining layers to 8-bit precision.
+Then, we used [TTQ](https://github.com/czhu95/ternarynet) to quantize all our layers to two-bit weights, excluding our depthwise convolutions, as they have fewer parameters. 
 
 ### Parameter Calculations
 
-The total number of parameters is computed by the ```count_parameters``` function in ```models/utils.py```. For each TTQ-quantized layer in the network, the parameter storage is decreased from 32-bit to 2-bit, but two more 32-bit parameters are required for the scaling factors of the layer. Thus, the parameter storage of a TTQ-quantized layer is n/16 + 2, where n is the original number of parameters. For HAQ-quantized layers, the parameter storage is decreased from 32-bit to 8-bit, resulting in a parameter storage of n/4.
+The total number of parameters is computed by the ```count_parameters``` function in ```models/utils.py```. For each TTQ-quantized layer in the network, the parameter storage is decreased from 32-bit to 2-bit, but two more 32-bit parameters are required for the scaling factors of the layer. Thus, the parameter storage of a TTQ-quantized layer is n/16 + 2, where n is the original number of parameters.
 
 ### FLOPS Calculations
 
@@ -30,7 +28,7 @@ The total number of FLOPS can be found in the function ```net_flops``` in the fi
 
 To evaluated our pretrained checkpoint, run:
 ```
-python run_exp.py --resume --quantize --quantize_dw --path Nets/cifar100_final
+python run_exp.py --resume --quantize --gpu <list of gpus> --path Nets/cifar100_final
 ```
 
 where the `--resume` flag specifies a pretrained checkpoint, the `--quantize` flag uses TTQ, and the `--quantize_dw` flag uses HAQ.
