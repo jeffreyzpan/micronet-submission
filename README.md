@@ -1,5 +1,12 @@
 # Micronet Submission
-This is my submission to the 2019 MicroNet Challenge hosted at NeurIPS 2019.
+This is our submission to the 2019 MicroNet Challenge hosted at NeurIPS 2019.
+
+Submitters:
+
+Jeffrey Pan (<jpan21@andover.edu>),
+Kuan Wang (<kuanwang@mit.edu>), 
+Han Cai (<hancai@mit.edu>), 
+Song Han (<songhan@mit.edu>)
 
 ## Methodology
 
