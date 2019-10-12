@@ -11,7 +11,7 @@ Finally, we used [HAQ](https://github.com/mit-han-lab/haq-release) to quantize t
 
 ### Parameter Calculations
 
-For our 
+The total number of parameters is computed by the ```count_parameters``` function in ```models/utils.py```. For each TTQ-quantized layer in the network, the parameter storage is decreased from 32-bit to 2-bit, but two more 32-bit parameters are required for the scaling factors of the layer. Thus, the parameter storage of a TTQ-quantized layer is n/16 + 2, where n is the original number of parameters. For HAQ-quantized layers, the parameter storage is decreased from 32-bit to 8-bit, resulting in a parameter storage of n/4.
 
 ### FLOPS Calculations
 
@@ -19,10 +19,10 @@ The total number of FLOPS can be found in the function ```net_flops``` in the fi
 
 ## Results
 
- Models                   | Parameters | FLOPS | Top1 Acc (%) |
-| ------------------------ | -------------- | ------------ | ------------ |
-| WideResNet-28-10 (baseline)   |       36.5M      |     10.49B    |    81.7     |
-| Ours |       1.01M      |     1.213B    |    82.44     |
+ Models                   | # of Parameters |Parameter Storage | FLOPS | Top1 Acc (%) |
+| ------------------------ | --------------| -------------- | ------------ | ------------ |
+| WideResNet-28-10 (baseline)|    36.5M   |       36.5M      |     10.49B    |    81.7     |
+| Ours |       1.01M      |      5.77M        |    1.213B    |    82.44     |
 
 ## Usage
 
