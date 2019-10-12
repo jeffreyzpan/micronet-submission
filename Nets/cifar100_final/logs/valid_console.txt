@@ -28,5 +28,3 @@ Valid [27/30]	loss 0.705	top 1-acc 82.340 (82.340)
 Valid [28/30]	loss 0.711	top 1-acc 82.350 (82.350)
 Valid [29/30]	loss 0.706	top 1-acc 82.530 (82.530)
 Valid [30/30]	loss 0.703	top 1-acc 82.440 (82.530)
-test_loss: nan	 test_acc1: 0.080000
-test_loss: 0.702780	 test_acc1: 82.440000
